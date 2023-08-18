@@ -1,0 +1,502 @@
+\documentclass{article}
+
+\usepackage{parskip}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\newcommand{\diagup}{\char"27CB}
+\setmainfont{STIX Two Text}
+\setmathfont{STIX Two Math}
+
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{faktor}
+\usepackage{physics}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{relsize}
+
+\usepackage[shortlabels]{enumitem}
+\setlist[enumerate,1]{label={(\roman*)}}
+\setlist[enumerate,2]{label={(\alph*)}}
+
+\hypersetup{
+	colorlinks=true,
+	% linkcolor=green!40!black,
+}
+
+\newcommand{\defn}[3]{\href{https://leanprover-community.github.io/mathlib4\_docs/#1.html\##2}{\emph{#3}}}
+\newcommand{\symmdiff}{\mathrel{\raisebox{1pt}{\( \mathsmaller\triangle \)}}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\title{New Foundations is consistent}
+\author{Sky Wilshaw}
+\date{July 2023}
+
+\begin{document}
+
+\maketitle
+
+\section*{Underlying theory}
+
+All of the definitions and theorems that follow have been machine-checked by Lean.
+
+The construction described in this paper takes place in a dependent type theory with:
+\begin{itemize}
+    \item a proof-irrelevant impredicative universe of propositions called \( \symsf{Prop} \);
+    \item predicative universes indexed by \( \omega \), called \( \symsf{Type} = \symsf{Type}\ 0 : \symsf{Type}\ 1 : \dots \);
+    \item dependent function types \( \displaystyle \prod_{(x : \alpha)} \beta \) for all types \( \alpha, \beta \), where we denote function application by juxtaposition;
+    \item inductive types at each universe;
+    \item quotient types, where we denote the quotient of a type \( \alpha \) by the relation \( \sim \) by \( \faktor\alpha\sim \), and denote quotient introduction \( \alpha \to \faktor\alpha\sim \) by \( x \mapsto [x] \);
+    \item a \emph{definitional} reduction rule that if \( f \colon \alpha \to \beta \) lifts to \( g \colon \faktor\alpha\sim \to \beta \), then \( g\ [x] = f\ x \).
+\end{itemize}
+We write \( \symsf{Type}\ u = \symsf{Sort}\ (u + 1) \) and \( \symsf{Prop} = \symsf{Sort}\ 0 \) for conciseness.
+We stipulate the following axioms.
+\begin{itemize}
+    \item propositional extensionality: that if \( p \Leftrightarrow q \) then we have \( p = q \);
+    \item a form of the axiom of choice: a function for each type \( \alpha \) that maps a proof that \( \alpha \) is nonempty to some \( x : \alpha \).
+\end{itemize}
+Lean's dependent type theory satisfies these constraints.
+It is known that such a type theory can be modelled in \( \symsf{ZFC} + \qty{\text{there are \( n \) inaccessible cardinals} \mid n < \omega} \) (see \url{https://github.com/digama0/lean-type-theory/releases}).
+
+We model cardinals and ordinals as quotients over a universe of types.
+However, apart from this, we make no direct use of higher universes, so the proof can be expected to work with no inaccessible cardinal assumptions.
+
+\section{Definitions and results from mathlib}
+
+In this section, we state a number of well-known definitions and results from the community repository mathlib.
+The definitions are included so that the representations of types we use are clear.
+
+\subsection{Sets, groups, and supports}
+
+\begin{definition}
+    A \emph{set} of a type \( \alpha \) is a function \( \alpha \to \symsf{Prop} \).
+    The type of sets of \( \alpha \) is denoted \( \symsf{set}\ \alpha \).
+\end{definition}
+\begin{definition}
+    The pointwise image of a set \( s : \symsf{set}\ \alpha \) under a function \( f \colon \alpha \to \beta \) is denoted \( f '' s = \qty{y : \beta \mid \exists x \in s, y = f\ x} \).
+    The preimage of a set \( t : \symsf{set}\ \beta \) under \( f \) is denoted \( f^{-1}{}' t = \qty{x : \alpha \mid f\ x \in t} \).
+\end{definition}
+\begin{definition}
+    The \emph{symmetric difference} of two sets \( s, t : \symsf{set}\ \alpha \) is defined by \( s \symmdiff t = (s \setminus t) \cup (t \setminus s) \).
+\end{definition}
+\begin{definition}
+    A \emph{group action} of \( G \) on \( \alpha \) is a function \( G \to \alpha \to \alpha \) denoted by \( \cdot \) such that for all \( x, y : G \), \( a : \alpha \), we have \( (x \cdot y) \cdot a = x \cdot (y \cdot a) \).
+\end{definition}
+\begin{definition}
+    Let \( G \) be a group that acts on \( \alpha \) and \( \beta \).
+    Let \( s \) be a set of \( \alpha \), and let \( b : \beta \).
+    We say that \( s \) \emph{supports} \( b \) if for all \( x \in G \), we have \( x \cdot b = b \) whenever \( x \cdot a = a \) for all \( a \in s \).
+\end{definition}
+\begin{lemma}
+    \label{lem:smul_eq_smul_of_supports}
+    Let \( s : \symsf{set}\ \alpha \) support \( b : \beta \) under actions of \( G \).
+    Then for \( x, y \in G \), \( x \cdot b = y \cdot b \) whenever \( x \cdot a = y \cdot a \) for all \( a \in s \).
+\end{lemma}
+\begin{proof}
+    Apply the definition of a support to \( y^{-1} \cdot x \).
+\end{proof}
+
+\subsection{Cardinals and ordinals}
+
+\begin{definition}
+    An \defn{Mathlib/Logic/Equiv/Defs}{Equiv}{equivalence} between two types \( \alpha \) and \( \beta \), denoted \( e : \alpha \simeq \beta \), is a pair of functions \( f \colon \alpha \to \beta, g \colon \beta \to \alpha \) that are inverses of each other.
+    Equivalences \( e : \alpha \simeq \beta \) naturally coerce to their underlying function \( f : \alpha \to \beta \).
+    We use the syntax \( e^{-1} \) to denote the inverse equivalence \( \beta \simeq \alpha \) constructed from \( g \) and \( f \).
+\end{definition}
+\begin{remark}
+    \( (e^{-1})^{-1} = e \) holds definitionally.
+\end{remark}
+\begin{definition}
+    The type of \defn{Mathlib/Logic/Equiv/Defs}{Equiv.Perm}{permutations} of a type \( \alpha \) is \( \alpha \simeq \alpha \), denoted \( \symsf{perm}\ \alpha \).
+\end{definition}
+\begin{definition}
+    The type of \defn{Mathlib/SetTheory/Cardinal/Basic}{Cardinal}{cardinals} is the quotient of \( \symsf{Type} \) by the equivalence relation \( \sim \), where \( \alpha \sim \beta \) if \( \alpha \simeq \beta \) is nonempty.
+    We denote the cardinal of a type by \( \#\alpha = [\alpha] \).
+\end{definition}
+\begin{definition}
+    Let \( r : \alpha \to \alpha \to \symsf{Prop} \) be a relation on \( \alpha \).
+    We say that \( x : \alpha \) is \defn{Init/WF}{Acc}{\( r \)-accessible} if for all \( y \) with \( r\ y\ x \), we have that \( y \) is \( r \)-accessible.
+\end{definition}
+\begin{definition}
+    A relation \( r : \alpha \to \alpha \to \symsf{Prop} \) is \defn{Init/WF}{WellFounded}{well-founded} if every element is accessible.
+\end{definition}
+\begin{remark}
+    This is a constructive form of well-foundedness that behaves very nicely in Lean's type system.
+\end{remark}
+\begin{theorem}[well-founded recursion]
+    Let \( r \) be a well-founded relation on \( \alpha \).
+    Let \( C : \alpha \to \symsf{Sort}\ u \) be a motive for the recursion.
+    Let \( h \) have type
+    \[ \prod_{(x : \alpha)} \qty(\prod_{(y : \alpha)} r\ y\ x \to C\ y) \to C\ x \]
+    Then we can construct \( C\ x \) for each \( x : \alpha \).
+\end{theorem}
+\begin{remark}
+    More rigorously, well-founded recursion over \( r \) is a function of type
+    \[ \prod_{(C : \alpha \to \symsf{Sort}\ u)} \qty[ \qty(\prod_{(x : \alpha)} \qty(\prod_{(y : \alpha)} r\ y\ x \to C\ y) \to C\ x) \to \prod_{(x : \alpha)} C\ x] \]
+    Setting \( u = 0 \) gives well-founded induction.
+    This result is obtained by recursion over accessibility, which is an inductive type.
+\end{remark}
+\begin{definition}
+    A relation is a \defn{Mathlib/Order/RelClasses}{IsWellOrder}{well-order} if it is trichotomous, transitive, and well-founded.
+\end{definition}
+\begin{definition}
+    Let \( \alpha, \beta \) be endowed with relations \( r, s \).
+    An equivalence \( e : \alpha \simeq \beta \) is an \defn{Mathlib/Order/Hom/Basic}{OrderIso}{order isomorphism} if for each \( x, y : \alpha \), we have \( s\ (e\ x)\ (e\ y) \Leftrightarrow r\ x\ y \).
+\end{definition}
+\begin{definition}
+    The type of \defn{Mathlib/SetTheory/Ordinal/Basic}{Ordinal}{ordinals} is the quotient of the type of well-ordered elements of \( \mathsf{Type} \) by the equivalence relation \( \sim \), where \( \alpha \sim \beta \) if the type of order isomorphisms of \( \alpha \) and \( \beta \) is nonempty.
+\end{definition}
+
+Standard properties of cardinals and ordinals are assumed.
+
+\subsection{Quivers and paths}
+
+\begin{definition}
+    A \defn{Mathlib/Combinatorics/Quiver/Basic}{Quiver}{quiver} on a type \( \alpha \) of vertices assigns to every pair \( x, y : \alpha \) of vertices a type \( \symrm{Hom}(x, y) \) of arrows from \( x \) to \( y \).
+\end{definition}
+\begin{definition}
+    A \defn{Mathlib/Combinatorics/Quiver/Path}{Quiver.Path}{path} in a quiver between two vertices \( x, y : \alpha \) is a finite list of vertices beginning with \( x \) and ending with \( y \), connecting each pair of adjacent vertices \( a, b \) with an element of \( \symrm{Hom}(a, b) \).
+    The type of such paths is written \( x \rightsquigarrow y \).
+    The \defn{Mathlib/Combinatorics/Quiver/Path}{Quiver.Path.comp}{composition} of paths \( p : x \rightsquigarrow y, q : y \rightsquigarrow z \) is denoted by \( p \gg q : x \rightsquigarrow z \).
+\end{definition}
+\begin{remark}
+    In mathlib, paths are defined as an inductive type.
+\end{remark}
+\begin{definition}
+    The \defn{Mathlib/Combinatorics/Quiver/Path}{Quiver.Path.length}{length} of a path is the number of arrows in that path, or exactly one less than the number of vertices in the list.
+\end{definition}
+
+\section{Setup}
+
+We describe the base level of our construction, as well as all of the other objects that can be described outside the main induction.
+
+\subsection{Model parameters}
+
+\begin{definition}
+    \label{def:params}
+    A set of \emph{model parameters} is
+    \begin{itemize}
+        \item a type \( \lambda \) endowed with a well-order;
+        \item a type \( \kappa \);
+        \item a type \( \mu \) endowed with a well-order,
+    \end{itemize}
+    such that
+    \begin{enumerate}
+        \item the order type of \( \lambda \) is a nonzero limit ordinal, and is the initial ordinal corresponding to the cardinal \( \#\lambda \);
+        \item the order type of \( \mu \) is the initial ordinal corresponding to the cardinal \( \#\mu \);
+        \item \( \#\mu \) is a strong limit cardinal;
+        \item \( \#\lambda < \#\kappa < \#\mu \);
+        \item the cofinality of the initial ordinal corresponding to \( \#\mu \) is at least \( \#\kappa \).
+    \end{enumerate}
+\end{definition}
+\begin{lemma}
+    There exists a set of model parameters.
+\end{lemma}
+\begin{proof}
+    Take \( \lambda = \aleph_0, \kappa = \aleph_1, \mu = \beth_{\omega_1} \).
+    These form a set of model parameters by standard properties of cardinals.
+\end{proof}
+Every definition and theorem following this will implicitly assume a set of model parameters as an additional argument.
+\begin{lemma}
+    \label{lem:infinite_no_max_model_params}
+    \begin{enumerate}
+        \item \( \lambda, \kappa, \mu \) are infinite.
+        \item \( \lambda \) and \( \mu \) have no maximal element.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    \emph{Part (i).}
+    \( \lambda \) is a nonzero limit, hence is infinite; condition (iv) then guarantees the result for \( \kappa, \mu \).
+    \emph{Part (ii).}
+    Initial ordinals have no maximal element.
+\end{proof}
+\begin{definition}
+    The type of \emph{type indices}, denoted \( \lambda^\bot \), is \( \lambda \) together with a symbol denoted \( \bot \).
+    The order on \( \lambda^\bot \) places \( \bot \) below all elements of \( \lambda \).
+\end{definition}
+\begin{lemma}
+    \label{lem:mk_typeIndex}
+    \( \#\lambda^\bot = \#\lambda \).
+\end{lemma}
+\begin{proof}
+    \( \#\lambda^\bot = \#\lambda + 1 \), and \( \lambda \) is infinite by \cref{lem:infinite_no_max_model_params}(i).
+\end{proof}
+\begin{lemma}
+    \label{lem:typeIndex_wf}
+    The type indices are well-ordered.
+\end{lemma}
+\begin{proof}
+    They are clearly linearly ordered, and the relation \( < \) is well-founded.
+\end{proof}
+
+\subsection{Smallness}
+
+\begin{definition}
+    A set \( s \) of any type \( \alpha \) is called \emph{small} if \( \#s < \#\kappa \).
+\end{definition}
+\begin{remark}
+    Note that cardinals are defined on types and not sets: technically we mean that the cardinality of the subtype \( \qty{x : \alpha \mid x \in s} \) is less than \( \#\kappa \).
+\end{remark}
+\begin{lemma}
+    \label{lem:small}
+    Let \( f \colon \alpha \to \beta \) and \( s, t : \symsf{set}\ \alpha \).
+    Then,
+    \begin{enumerate}
+        \item the empty set is small;
+        \item singletons are small;
+        \item if \( s \subseteq t \) and \( t \) is small then \( s \) is small;
+        \item if \( s, t \) are small then \( s \cup t \) is small;
+        \item if \( s, t \) are small then \( s \symmdiff t \) is small;
+        \item if \( s \) is small then \( s \symmdiff t \) is small if and only if \( t \) is small;
+        \item if \( \iota \) is a type with \( \#\iota < \#\kappa \) and \( g \colon \iota \to \mathsf{set}\ \alpha \) with \( g\ i \) small for each \( i \in \iota \), then \( \bigcup_{i : \iota} g\ i \) is small;
+        \item if \( s \) is small then \( f '' s \) is small;
+        \item if \( s : \symsf{set}\ \beta \) is small and \( f \) is injective then \( f^{-1}{}' s \) is small;
+        \item if \( t : \symsf{set}\ \beta \) is small, \( f \) is injective, and \( f '' s \subseteq t \), then \( s \) is small.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    \begin{enumerate}
+        \item \( \#\qty{} = 0 < \aleph_0 \leq \#\kappa \) by \cref{lem:infinite_no_max_model_params}.
+        \item \( \#\qty{x} = 1 < \aleph_0 \leq \#\kappa \) by \cref{lem:infinite_no_max_model_params}.
+        \item Follows from transitivity.
+        \item \( \aleph_0 \leq \#\kappa \) so \( \#\kappa \) is additively closed.
+        \item \( s \symmdiff t \subseteq s \cup t \) so done by (iii).
+        \item \( s \symmdiff t \symmdiff s = t \) so done by applying (iv) twice.
+        \item Follows since \( \kappa \) is regular by \cref{def:params}.
+        \item The set \( f '' s \) injects into \( s \) so \( \#(f '' s) \leq \#s \).
+        \item The set \( f^{-1}{}' s \) injects into \( s \) if \( f \) is injective.
+        \item Follows from (iii) and (ix), as \( f^{-1}{}' (f '' s) = s \) for injective \( f \).
+    \end{enumerate}
+\end{proof}
+\begin{definition}
+    Sets are \emph{near} if their symmetric difference is small.
+\end{definition}
+\begin{lemma}
+    \label{lem:near}
+    Let \( f \colon \alpha \to \beta \) and \( s, t, u : \symsf{set}\ \alpha \).
+    \begin{enumerate}
+        \item \( s \) is near \( s \);
+        \item if \( s \) is near \( t \) then \( t \) is near \( s \);
+        \item if \( s \) is near \( t \) and \( t \) is near \( u \) then \( s \) is near \( u \);
+        \item if \( s \) is near \( t \) then \( f '' s \) is near \( f '' t \);
+        \item if \( s \) is small, then \( s \) is near \( t \) if and only if \( t \) is small;
+        \item if \( s \) is near \( t \) and \( \#\kappa \leq \#s \), then \( \#\kappa \leq \#t \);
+        \item if \( s \) is near \( t \) and \( \#\kappa \leq \#s \), then \( \#\kappa \leq \#(s \cap t) \).
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    \begin{enumerate}
+        \item Follows from \cref{lem:small}(i).
+        \item The symmetric difference is commutative.
+        \item Follows from \cref{lem:small}(iii, iv) and the fact that \( s \symmdiff u \subseteq (s \symmdiff t) \cup (t \symmdiff u) \).
+        \item Follows from \cref{lem:small}(iii, viii) and the fact that \( (f '' s) \symmdiff (f '' t) \subseteq f '' (s \symmdiff t) \).
+        \item Follows from \cref{lem:small}(vi).
+        \item Suppose not, so \( \#t < \#\kappa \).
+        Then as \( s \) is near \( t \), \( s \) is small, contradicting the assumption.
+        \item Suppose not, so \( \#(s \cap t) < \#\kappa \).
+        As \( s \) is near \( t \), the set \( (s \cup t) \setminus (s \cap t) \) is small.
+        But
+        \[ \#(s \cup t) \leq \#((s \cup t) \setminus (s \cap t)) + \#(s \cap t) \]
+        Both summands on the right-hand side are less than \( \#\kappa \), so \( s \cup t \) must be small.
+        But this contradicts the assumption that \( \#\kappa \leq \#s \).
+    \end{enumerate}
+\end{proof}
+
+\subsection{Litters and atoms}
+
+\begin{definition}
+    A \emph{litter} is a triple \( L = \langle \nu, \beta, \gamma \rangle \) with \( \nu : \mu, \beta : \lambda^\bot, \gamma : \lambda \), such that \( \beta \neq \gamma \).
+    The type of litters is denoted \( \mathcal L \).
+\end{definition}
+\begin{lemma}
+    \label{lem:mk_litter}
+    \( \#\mathcal L = \#\mu \).
+\end{lemma}
+\begin{proof}
+    Note that \( \#(\mu \times \lambda^\bot \times \lambda) = \#\mu \) so \( \#\mathcal L \leq \#\mu \).
+    But \( \#\mu \leq \#\mathcal L \) by considering the injection \( \nu \mapsto \langle \nu, \bot, 0 \rangle \), so the result follows by antisymmetry.
+\end{proof}
+\begin{lemma}
+    \label{lem:card_Iio_lt}
+    For \( x : \mu \), \( \#\qty{y \mid y < x} < \#\mu \) and \( \#\qty{y \mid y \leq x} < \#\mu \).
+\end{lemma}
+\begin{proof}
+    \Cref{def:params} requires that the order type of \( \mu \) is an initial ordinal, so we have \( \#\qty{y \mid y < x} < \#\mu \).
+    Then \( \#\qty{y \mid y \leq x} = \#\qty{y \mid y < x} + \#\qty{x} < \#\mu \) as \( \#\mu \) is infinite by \cref{lem:infinite_no_max_model_params}(i).
+\end{proof}
+\begin{lemma}
+    \label{lem:litter_wf}
+    \( \mathcal L \) is well-ordered by the pullback to the subtype of the lexicographic order on \( \mu \times \lambda^\bot \times \lambda \).
+\end{lemma}
+\begin{proof}
+    \Cref{def:params} provides the well-orders of \( \lambda \) and \( \mu \), \cref{lem:typeIndex_wf} gives the well-order of \( \lambda^\bot \), and the lexicographic product of well-orders is a well-order.
+\end{proof}
+\begin{definition}
+    The type of \emph{atoms} is \( \mathcal A = \mathcal L \times \kappa \).
+\end{definition}
+\begin{lemma}
+    \label{lem:mk_atom}
+    \( \#\mathcal A = \#\mu \).
+\end{lemma}
+\begin{proof}
+    \( \#\mathcal L = \#\mu \) by \cref{lem:mk_litter}, and \( \#\aleph_0 \leq \#\kappa < \#\mu \) by \cref{def:params}.
+\end{proof}
+\begin{definition}
+    The \emph{litter set} of a litter \( L \) is the set of atoms with first projection equal to \( L \), denoted \( \mathcal A_L \).
+\end{definition}
+\begin{lemma}
+    \label{lem:litterSet}
+    \begin{enumerate}
+        \item \( \#\mathcal A_L = \#\kappa \);
+        \item the litter sets are pairwise disjoint.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    \begin{enumerate}
+        \item Each litter set is naturally in bijection with \( \kappa \).
+        \item If an atom \( a \) is in \( \mathcal A_L \) and \( \mathcal A_{L'} \), then \( \pi_1(a) = L \) and \( \pi_1(a) = L' \) so \( L = L' \).
+    \end{enumerate}
+\end{proof}
+
+\subsection{Near-litters}
+
+\begin{definition}
+    A set of atoms \emph{is a near-litter} to a given litter \( L \) if it is near the litter set of \( L \).
+\end{definition}
+\begin{lemma}
+    \label{lem:isNearLitter}
+    \begin{enumerate}
+        \item \( \mathcal A_L \) is a near-litter to \( L \);
+        \item if \( s, t \) are near-litters to \( L \) then \( s \) is near \( t \);
+        \item if \( s \) is a near-litter to \( L \), \( \#s = \#\kappa \);
+        \item a set cannot be a near-litter to two different litters;
+        \item there are \( \mu \) near-litters to a given litter.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    \begin{enumerate}
+        \item Direct from \cref{lem:near}(i).
+        \item Follows from \cref{lem:near}(iii).
+        \item We have
+        \[ \#s \leq \#(s \setminus \mathcal A_L) + \#(\mathcal A_L) \]
+        The first term is less than \( \#\kappa \) by \cref{lem:small}(iii); the second is exactly \( \#\kappa \) by \cref{lem:litterSet}(i).
+        Thus \( \#s \leq \#\kappa \).
+        Suppose \( \#s < \#\kappa \).
+        Note that
+        \[ \#\kappa = \#\mathcal A_L \leq \#(\mathcal A_L \setminus s) + \#s \]
+        But \( \#s < \#\kappa \) by assumption, and \( \#(\mathcal A_L \setminus s) < \#\kappa \) by \cref{lem:litterSet}(i).
+        This gives a contradiction.
+        \item First note that if \( \mathcal A_L \) is a near-litter to \( L' \), then \( L = L' \).
+        Suppose \( L \neq L' \).
+        Then \( \mathcal A_L \subseteq \mathcal A_L \symmdiff \mathcal A_{L'} \).
+        Hence the cardinality of \( \mathcal A_L \symmdiff \mathcal A_{L'} \) is at least \( \#\kappa \), contradicting nearness.
+        For general sets, if \( s \) is a near-litter to \( L \) and \( L' \), we must have that \( \mathcal A_L \) is a near-litter to \( L' \), reducing to the original case.
+        \item We argue by antisymmetry.
+        First, we show that the number of near-litters to \( L \) is at most \( \#\mu \).
+        Note that as \( \#\mu \) is a strong limit cardinal, the type of sets (of atoms, say) of size less than the cofinality of \( \#\mu \) also has cardinality \( \#\mu \).
+        But as the cofinality of \( \#\mu \) is at least \( \#\kappa \), it suffices to show an injection from the type of near-litters to \( L \) to the type of sets of atoms of size at most \( \#\kappa \), which can be done by the natural coercion.
+
+        Conversely, we need an injection from \( \mathcal A \) to the type of near-litters to \( L \).
+        The map \( a \mapsto \mathcal A_L \symmdiff \qty{a} \) suffices.
+    \end{enumerate}
+\end{proof}
+\begin{definition}
+    A \emph{near-litter} is a dependent pair \( \langle L, s \rangle \), where \( L \) is a litter and \( s \) is a set of atoms that is a near-litter to \( L \).
+    We denote the type of near-litters by \( \mathcal N \).
+    We define a natural injective coercion from a near-litter to its second component; this is often used in extensionality arguments.
+\end{definition}
+\begin{remark}
+    Retaining the data of which litter a given near-litter is near to allows us to get better definitional properties.
+\end{remark}
+\begin{definition}
+    The injection \( \symsf{NL} : \mathcal L \to \mathcal N \) is defined by \( \symsf{NL}\ L = \langle L, \mathcal A_L \rangle \), sending a litter to its associated near-litter.
+\end{definition}
+\begin{lemma}
+    Let \( N : \mathcal N \).
+    Then \( N \symmdiff \mathcal A_{\pi_1(N)} \) is small.
+\end{lemma}
+\begin{proof}
+    \label{lem:nearLitter_prop}
+    Suppose \( N = \langle L, s \rangle \).
+    Then \( s \) is near to \( \mathcal A_L \) as required.
+\end{proof}
+\begin{lemma}
+    \label{lem:mk_nearLitter}
+    \( \#\mathcal N = \#\mu \).
+\end{lemma}
+\begin{proof}
+    \begin{align*}
+        \#\mathcal N &= \#\sum_{(L : \mathcal L)} \qty{s : \symsf{set}\ \mathcal A \mid s\ \symsf{near}\ \mathcal A_L} \\
+        &= \sum_{(L : \mathcal L)} \#\qty{s : \symsf{set}\ \mathcal A \mid s\ \symsf{near}\ \mathcal A_L} \\
+        (\text{\cref{lem:isNearLitter}(v)}) \quad &= \sum_{(L : \mathcal L)} \#\mu \\
+        &= \#\mathcal L \cdot \#\mu \\
+        (\text{\cref{lem:mk_litter}}) \quad &= \#\mu \cdot \#\mu \\
+        (\text{\cref{lem:infinite_no_max_model_params}}) \quad &= \#\mu
+    \end{align*}
+\end{proof}
+\begin{lemma}
+    \label{lem:mk_nearLitter''}
+    Let \( N : \mathcal N \).
+    Then \( \#N = \#\kappa \).
+\end{lemma}
+\begin{proof}
+    We argue by antisymmetry that
+    \[ \#(N \symmdiff \mathcal A_{\pi_1(N)} \symmdiff \mathcal A_{\pi_1(N)}) = \#\kappa \]
+    First, we show that this is at most \( \#\kappa \).
+    By monotonicity it suffices to show that
+    \[ \#((N \symmdiff \mathcal A_{\pi_1(N)}) \cup \mathcal A_{\pi_1(N)}) \leq \#\kappa \]
+    By \cref{lem:nearLitter_prop} and \cref{lem:litterSet}(i), this holds.
+
+    Conversely, suppose \( N \symmdiff \mathcal A_{\pi_1(N)} \symmdiff \mathcal A_{\pi_1(N)} \) is small.
+    Then as \( N \symmdiff \mathcal A_{\pi_1(N)} \) is small, by \cref{lem:small}(vi) we must have that \( \mathcal A_{\pi_1(N)} \) is small, which is a contradiction.
+\end{proof}
+\begin{lemma}
+    Let \( N_1, N_2 : \mathcal N \).
+    Then if \( \pi_1(N_1) = \pi_1(N_2) \), their intersection \( N_1 \cap N_2 \) is nonempty.
+\end{lemma}
+\begin{proof}
+    First, note that \( N_1 \) is near \( N_2 \), so \( N_2 \setminus N_1 \) is small.
+    Suppose the intersection is empty, then \( N_2 \setminus N_1 = N_2 \).
+    But then \( N_2 \) would be small, contradicting \cref{lem:mk_nearLitter''}.
+\end{proof}
+
+\subsection{Near-litter permutations}
+
+\begin{definition}
+    A \emph{near-litter permutation} is a pair \( \pi = \langle \pi_A, \pi_L \rangle \) where \( \pi^A : \symsf{perm}\ \mathcal A \) and \( \pi^L : \symsf{perm}\ \mathcal L \), such that if \( s \) is a near-litter to \( L \), \( {\pi^A} '' s \) is a near-litter to \( \pi^L\ L \).
+    Thus a near-litter permutation induces a permutation of near-litters.
+\end{definition}
+We suppress the superscripts on near-litter permutations and use function application syntax for the action of a near-litter permutation on atoms, litters, and near-litters: for example, \( \pi^A\ a = \pi\ a \).
+Note that the action on litters is `rough': we map litters to litters and not near-litters.
+If the precise image of a litter \( L \) under a permutation \( \pi \) is desired, it can be obtained using \( \pi(\symsf{NL}\ L) \).
+\begin{lemma}
+    \label{lem:nearLitterPerm_atomPerm_injective}
+    If the atom permutations of two near-litter permutations agree, then the permutations are equal.
+\end{lemma}
+\begin{proof}
+    Let \( L : \mathcal L \) and \( \pi, \pi' \) be near-litter permutations.
+    The values of \( \pi\ (\symsf{NL}\ L) \) and \( \pi'\ (\symsf{NL}\ L) \) depend only on the atom maps in question.
+    The result then follows from \cref{lem:isNearLitter}(iv).
+\end{proof}
+\begin{lemma}
+    The near-litter permutations form a group.
+\end{lemma}
+\begin{lemma}
+    \label{lem:smul_nearLitter_eq_smul_symmDiff_smul}
+    Let \( \pi \) be a near-litter permutation and let \( N \) be a near-litter.
+    Then, the following equality of sets holds.
+    \[ \pi\ N = (\pi\ (\mathsf{NL}\ \pi_1(N))) \symmdiff (\pi '' (\mathcal A_{\pi_1(N)} \symmdiff N)) \]
+\end{lemma}
+\begin{proof}
+    After applying set extensionality, this proof becomes simple case checking.
+\end{proof}
+
+\end{document}
