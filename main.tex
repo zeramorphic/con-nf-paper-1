@@ -177,6 +177,7 @@ Standard properties of cardinals and ordinals are assumed.
 \end{definition}
 \begin{remark}
     In mathlib, paths are defined as an inductive type.
+    If there is exactly one morphism in a given hom-set \( \symrm{Hom}(a, b) \), it is denoted \( a \to b \).
     We will implicitly convert morphisms \( e : \symrm{Hom}(a, b) \) to their \mdef{Combinatorics/Quiver/Path}{Quiver.Hom.toPath}{corresponding paths} \( e : a \rightsquigarrow b \).
 \end{remark}
 \begin{definition}
@@ -429,12 +430,13 @@ Every definition and theorem following this will implicitly assume a set of mode
     Retaining the data of which litter a given near-litter is near to allows us to get better definitional properties.
 \end{remark}
 \begin{definition}
+    The first projection \( \pi_1 : \mathcal N \to \mathcal L \) is written with a superscript circle: \( N \mapsto N^\circ \).
     The injection \( \symsf{NL} : \mathcal L \to \mathcal N \) is defined by \( \symsf{NL}\ L = \langle L, \mathcal A_L \rangle \), sending a litter to its \cdef{Atom/NearLitter}{Litter.toNearLitter}{associated near-litter}.
 \end{definition}
 \begin{lemma}
     \label{lem:nearLitter_prop}
     Let \( N : \mathcal N \).
-    Then \( N \symmdiff \mathcal A_{\pi_1(N)} \) is small.
+    Then \( N \symmdiff \mathcal A_{N^\circ} \) is small.
 \end{lemma}
 \begin{proof}
     Suppose \( N = \langle L, s \rangle \).
@@ -461,18 +463,18 @@ Every definition and theorem following this will implicitly assume a set of mode
 \end{lemma}
 \begin{proof}
     We argue by antisymmetry that
-    \[ \#(N \symmdiff \mathcal A_{\pi_1(N)} \symmdiff \mathcal A_{\pi_1(N)}) = \#\kappa \]
+    \[ \#(N \symmdiff \mathcal A_{N^\circ} \symmdiff \mathcal A_{N^\circ}) = \#\kappa \]
     First, we show that this is at most \( \#\kappa \).
     By monotonicity it suffices to show that
-    \[ \#((N \symmdiff \mathcal A_{\pi_1(N)}) \cup \mathcal A_{\pi_1(N)}) \leq \#\kappa \]
+    \[ \#((N \symmdiff \mathcal A_{N^\circ}) \cup \mathcal A_{N^\circ}) \leq \#\kappa \]
     By \cref{lem:nearLitter_prop} and \cref{lem:litterSet}(i), this holds.
 
-    Conversely, suppose \( N \symmdiff \mathcal A_{\pi_1(N)} \symmdiff \mathcal A_{\pi_1(N)} \) is small.
-    Then as \( N \symmdiff \mathcal A_{\pi_1(N)} \) is small, by \cref{lem:small}(vi) we must have that \( \mathcal A_{\pi_1(N)} \) is small, which is a contradiction.
+    Conversely, suppose \( N \symmdiff \mathcal A_{N^\circ} \symmdiff \mathcal A_{N^\circ} \) is small.
+    Then as \( N \symmdiff \mathcal A_{N^\circ} \) is small, by \cref{lem:small}(vi) we must have that \( \mathcal A_{N^\circ} \) is small, which is a contradiction.
 \end{proof}
 \begin{lemma}
     Let \( N_1, N_2 : \mathcal N \).
-    Then if \( \pi_1(N_1) = \pi_1(N_2) \), their intersection \( N_1 \cap N_2 \) is nonempty.
+    Then if \( N_1^\circ = N_2^\circ \), their intersection \( N_1 \cap N_2 \) is nonempty.
 \end{lemma}
 \begin{proof}
     First, note that \( N_1 \) is near \( N_2 \), so \( N_2 \setminus N_1 \) is small.
@@ -485,6 +487,7 @@ Every definition and theorem following this will implicitly assume a set of mode
 \begin{definition}
     A \cdef{Atom/NearLitterPerm}{NearLitterPerm}{near-litter permutation} is a pair \( \pi = \langle \pi^A, \pi^L \rangle \) where \( \pi^A : \symsf{perm}\ \mathcal A \) and \( \pi^L : \symsf{perm}\ \mathcal L \), such that if \( s \) is a near-litter to \( L \), \( {\pi^A} '' s \) is a near-litter to \( \pi^L\ L \).
     Thus a near-litter permutation induces a permutation of near-litters.
+    The type of near-litter permutations is denoted \( \mathcal P \).
 \end{definition}
 We suppress the superscripts on near-litter permutations and use function application syntax for the action of a near-litter permutation on atoms, litters, and near-litters: for example, \( \pi^A\ a = \pi\ a \).
 Note that the action on litters is `rough': we map litters to litters and not near-litters.
@@ -505,7 +508,7 @@ If the precise image of a litter \( L \) under a permutation \( \pi \) is desire
     \label{lem:smul_nearLitter_eq_smul_symmDiff_smul}
     Let \( \pi \) be a near-litter permutation and let \( N \) be a near-litter.
     Then, the following equality of sets holds.
-    \[ \pi\ N = (\pi\ (\mathsf{NL}\ \pi_1(N))) \symmdiff (\pi '' (\mathcal A_{\pi_1(N)} \symmdiff N)) \]
+    \[ \pi\ N = (\pi\ (\mathsf{NL}\ N^\circ)) \symmdiff (\pi '' (\mathcal A_{N^\circ} \symmdiff N)) \]
 \end{lemma}
 \begin{proof}
     After applying set extensionality, this proof becomes simple case checking.
@@ -559,6 +562,8 @@ Omitted; currently unused.
 
 \begin{definition}
     For \( \alpha \) a type index, an \cdef{Structural/StructPerm}{StructPerm}{\( \alpha \)-structural permutation} is a function from \( \alpha \)-extended type indices to near-litter permutations.
+    The type of \( \alpha \)-structural permutations is denoted \( \symsf{Str}_\alpha \), so
+    \[ \symsf{Str}_\alpha = (\alpha \rightsquigarrow \bot) \to \mathcal P \]
 \end{definition}
 \begin{remark}
     This defines a structural permutation by all of its derivatives of maximal length.
@@ -616,6 +621,62 @@ Omitted; currently unused.
     Let \( \alpha \) be a type index, \( \tau \) be a type, \( x : \tau \), and \( G \) be a group that acts on \( \tau \).
     A \cdef{Structural/Support}{Support}{support} for \( x \) under this action is a small set of \( \alpha \)-support conditions that support \( x \) (in the sense of \cref{def:supports}).
     An object is said to be \cdef{Structural/Support}{Supported}{supported} if its type of supports is nonempty.
+\end{definition}
+
+\section{\texorpdfstring{\( f \)}{f}-maps}
+
+We now describe the mechanism for creating the \( f \)-maps, and begin the main recursion.
+
+\subsection{Hypotheses}
+
+\begin{definition}
+    Let \( \alpha \) be a type index.
+    \cdef{Fuzz/Hypotheses}{TangleData}{Tangle data} at level \( \alpha \) is
+    \begin{itemize}
+        \item a type \( \tau_\alpha \) of \emph{tangles};
+        \item a type \( \symsf{All}_\alpha \) of \emph{allowable permutations};
+        \item a group structure on \( \symsf{All}_\alpha \);
+        \item a group homomorphism \( \symsf{All}_\alpha \to \symsf{Str}_\alpha \);
+        \item a group action of \( \symsf{All}_\alpha \) on \( \tau_\alpha \) written by juxtaposition; and
+        \item a function assigning to each \( t : \tau_\alpha \) a support for it under the action of \( \symsf{All}_\alpha \), called its \emph{designated support}.
+    \end{itemize}
+\end{definition}
+\begin{definition}
+    Let \( \alpha \) be a type index with tangle data.
+    A \cdef{Fuzz/Hypotheses}{PositionFunction}{position function} at level \( \alpha \) is an injection \( \tau_\alpha \to \mu \).
+    This assigns each tangle a unique position \( \nu : \mu \).
+    The existence of this injection proves that there are at most \( \#\mu \) tangles at level \( \alpha \).
+    Since \( \mu \) has a well-ordering, this induces a pullback well-ordering on \( \alpha \)-tangles.
+\end{definition}
+\begin{definition}
+    Let \( \alpha : \lambda \) be a proper type index with tangle data.
+    We say that we have \cdef{Fuzz/Hypotheses}{TypedObjects}{typed objects} at level \( \alpha \) if we have
+    \begin{itemize}
+        \item an injection \( \symsf{typed}^a_\alpha : \mathcal A \to \tau_\alpha \) called the \emph{typed atom} map; and
+        \item an injection \( \symsf{typed}^N_\alpha : \mathcal N \to \tau_\alpha \) called the \emph{typed near-litter} map, that commutes with allowable permutations in the sense that for all \( \rho : \symsf{All}_\alpha, N : \mathcal N \), we have
+        \[ \rho\ (\symsf{typed}^N_\alpha\ N) = \symsf{typed}^N_\alpha\ (\rho\ (\alpha \to \bot)\ N) \]
+    \end{itemize}
+\end{definition}
+\begin{definition}
+    An assignment of \cdef{Fuzz/Hypotheses}{BasePositions}{base positions} is a pair of injections \( \symsf{typedPos}^a : \mathcal A \to \mu \) and \( \symsf{typedPos}^N : \mathcal N \to \mu \), such that
+    \begin{itemize}
+        \item \( a \in \mathcal A_L \implies \symsf{typedPos}^N\ (\symsf{NL}\ L) < \symsf{typedPos}^a\ a \);
+        \item \( \symsf{typedPos}^N\ (\symsf{NL}\ N^\circ) \leq \symsf{typedPos}^N\ N \);
+        \item \( a \in N \symmdiff \mathcal A_{N^\circ} \implies \symsf{typedPos}^a\ a < \symsf{typedPos}^N\ N \).
+    \end{itemize}
+\end{definition}
+\begin{remark}
+    At the moment, we define no coherence conditions between the position function, the typed objects, and the base positions data.
+    Later, they will be tied together.
+\end{remark}
+\begin{definition}
+    Tangle data at level \( \alpha = \bot \) is defined as follows.
+    \begin{itemize}
+        \item \( \tau_\bot = \mathcal A \);
+        \item \( \symsf{All}_\bot = \mathcal P \);
+        \item the homomorphism \( \symsf{All}_\bot \to \symsf{Str}_\bot \) is given by \cref{def:StructPerm.toBot};
+        \item the designated support of an atom \( a : \mathcal A \) is \( \{\langle a, \varnothing \rangle\} \).
+    \end{itemize}
 \end{definition}
 
 \end{document}
