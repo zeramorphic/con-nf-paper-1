@@ -228,6 +228,9 @@ INPUT new_tangle.tex
 INPUT ./foa.tex
 INPUT ./foa.tex
 INPUT foa.tex
+INPUT ./foa/hypotheses.tex
+INPUT ./foa/hypotheses.tex
+INPUT foa/hypotheses.tex
 INPUT build/main.aux
 INPUT build/main.out
 INPUT build/main.out
