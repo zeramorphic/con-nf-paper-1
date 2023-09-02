@@ -38,6 +38,8 @@
 \newcommand{\corelem}[3]{\href{https://leanprover-community.github.io/mathlib4\_docs/#1.html\##2}{#3}}
 % con(nf) definition
 \newcommand{\cdef}[3]{\href{https://leanprover-community.github.io/con-nf/doc/ConNF/#1.html\#ConNF.#2}{\emph{#3}}}
+% con(nf) lemma
+\newcommand{\clem}[3]{\href{https://leanprover-community.github.io/con-nf/doc/ConNF/#1.html\#ConNF.#2}{#3}}
 
 \newcommand{\symmdiff}{\mathrel{\raisebox{1pt}{\( \mathsmaller\triangle \)}}}
 
@@ -210,7 +212,7 @@ We describe the base level of our construction, as well as all of the other obje
 
 \begin{definition}
     \label{def:params}
-    A set of \cdef{Atom/Params}{Params}{model parameters} is
+    A set of \cdef{BaseType/Params}{Params}{model parameters} is
     \begin{itemize}
         \item a type \( \lambda \) endowed with a well-order;
         \item a type \( \kappa \);
@@ -247,7 +249,7 @@ Every definition and theorem following this will implicitly assume a set of mode
     Initial ordinals have no maximal element.
 \end{proof}
 \begin{definition}
-    The type of \cdef{Atom/Params}{TypeIndex}{type indices}, denoted \( \lambda^\bot \), is \( \lambda \) together with a symbol denoted \( \bot \).
+    The type of \cdef{BaseType/Params}{TypeIndex}{type indices}, denoted \( \lambda^\bot \), is \( \lambda \) together with a symbol denoted \( \bot \).
     The order on \( \lambda^\bot \) places \( \bot \) below all elements of \( \lambda \).
 \end{definition}
 \begin{lemma}
@@ -264,11 +266,19 @@ Every definition and theorem following this will implicitly assume a set of mode
 \begin{proof}
     They are clearly linearly ordered, and the relation \( < \) is well-founded.
 \end{proof}
+\begin{lemma}
+    \label{lem:card_Iio_lt}
+    For \( x : \mu \), \( \#\qty{y \mid y < x} < \#\mu \) and \( \#\qty{y \mid y \leq x} < \#\mu \).
+\end{lemma}
+\begin{proof}
+    \Cref{def:params} requires that the order type of \( \mu \) is an initial ordinal, so we have \( \#\qty{y \mid y < x} < \#\mu \).
+    Then \( \#\qty{y \mid y \leq x} = \#\qty{y \mid y < x} + \#\qty{x} < \#\mu \) as \( \#\mu \) is infinite by \cref{lem:infinite_no_max_model_params}(i).
+\end{proof}
 
 \subsection{Smallness}
 
 \begin{definition}
-    A set \( s \) of any type \( \alpha \) is called \cdef{Atom/Small}{Small}{small} if \( \#s < \#\kappa \).
+    A set \( s \) of any type \( \alpha \) is called \cdef{BaseType/Small}{Small}{small} if \( \#s < \#\kappa \).
 \end{definition}
 \begin{remark}
     Note that cardinals are defined on types and not sets: technically we mean that the cardinality of the subtype \( \qty{x : \alpha \mid x \in s} \) is less than \( \#\kappa \).
@@ -308,7 +318,7 @@ Every definition and theorem following this will implicitly assume a set of mode
     \end{enumerate}
 \end{proof}
 \begin{definition}
-    Sets are \cdef{Atom/Small}{IsNear}{near} if their symmetric difference is small.
+    Sets are \cdef{BaseType/Small}{IsNear}{near} if their symmetric difference is small.
 \end{definition}
 \begin{lemma}
     \label{lem:near}
@@ -344,7 +354,7 @@ Every definition and theorem following this will implicitly assume a set of mode
 \subsection{Litters}
 
 \begin{definition}
-    A \cdef{Atom/Litter}{Litter}{litter} is a triple \( L = \langle \nu, \beta, \gamma \rangle \) with \( \nu : \mu, \beta : \lambda^\bot, \gamma : \lambda \), such that \( \beta \neq \gamma \).
+    A \cdef{BaseType/Litter}{Litter}{litter} is a triple \( L = \langle \nu, \beta, \gamma \rangle \) with \( \nu : \mu, \beta : \lambda^\bot, \gamma : \lambda \), such that \( \beta \neq \gamma \).
     The type of litters is denoted \( \mathcal L \).
 \end{definition}
 \begin{lemma}
@@ -355,26 +365,11 @@ Every definition and theorem following this will implicitly assume a set of mode
     Note that \( \#(\mu \times \lambda^\bot \times \lambda) = \#\mu \) so \( \#\mathcal L \leq \#\mu \).
     But \( \#\mu \leq \#\mathcal L \) by considering the injection \( \nu \mapsto \langle \nu, \bot, 0 \rangle \), so the result follows by antisymmetry.
 \end{proof}
-\begin{lemma}
-    \label{lem:card_Iio_lt}
-    For \( x : \mu \), \( \#\qty{y \mid y < x} < \#\mu \) and \( \#\qty{y \mid y \leq x} < \#\mu \).
-\end{lemma}
-\begin{proof}
-    \Cref{def:params} requires that the order type of \( \mu \) is an initial ordinal, so we have \( \#\qty{y \mid y < x} < \#\mu \).
-    Then \( \#\qty{y \mid y \leq x} = \#\qty{y \mid y < x} + \#\qty{x} < \#\mu \) as \( \#\mu \) is infinite by \cref{lem:infinite_no_max_model_params}(i).
-\end{proof}
-\begin{lemma}
-    \label{lem:litter_wf}
-    \( \mathcal L \) is well-ordered by the pullback to the subtype of the lexicographic order on \( \mu \times \lambda^\bot \times \lambda \).
-\end{lemma}
-\begin{proof}
-    \Cref{def:params} provides the well-orders of \( \lambda \) and \( \mu \), \cref{lem:typeIndex_wf} gives the well-order of \( \lambda^\bot \), and the lexicographic product of well-orders is a well-order.
-\end{proof}
 
 \subsection{Atoms}
 
 \begin{definition}
-    The type of \cdef{Atom/Atom}{Atom}{atoms} is \( \mathcal A = \mathcal L \times \kappa \).
+    The type of \cdef{BaseType/Atom}{Atom}{atoms} is \( \mathcal A = \mathcal L \times \kappa \).
 \end{definition}
 \begin{lemma}
     \label{lem:mk_atom}
@@ -384,7 +379,7 @@ Every definition and theorem following this will implicitly assume a set of mode
     \( \#\mathcal L = \#\mu \) by \cref{lem:mk_litter}, and \( \#\aleph_0 \leq \#\kappa < \#\mu \) by \cref{def:params}.
 \end{proof}
 \begin{definition}
-    The \cdef{Atom/Atom}{litterSet}{litter set} of a litter \( L \) is the set of atoms with first projection equal to \( L \), denoted \( \mathcal A_L \).
+    The \cdef{BaseType/Atom}{litterSet}{litter set} of a litter \( L \) is the set of atoms with first projection equal to \( L \), denoted \( \mathcal A_L \).
 \end{definition}
 \begin{lemma}
     \label{lem:litterSet}
@@ -403,7 +398,7 @@ Every definition and theorem following this will implicitly assume a set of mode
 \subsection{Near-litters}
 
 \begin{definition}
-    A set of atoms \cdef{Atom/NearLitter}{IsNearLitter}{is a near-litter} to a given litter \( L \) if it is near the litter set of \( L \).
+    A set of atoms \cdef{BaseType/NearLitter}{IsNearLitter}{is a near-litter} to a given litter \( L \) if it is near the litter set of \( L \).
 \end{definition}
 \begin{lemma}
     \label{lem:isNearLitter}
@@ -443,7 +438,7 @@ Every definition and theorem following this will implicitly assume a set of mode
     \end{enumerate}
 \end{proof}
 \begin{definition}
-    A \cdef{Atom/NearLitter}{NearLitter}{near-litter} is a dependent pair \( \langle L, s \rangle \), where \( L \) is a litter and \( s \) is a set of atoms that is a near-litter to \( L \).
+    A \cdef{BaseType/NearLitter}{NearLitter}{near-litter} is a dependent pair \( \langle L, s \rangle \), where \( L \) is a litter and \( s \) is a set of atoms that is a near-litter to \( L \).
     We denote the type of near-litters by \( \mathcal N \).
     We define a natural injective coercion from a near-litter to its second component; this is often used in extensionality arguments.
 \end{definition}
@@ -452,7 +447,7 @@ Every definition and theorem following this will implicitly assume a set of mode
 \end{remark}
 \begin{definition}
     The first projection \( \pi_1 : \mathcal N \to \mathcal L \) is written with a superscript circle: \( N \mapsto N^\circ \).
-    The injection \( \symsf{NL} : \mathcal L \to \mathcal N \) is defined by \( \symsf{NL}\ L = \langle L, \mathcal A_L \rangle \), sending a litter to its \cdef{Atom/NearLitter}{Litter.toNearLitter}{associated near-litter}.
+    The injection \( \symsf{NL} : \mathcal L \to \mathcal N \) is defined by \( \symsf{NL}\ L = \langle L, \mathcal A_L \rangle \), sending a litter to its \cdef{BaseType/NearLitter}{Litter.toNearLitter}{associated near-litter}.
 \end{definition}
 \begin{lemma}
     \label{lem:nearLitter_prop}
@@ -506,7 +501,7 @@ Every definition and theorem following this will implicitly assume a set of mode
 \subsection{Near-litter permutations}
 
 \begin{definition}
-    A \cdef{Atom/NearLitterPerm}{NearLitterPerm}{near-litter permutation} is a pair \( \pi = \langle \pi^A, \pi^L \rangle \) where \( \pi^A : \symsf{perm}\ \mathcal A \) and \( \pi^L : \symsf{perm}\ \mathcal L \), such that if \( s \) is a near-litter to \( L \), \( {\pi^A} '' s \) is a near-litter to \( \pi^L\ L \).
+    A \cdef{BaseType/NearLitterPerm}{NearLitterPerm}{near-litter permutation} is a pair \( \pi = \langle \pi^A, \pi^L \rangle \) where \( \pi^A : \symsf{perm}\ \mathcal A \) and \( \pi^L : \symsf{perm}\ \mathcal L \), such that if \( s \) is a near-litter to \( L \), \( {\pi^A} '' s \) is a near-litter to \( \pi^L\ L \).
     Thus a near-litter permutation induces a permutation of near-litters.
     The type of near-litter permutations is denoted \( \mathcal P \).
 \end{definition}
@@ -579,50 +574,67 @@ We now describe how the different levels of our structure are to be tangled toge
 
 Omitted; currently unused.
 
+\subsection{Trees}
+
+\begin{definition}
+    Let \( \alpha \) be a type index and \( \tau \) be a type.
+    Then the type of \cdef{Structural/Tree}{Tree}{\( \alpha \)-trees of \( \tau \)} is
+    \[ \symsf{Tree}_\tau\ \alpha = (\alpha \rightsquigarrow \bot) \to \tau \]
+\end{definition}
+\begin{definition}
+    \label{def:tree_ofBot}
+    There is a natural equivalence \( \symsf{Tree}_\tau\ \bot \simeq \tau \) given by \( a \mapsto a\ \varnothing \) and \( a \mapsto (A \mapsto a) \).
+\end{definition}
+\begin{definition}
+    Let \( \tau \) have a group structure.
+    Then we endow \( \symsf{Tree}_\tau\ \alpha \) with a group structure by defining
+    \[ (a_1 \cdot a_2)\ A = a_1\ A \cdot a_2\ A \]
+    This makes the equivalence \( \symsf{Tree}_\tau\ \bot \simeq \tau \) into an isomorphism of groups.
+\end{definition}
+\begin{definition}
+    \label{def:derivative}
+    The \cdef{Structural/Tree}{Tree.comp}{derivative} functor maps paths of type indices \( \alpha \rightsquigarrow \beta \) to functions \( \symsf{Tree}_\tau\ \alpha \to \symsf{Tree}_\tau\ \beta \).
+    Applying it to a path \( A \) and tree \( a \) gives the tree \( B \mapsto a\ (A \gg B) \).
+    The application of this functor to a path \( A \) and tree \( a \) is denoted using a subscript, so
+    \[ a_A = (B \mapsto a\ (A \gg B)) \]
+\end{definition}
+\begin{remark}
+    This is a functor from the category of type indices where the morphisms are the decreasing paths (i.e.\ the category where morphisms are elements of \( \alpha \rightsquigarrow \beta \) for \( \alpha, \beta : \lambda^\bot \)) to the category of all trees of a fixed type \( \tau \), where the morphisms are functions.
+    The map of objects is simply \( \alpha \mapsto \symsf{Tree}_\tau\ \alpha \), or more concisely, just \( \symsf{Tree}_\tau \).
+    If \( \tau \) has a group structure, this map preserves multiplication.
+    This means that we can treat this as a functor to the category of all trees on \( \tau \) where the morphisms are group homomorphisms.
+\end{remark}
+\begin{lemma}
+    \label{lem:derivative_functor}
+    The derivative map is a functor in the sense described above:
+    \begin{enumerate}
+        \item \( a_\varnothing = a \);
+        \item \( (a_A)_B = a_{A \gg B} \);
+        \item \( (a_1 \cdot a_2)_A = {a_1}_A \cdot {a_2}_A \).
+    \end{enumerate}
+    In addition, if \( A : \alpha \rightsquigarrow \bot \), then \( a_A \) and \( a\ A \) are equal up to the equivalence in \cref{def:tree_ofBot}.
+\end{lemma}
+\begin{proof}
+    All of these results follow from the basic laws of quivers.
+\end{proof}
+\begin{definition}
+    If \( \tau \) has a group action on some type \( \sigma \), we pull it back under the equivalence given in \cref{def:tree_ofBot} to give \( \symsf{Tree}_\tau\ \bot \) the same action on \( \sigma \).
+\end{definition}
+
 \subsection{Structural permutations}
 
 \begin{definition}
-    For \( \alpha \) a type index, an \cdef{Structural/StructPerm}{StructPerm}{\( \alpha \)-structural permutation} is a function from \( \alpha \)-extended type indices to near-litter permutations.
+    For \( \alpha \) a type index, an \cdef{Structural/StructPerm}{StructPerm}{\( \alpha \)-structural permutation} is an \( \alpha \)-tree of near-litter permutations.
     The type of \( \alpha \)-structural permutations is denoted \( \symsf{Str}_\alpha \), so
-    \[ \symsf{Str}_\alpha = (\alpha \rightsquigarrow \bot) \to \mathcal P \]
+    \[ \symsf{Str}_\alpha = \symsf{Tree}_{\mathcal P}\ \alpha = (\alpha \rightsquigarrow \bot) \to \mathcal P \]
 \end{definition}
-\begin{remark}
-    This defines a structural permutation by all of its derivatives of maximal length.
-    Alternatively, one could define a structural permutation inductively using its derivatives of length one, but this definition makes it harder to work with longer derivatives, and the definitional equality properties are worse.
-    Ultimately, the tradeoff between definitions is an arbitrary design decision.
-\end{remark}
-\begin{definition}
-    \label{def:StructPerm.toBot}
-    There is an equivalence between \( \bot \)-structural permutations and near-litter permutations, given by mapping a structural permutation \( \pi \) to the near-litter permutation \( \pi\ \varnothing \), and mapping the near-litter permutation \( \pi \) to the \( \bot \)-structural permutation \( A \mapsto \pi \).
-\end{definition}
-\begin{lemma}
-    Structural permutations form a group with identity \( A \mapsto \symrm{id} \) and operation \( \pi \circ \pi' = A \mapsto (\pi\ A) \circ (\pi'\ A) \).
-\end{lemma}
-\begin{lemma}
-    The equivalence in \cref{def:StructPerm.toBot} is an isomorphism of groups.
-\end{lemma}
-\begin{proof}
-    Holds by definition.
-\end{proof}
-\begin{definition}
-    Let \( A : \alpha \rightsquigarrow \beta \).
-    Then the \cdef{Structural/StructPerm}{StructPerm.derivative}{derivative map} on \( A \) converts an \( \alpha \)-structural-permutation \( \pi \) into the \( \beta \)-structural permutation \( B \mapsto \pi\ (A \gg B) \).
-    The \( A \)-derivative of a structural permutation \( \pi \) is denoted \( \pi_A \), so \( \pi_A\ B = \pi\ (A \gg B) \).
-\end{definition}
-\begin{lemma}
-    The derivative map is a homomorphism of groups, and is functorial in \( A \): \( \pi_\varnothing = \pi \) and \( (\pi_A)_B = \pi_{A \gg B} \).
-\end{lemma}
-\begin{proof}
-    The first part is true by definition.
-    Functoriality follows from the properties of paths in quivers.
-\end{proof}
 
 \subsection{Supports and support conditions}
 
 \begin{definition}
     For \( \alpha \) a type index, the type of \cdef{Structural/Support}{SupportCondition}{\( \alpha \)-support conditions} is
-    \[ (\mathcal A \oplus \mathcal N) \times (\alpha \rightsquigarrow \bot) \]
-    That is, an \( \alpha \)-support condition is an atom or near-litter, together with an \( \alpha \)-extended type index.
+    \[ (\alpha \rightsquigarrow \bot) \times (\mathcal A \oplus \mathcal N) \]
+    That is, an \( \alpha \)-support condition is an \( \alpha \)-extended type index, together with an atom or near-litter.
 \end{definition}
 \begin{lemma}
     \label{lem:mk_supportCondition}
@@ -630,12 +642,12 @@ Omitted; currently unused.
 \end{lemma}
 \begin{proof}
     By \cref{lem:mk_atom} and \cref{lem:mk_nearLitter}, we must show that
-    \[ (\#\mu \oplus \#\mu) \cdot \#(\alpha \rightsquigarrow \bot) = \#\mu \]
+    \[ \#(\alpha \rightsquigarrow \bot) \cdot (\#\mu + \#\mu) = \#\mu \]
     This follows from standard properties of cardinals and \cref{lem:mk_extendedIndex}.
 \end{proof}
 \begin{definition}
     \( \alpha \)-structural permutations \( \pi \) act on \( \alpha \)-support conditions by mapping
-    \[ \langle x, A \rangle \mapsto \langle \pi\ A\ x, A \rangle \]
+    \[ \langle A, x \rangle \mapsto \langle A, \pi\ A\ x \rangle \]
     where the action of a near-litter permutation on an element of \( \mathcal A \oplus \mathcal N \) is defined in the natural way.
 \end{definition}
 \begin{definition}
@@ -647,6 +659,25 @@ Omitted; currently unused.
 \section{\texorpdfstring{\( f \)}{f}-maps}
 
 We now describe the mechanism for creating the \( f \)-maps, and begin the main recursion.
+
+\subsection{Position functions}
+
+\begin{definition}
+    Let \( \alpha, \beta \) be types.
+    A \cdef{Fuzz/Position}{Position}{position function} on \( \alpha \) taking values in \( \beta \) is an injection \( \alpha \to \beta \).
+    We denote all position functions by \( n : \alpha \to \beta \).
+\end{definition}
+Let \( \alpha \) have a position function taking values in \( \beta \), and suppose \( \beta \) has a relation \( < \).
+\begin{definition}
+    We then define the relation \( < \) on \( \alpha \) by \( x < y \Leftrightarrow n\ x < n\ y \).
+\end{definition}
+\begin{lemma}
+    If \( \beta \) is well-ordered, then \( \alpha \) is well-ordered.
+\end{lemma}
+\begin{proof}
+    Trichotomy and transitivity are clear.
+    The inverse image of a well-founded relation \corelem{Init/WF}{InvImage.wf}{is well-founded} by induction on accessibility, completing the proof.
+\end{proof}
 
 \subsection{Hypotheses}
 
@@ -664,10 +695,8 @@ We now describe the mechanism for creating the \( f \)-maps, and begin the main 
 \end{definition}
 \begin{definition}
     Let \( \alpha \) be a type index with tangle data.
-    A \cdef{Fuzz/Hypotheses}{PositionFunction}{position function} at level \( \alpha \) is an injection \( \tau_\alpha \to \mu \).
-    This assigns each tangle a unique position \( \nu : \mu \).
-    The existence of this injection proves that there are at most \( \#\mu \) tangles at level \( \alpha \).
-    Since \( \mu \) has a well-ordering, this induces a pullback well-ordering on \( \alpha \)-tangles.
+    We say that level \( \alpha \) has \cdef{Fuzz/Hypotheses}{PositionedTangles}{positioned tangles} if there is a position function on \( \tau_\alpha \) taking values in \( \mu \).
+    The existence of this position function proves that there are at most \( \#\mu \) tangles at level \( \alpha \).
 \end{definition}
 \begin{definition}
     Let \( \alpha : \lambda \) be a proper type index with tangle data.
@@ -679,11 +708,12 @@ We now describe the mechanism for creating the \( f \)-maps, and begin the main 
     \end{itemize}
 \end{definition}
 \begin{definition}
-    An assignment of \cdef{Fuzz/Hypotheses}{BasePositions}{base positions} is a pair of injections \( \symsf{typedPos}^a : \mathcal A \to \mu \) and \( \symsf{typedPos}^N : \mathcal N \to \mu \), such that
+    An assignment of \cdef{Fuzz/Hypotheses}{BasePositions}{base positions} is a pair of position functions on \( \mathcal A \) and \( \mathcal N \) both taking values in \( \mu \), such that
     \begin{itemize}
-        \item \( a \in \mathcal A_L \implies \symsf{typedPos}^N\ (\symsf{NL}\ L) < \symsf{typedPos}^a\ a \);
-        \item \( \symsf{typedPos}^N\ (\symsf{NL}\ N^\circ) \leq \symsf{typedPos}^N\ N \);
-        \item \( a \in N \symmdiff \mathcal A_{N^\circ} \implies \symsf{typedPos}^a\ a < \symsf{typedPos}^N\ N \).
+        \item \( a \in \mathcal A_L \implies n\ (\symsf{NL}\ L) < n\ a \);
+        \item \( n\ (\symsf{NL}\ N^\circ) \leq n\ N \);
+        \item \( a \in N \symmdiff \mathcal A_{N^\circ} \implies n\ a < n\ N \);
+        \item \( n\ a \neq n\ N \).
     \end{itemize}
 \end{definition}
 \begin{remark}
@@ -695,9 +725,115 @@ We now describe the mechanism for creating the \( f \)-maps, and begin the main 
     \begin{itemize}
         \item \( \tau_\bot = \mathcal A \);
         \item \( \symsf{All}_\bot = \mathcal P \);
-        \item the homomorphism \( \symsf{All}_\bot \to \symsf{Str}_\bot \) is given by \cref{def:StructPerm.toBot};
+        \item the homomorphism \( \symsf{All}_\bot \to \symsf{Str}_\bot \) is given by \cref{def:tree_ofBot};
         \item the designated support of an atom \( a : \mathcal A \) is \( \{\langle a, \varnothing \rangle\} \).
     \end{itemize}
 \end{definition}
+
+\subsection{Construction}
+
+\begin{lemma}
+    \label{lem:chooseWf}
+    Let \( \alpha \) and \( \beta \) be types, and let \( \alpha \) be well-ordered.
+    Let \( d : \alpha \to \symsf{Set}\ \beta \) assign to each \( x : \alpha \) a set of \emph{denied sets}.
+    Suppose that for each \( x : \alpha \), we have
+    \[ \#\{ y : \alpha \mid y < x \} + \#(d\ x) < \#\beta \]
+    Then \clem{Fuzz/Construction}{chooseWf}{there is} an injective function \( f : \alpha \to \beta \) with the property that for each \( x : \alpha \), \( f\ x \not\in d\ x \).
+\end{lemma}
+\begin{proof}
+    For a given \( x : \alpha \), if we have already constructed \( f\ y \) for \( y < x \), we can pick a value for \( f\ x \) not in \( d\ x \) or equal to any \( f\ y \), as
+    \begin{align*}
+        \#(f '' \{ y : \alpha \mid y < x \} \cup d\ x) &\leq \#(f '' \{ y : \alpha \mid y < x \}) + \#(d\ x) \\
+        &\leq \#\{ y : \alpha \mid y < x \} + \#(d\ x) \\
+        &< \#\beta
+    \end{align*}
+    We have thus constructed \( f : \alpha \to \beta \) satisfying the property that \( f\ x \not\in d\ x \).
+    For injectivity, suppose \( x \neq y : \alpha \).
+    Then either \( x < y \) or \( y < x \); assume the latter without loss of generality.
+    The construction of \( f\ x \) was done under the constraint \( f\ x \neq f\ z \) for each \( z < x \), giving the result as required.
+\end{proof}
+Let \( \beta : \lambda^\bot \) and \( \gamma : \lambda \) with \( \beta \neq \gamma \).
+Let \( \beta \) and \( \gamma \) have tangle data and positioned tangles.
+Let \( \gamma \) have typed objects.
+\begin{definition}
+    \label{def:fuzz_deny}
+    Construct the function \( d : \tau_\beta \to \symsf{Set}\ \mu \) by
+    \begin{align*}
+        \nu \in d\ t &\Leftrightarrow (\exists N : \mathcal N,\, N^\circ = \langle \nu, \beta, \gamma \rangle \wedge n\ (\symsf{typed}^N_\gamma\ N) \leq n\ t) \\
+        &\quad\vee (\beta = \bot \wedge n\ (\symsf{typed}^N_\gamma\ (\symsf{NL}\ \langle \nu, \bot, \gamma \rangle)) \leq n\ t)
+    \end{align*}
+\end{definition}
+\begin{lemma}
+    \label{lem:mk_invImage_lt_le}
+    Let \( t : \tau_\beta \).
+    Then
+    \begin{enumerate}
+        \item \( \#\{ t' : \tau_\beta \mid t' < t \} < \#\mu \);
+        \item \( \#\{ t' : \tau_\gamma \mid n\ t' \leq n\ t \} < \#\mu \).
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    Both proofs follow the same strategy.
+    First, we use \cref{lem:card_Iio_lt} to reduce to showing that
+    \[ \#\{ t' : \tau_\beta \mid t' < t \} \leq \#\{ \nu : \mu \mid \nu < n\ t \} \]
+    and
+    \[ \#\{ t' : \tau_\gamma \mid n\ t' < n\ t \} \leq \#\{ \nu : \mu \mid \nu \leq n\ t \} \]
+    These inequalities of cardinals can be easily shown by proving that the injection \( n \) has the correct codomain in each case.
+\end{proof}
+\begin{lemma}
+    \label{lem:mk_fuzz_deny}
+    Let \( t : \tau_\beta \).
+    Then \( \#\{ t' : \tau_\beta \mid t' < t \} + \#(d\ t) < \#\mu \).
+\end{lemma}
+\begin{proof}
+    By \cref{lem:mk_invImage_lt_le}(i), it suffices to show \( \#(d\ t) < \#\mu \).
+    We show that there are less than \( \mu \) positions that satisfy each of the two conditions in \cref{def:fuzz_deny}.
+
+    For the first condition, we must show that
+    \[ \#\{ \nu : \mu \mid \exists N : \mathcal N,\, N^\circ = \langle \nu, \beta, \gamma \rangle \wedge n\ (\symsf{typed}^N_\gamma\ N) \leq n\ t \} < \#\mu \]
+    By \cref{lem:mk_invImage_lt_le}(ii) it suffices to produce an injection
+    \[ \{ \nu : \mu \mid \exists N : \mathcal N,\, N^\circ = \langle \nu, \beta, \gamma \rangle \wedge n\ (\symsf{typed}^N_\gamma\ N) \leq n\ t \} \to \{ t' : \tau_\gamma \mid n\ t' \leq n\ t \} \]
+    This injection is given by mapping \( \nu \) to \( \symsf{typed}^N_\gamma\ N \) where \( N \) is chosen such that \( N^\circ = \langle \nu, \beta, \gamma \rangle \) and \( n\ (\symsf{typed}^N_\gamma\ N) \leq n\ t \).
+    It can be seen that this is an injection as the typed near-litter map is injective.
+
+    Now suppose \( \beta = \bot \).
+    For the second condition, it suffices by \cref{lem:card_Iio_lt} to produce an injection
+    \[ \{ \nu : \mu \mid n\ (\symsf{typed}^N_\gamma\ (\symsf{NL}\ \langle \nu, \bot, \gamma \rangle)) \leq n\ t \} \to \{ \nu : \mu \mid \nu \leq n\ t \} \]
+    In this case, we map \( \nu \) to \( n\ (\symsf{typed}^N_\gamma\ (\symsf{NL}\ \langle \nu, \bot, \gamma \rangle)) \).
+    This is also injective, as required.
+\end{proof}
+\begin{definition}
+    The \cdef{Fuzz/Construction}{fuzz}{\( f \)-map} from \( \beta \) to \( \gamma \) is the function \( f_{\beta,\gamma} : \tau_\beta \to \mathcal L \) defined by
+    \[ f_{\beta,\gamma}\ t = \langle g\ t, \beta, \gamma \rangle \]
+    where \( g \) is chosen by applying \cref{lem:chooseWf} to \cref{def:fuzz_deny} and \cref{lem:mk_fuzz_deny}.
+\end{definition}
+\begin{lemma}
+    \label{lem:fuzz_congr}
+    Suppose \( f_{\beta,\gamma}\ t = f_{\beta',\gamma'}\ t' \).
+    Then \( \beta = \beta' \) and \( \gamma = \gamma' \).
+\end{lemma}
+\begin{proof}
+    Apply the second and third projections to \( f_{\beta,\gamma}\ t \) and \( f_{\beta',\gamma'}\ t' \).
+\end{proof}
+\begin{lemma}
+    \( f_{\beta,\gamma} \) is injective.
+\end{lemma}
+\begin{proof}
+    Follows from \cref{lem:chooseWf}.
+\end{proof}
+\begin{lemma}
+    Let \( N \) be a near-litter with \( N^\circ = f_{\beta,\gamma}\ t \).
+    Then \( n\ t < n\ (\symsf{typed}^N_\gamma N) \).
+\end{lemma}
+\begin{proof}
+    Follows from \cref{lem:chooseWf} and the definition of \cref{def:fuzz_deny}.
+\end{proof}
+\begin{lemma}
+    Let \( a \) be an atom.
+    Then \( n\ a < n\ (\symsf{typed}^N_\gamma (\symsf{NL}\ (f_{\bot,\gamma}\ a))) \).
+\end{lemma}
+\begin{proof}
+    Follows from \cref{lem:chooseWf} and the definition of \cref{def:fuzz_deny}.
+\end{proof}
 
 \end{document}
