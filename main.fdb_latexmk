@@ -1,10 +1,10 @@
 # Fdb version 4
-["xdvipdfmx"] 1693653701 "build/main.xdv" "build/main.pdf" "build/main" 1693653702 0
-  "build/main.xdv" 1693653701 267120 afd9ced3d01750b6c0e7557f96f69bb1 "xelatex"
+["xdvipdfmx"] 1693660643 "build/main.xdv" "build/main.pdf" "build/main" 1693660643 0
+  "build/main.xdv" 1693660643 312256 bb067bcbb8be9654dc9234e6c58519e4 "xelatex"
   (generated)
   "build/main.pdf"
   (rewritten before read)
-["xelatex"] 1693653699 "main.tex" "build/main.xdv" "main" 1693653702 0
+["xelatex"] 1693660641 "main.tex" "build/main.xdv" "main" 1693660643 0
   "/opt/texlive/texdir/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/opt/texlive/texdir/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/opt/texlive/texdir/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
@@ -77,9 +77,9 @@
   "/opt/texlive/texdir/texmf-dist/web2c/texmf.cnf" 1681165822 40967 d940221f8762fd5848760382d97d1226 ""
   "/opt/texlive/texdir/texmf-var/web2c/xetex/xelatex.fmt" 1693548307 10808131 e9feeb9346a8c0818d4da506a5cd79cf ""
   "/opt/texlive/texdir/texmf.cnf" 1693548141 555 bd60ff59e4d560b42d96b004436f91d3 ""
-  "build/main.aux" 1693653701 5673 f56b6c791236e06989b0857ed63411d6 "xelatex"
-  "build/main.out" 1693653701 2664 1e2dbc107530fcacec99954468347381 "xelatex"
-  "main.tex" 1693653685 38879 8150cd78dee1d6efa186cff7aec907d8 ""
+  "build/main.aux" 1693660643 6771 007887fb91d25f74fefd85b93e4158fb "xelatex"
+  "build/main.out" 1693660643 3016 8c7688ba1de3965ed353be52ba44a57b "xelatex"
+  "main.tex" 1693660628 45955 5afb382382a1d0db5c8b528fd8ee0a47 ""
   (generated)
   "build/main.aux"
   "build/main.log"
