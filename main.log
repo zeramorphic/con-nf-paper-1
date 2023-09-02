@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.9.1)  2 SEP 2023 13:19
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.9.1)  2 SEP 2023 17:03
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -706,36 +706,47 @@ LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(3)/m/n' will be
 (Font)              scaled to size 7.99915pt on input line 62.
 LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(3)/m/n' will be
 (Font)              scaled to size 5.99936pt on input line 62.
+ (./theory.tex
 LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(2)/m/n' will be
-(Font)              scaled to size 10.00107pt on input line 69.
+(Font)              scaled to size 10.00107pt on input line 7.
 LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(2)/m/n' will be
-(Font)              scaled to size 7.00075pt on input line 69.
+(Font)              scaled to size 7.00075pt on input line 7.
 LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(2)/m/n' will be
-(Font)              scaled to size 5.50058pt on input line 69.
+(Font)              scaled to size 5.50058pt on input line 7.
 LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 69.
+(Font)              scaled to size 9.99893pt on input line 7.
 LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 69.
+(Font)              scaled to size 6.99925pt on input line 7.
 LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(3)/m/n' will be
-(Font)              scaled to size 5.4994pt on input line 69.
+(Font)              scaled to size 5.4994pt on input line 7.
 LaTeX Font Info:    Font shape `TU/FiraCode-Regular(0)/m/n' will be
-(Font)              scaled to size 8.98376pt on input line 83.
- [1
+(Font)              scaled to size 8.98376pt on input line 21.
+) (./mathlib.tex [1
 
-] [2] [3]
+]
+(./mathlib/sets.tex) (./mathlib/cardinals_ordinals.tex [2])
+(./mathlib/quiver.tex [3])) (./base_type.tex
 
 LaTeX Font Warning: Font shape `TU/FiraCode-Regular(0)/b/n' undefined
-(Font)              using `TU/FiraCode-Regular(0)/m/n' instead on input line 20
-7.
+(Font)              using `TU/FiraCode-Regular(0)/m/n' instead on input line 1.
+
 
 LaTeX Font Info:    Font shape `TU/FiraCode-Regular(0)/m/n' will be
-(Font)              scaled to size 12.93661pt on input line 207.
-[4] [5] [6] [7] [8] [9] [10] [11]
+(Font)              scaled to size 12.93661pt on input line 1.
+(./base_type/params.tex [4]) (./base_type/small.tex [5])
+(./base_type/litter.tex [6]) (./base_type/atom.tex)
+(./base_type/near_litter.tex [7] [8]) (./base_type/near_litter_perm.tex
+[9])) (./structural.tex (./structural/index.tex [10])
+(./structural/pretangle.tex) (./structural/tree.tex [11])
+(./structural/struct_perm.tex) (./structural/support.tex)) (./fuzz.tex
 LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(2)/m/n' will be
-(Font)              scaled to size 14.40152pt on input line 659.
+(Font)              scaled to size 14.40152pt on input line 1.
 LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(3)/m/n' will be
-(Font)              scaled to size 14.39845pt on input line 659.
- [12] [13] [14] [15] [16] (build/main.aux)
+(Font)              scaled to size 14.39845pt on input line 1.
+
+(./fuzz/position.tex [12]) (./fuzz/hypotheses.tex [13])
+(./fuzz/construction.tex [14] [15])) (./new_tangle.tex) (./foa.tex) [16]
+(build/main.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
@@ -745,15 +756,15 @@ L3 programming layer <2023-08-29>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 8C7688BA1DE3965ED353BE52BA44A57B;3016.
+(rerunfilecheck)             Checksum: 07868EFC67983F76B218F9B6C9105A3E;3339.
  ) 
 Here is how much of TeX's memory you used:
- 17938 strings out of 475591
- 338619 string characters out of 5775606
+ 18084 strings out of 475591
+ 341687 string characters out of 5775606
  1930438 words of memory out of 5000000
- 39067 multiletter control sequences out of 15000+600000
+ 39139 multiletter control sequences out of 15000+600000
  563280 words of font info for 104 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  86i,10n,120p,518b,540s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on build/main.xdv (16 pages, 311908 bytes).
+Output written on build/main.xdv (16 pages, 313372 bytes).
