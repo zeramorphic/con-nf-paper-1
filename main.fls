@@ -151,6 +151,9 @@ OUTPUT build/main.out
 INPUT /opt/texlive/texdir/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
 INPUT /opt/texlive/texdir/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm
 INPUT /opt/texlive/texdir/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm
+INPUT /opt/texlive/texdir/texmf-dist/fonts/tfm/public/cm/cmmi5.tfm
+INPUT /opt/texlive/texdir/texmf-dist/fonts/tfm/public/cm/cmmi5.tfm
+INPUT /opt/texlive/texdir/texmf-dist/fonts/tfm/public/cm/cmmi5.tfm
 OUTPUT build/main.xdv
 INPUT /opt/texlive/texdir/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
 INPUT build/main.aux

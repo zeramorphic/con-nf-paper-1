@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.9.1)  2 SEP 2023 10:42
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.9.1)  2 SEP 2023 10:50
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -176,145 +176,237 @@ LaTeX Info: Redefining \] on input line 2954.
 (/opt/texlive/texdir/texmf-dist/tex/latex/unicode-math/unicode-math-table.tex))
 )
 
-Package fontspec Info: Font family 'STIXTwoText(0)' created for font 'STIX Two
-(fontspec)             Text' with options [Ligatures=TeX].
+Package fontspec Info: Font family 'STIXTwoText(0)' created for font
+(fontspec)             'STIXTwoText' with options
+(fontspec)             [Ligatures=TeX,Path=fonts/,UprightFont=*-Regular,BoldFon
+t=*-Bold,ItalicFont=*-Italic,BoldItalicFont=*-BoldItalic].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"STIX Two
-(fontspec)             Text/OT:script=latn;language=dflt;mapping=tex-text;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: <->"STIX Two
-(fontspec)             Text/OT:script=latn;language=dflt;+smcp;mapping=tex-text
-;"
-(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"STIX Two
-(fontspec)             Text/B/OT:script=latn;language=dflt;mapping=tex-text;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: <->"STIX
-(fontspec)             Two
-(fontspec)             Text/B/OT:script=latn;language=dflt;+smcp;mapping=tex-te
-xt;"
-(fontspec)             - 'italic' (m/it) with NFSS spec.: <->"STIX Two
-(fontspec)             Text/I/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[fonts/STIXTwoText-Regular]/OT:script=latn;language=
+dflt;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->"[fonts/STIXTwoText-Regular]/OT:script=latn;language=
+dflt;+smcp;mapping=tex-text;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"[fonts/STIXTwoText-Bold]/OT:script=latn;language=dfl
+t;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->"[fonts/STIXTwoText-Bold]/OT:script=latn;language=dfl
+t;+smcp;mapping=tex-text;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"[fonts/STIXTwoText-Italic]/OT:script=latn;language=d
+flt;mapping=tex-text;"
 (fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
-(fontspec)             <->"STIX Two
-(fontspec)             Text/I/OT:script=latn;language=dflt;+smcp;mapping=tex-te
-xt;"
-(fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"STIX Two
-(fontspec)             Text/BI/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             <->"[fonts/STIXTwoText-Italic]/OT:script=latn;language=d
+flt;+smcp;mapping=tex-text;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"[fonts/STIXTwoText-BoldItalic]/OT:script=latn;langua
+ge=dflt;mapping=tex-text;"
 (fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
-(fontspec)             <->"STIX Two
-(fontspec)             Text/BI/OT:script=latn;language=dflt;+smcp;mapping=tex-t
-ext;"
+(fontspec)             <->"[fonts/STIXTwoText-BoldItalic]/OT:script=latn;langua
+ge=dflt;+smcp;mapping=tex-text;"
 
 
-Package fontspec Info: Font family 'STIXTwoText(1)' created for font 'STIX Two
-(fontspec)             Text' with options [].
+Package fontspec Info: Font family 'STIXTwoText(1)' created for font
+(fontspec)             'STIXTwoText' with options
+(fontspec)             [Path=fonts/,UprightFont=*-Regular,BoldFont=*-Bold,Itali
+cFont=*-Italic,BoldItalicFont=*-BoldItalic].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"STIX Two
-(fontspec)             Text/OT:script=latn;language=dflt;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: <->"STIX Two
-(fontspec)             Text/OT:script=latn;language=dflt;+smcp;"
-(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"STIX Two
-(fontspec)             Text/B/OT:script=latn;language=dflt;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: <->"STIX
-(fontspec)             Two Text/B/OT:script=latn;language=dflt;+smcp;"
-(fontspec)             - 'italic' (m/it) with NFSS spec.: <->"STIX Two
-(fontspec)             Text/I/OT:script=latn;language=dflt;"
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[fonts/STIXTwoText-Regular]/OT:script=latn;language=
+dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->"[fonts/STIXTwoText-Regular]/OT:script=latn;language=
+dflt;+smcp;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"[fonts/STIXTwoText-Bold]/OT:script=latn;language=dfl
+t;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->"[fonts/STIXTwoText-Bold]/OT:script=latn;language=dfl
+t;+smcp;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"[fonts/STIXTwoText-Italic]/OT:script=latn;language=d
+flt;"
 (fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
-(fontspec)             <->"STIX Two
-(fontspec)             Text/I/OT:script=latn;language=dflt;+smcp;"
-(fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"STIX Two
-(fontspec)             Text/BI/OT:script=latn;language=dflt;"
+(fontspec)             <->"[fonts/STIXTwoText-Italic]/OT:script=latn;language=d
+flt;+smcp;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"[fonts/STIXTwoText-BoldItalic]/OT:script=latn;langua
+ge=dflt;"
 (fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
-(fontspec)             <->"STIX Two
-(fontspec)             Text/BI/OT:script=latn;language=dflt;+smcp;"
+(fontspec)             <->"[fonts/STIXTwoText-BoldItalic]/OT:script=latn;langua
+ge=dflt;+smcp;"
 
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/STIXTwoText(1)/m/n on input line 8.
+(Font)                  OT1/cmr/m/n --> TU/STIXTwoText(1)/m/n on input line 13.
+
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/STIXTwoText(1)/m/it on input line 8
-.
+(Font)                  OT1/cmr/m/it --> TU/STIXTwoText(1)/m/it on input line 1
+3.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/STIXTwoText(1)/b/n on input line 8.
+(Font)                  OT1/cmr/bx/n --> TU/STIXTwoText(1)/b/n on input line 13
+.
 
-
-
-Package fontspec Warning: Font "STIX Two Math" does not contain requested
-(fontspec)                Script "Math".
-
-
-Package fontspec Info: Could not resolve font "STIX Two Math/B" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Info: Font family 'STIXTwoMath(0)' created for font 'STIX Two
-(fontspec)             Math' with options
+Package fontspec Info: Font family 'STIXTwoMath-Regular(0)' created for font
+(fontspec)             'STIXTwoMath-Regular' with options
 (fontspec)             [BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script
-=Math].
+=Math,Path={fonts/}].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"STIX Two
-(fontspec)             Math/OT:language=dflt;"
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[fonts/STIXTwoMath-Regular]/OT:script=math;language=
+dflt;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
 
-Package unicode-math Warning: The first font loaded by unicode-math must be an
-(unicode-math)                OpenType Math font (with script=math). If you
-(unicode-math)                simply want ‘the default’ before loading
-(unicode-math)                supplementary fonts over the top for certain
-(unicode-math)                ranges, use: 
-(unicode-math)                  \setmathfont{latinmodern-math.otf}
-
-
-Package fontspec Warning: Font "STIX Two Math" does not contain requested
-(fontspec)                Script "Math".
-
-
-Package fontspec Info: Could not resolve font "STIX Two Math/B" (it probably
-(fontspec)             doesn't exist).
-
-
-Package fontspec Warning: OpenType feature 'Style=MathScript' (ssty) not
-(fontspec)                available for font 'STIX Two Math' with script ''
-(fontspec)                and language 'Default'.
-
-
-Package fontspec Warning: OpenType feature 'Style=MathScriptScript' (ssty) not
-(fontspec)                available for font 'STIX Two Math' with script ''
-(fontspec)                and language 'Default'.
-
-
-Package fontspec Info: Font family 'STIXTwoMath(1)' created for font 'STIX Two
-(fontspec)             Math' with options
+Package fontspec Info: Font family 'STIXTwoMath-Regular(1)' created for font
+(fontspec)             'STIXTwoMath-Regular' with options
 (fontspec)             [BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script
-=Math,SizeFeatures={{Size=0-},{Size=0-0,Font=STIX
-(fontspec)             Two Math,Style=MathScript},{Size=-0,Font=STIX Two
-(fontspec)             Math,Style=MathScriptScript}}].
+=Math,SizeFeatures={{Size=8.5-},{Size=6.25-8.5,Font=STIXTwoMath-Regular,Style=M
+athScript},{Size=-6.25,Font=STIXTwoMath-Regular,Style=MathScriptScript}},Path={
+fonts/}].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
 (fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.: <0->"STIX Two
-(fontspec)             Math/OT:language=dflt;"<0-0>"STIX Two
-(fontspec)             Math/OT:language=dflt;"<-0>"STIX Two
-(fontspec)             Math/OT:language=dflt;"
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <8.5->"[fonts/STIXTwoMath-Regular]/OT:script=math;langua
+ge=dflt;"<6.25-8.5>"[fonts/STIXTwoMath-Regular]/OT:script=math;language=dflt;+s
+sty=0;"<-6.25>"[fonts/STIXTwoMath-Regular]/OT:script=math;language=dflt;+ssty=1
+;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 9.
+(Font)              `operators' in the math version `normal' on input line 14.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/STIXTwoMath(1)/m/n on input line 9.
+(Font)                  OT1/cmr/m/n --> TU/STIXTwoMath-Regular(1)/m/n on input 
+line 14.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 9.
+(Font)              `operators' in the math version `bold' on input line 14.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/STIXTwoMath(1)/b/n on input line 9.
+(Font)                  OT1/cmr/bx/n --> TU/STIXTwoMath-Regular(1)/b/n on input
+ line 14.
 
-(/opt/texlive/texdir/texmf-dist/tex/latex/tools/enumerate.sty
+Package fontspec Info: STIXTwoMath-Regular scale = 1.0001.
+
+
+Package fontspec Info: STIXTwoMath-Regular scale = 1.0001.
+
+
+Package fontspec Info: STIXTwoMath-Regular scale = 1.0001.
+
+
+Package fontspec Info: STIXTwoMath-Regular scale = 1.0001.
+
+
+Package fontspec Info: Font family 'STIXTwoMath-Regular(2)' created for font
+(fontspec)             'STIXTwoMath-Regular' with options
+(fontspec)             [BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script
+=Math,SizeFeatures={{Size=8.5-},{Size=6.25-8.5,Font=STIXTwoMath-Regular,Style=M
+athScript},{Size=-6.25,Font=STIXTwoMath-Regular,Style=MathScriptScript}},Path={
+fonts/},ScaleAgain=1.0001,FontAdjustment={\fontdimen
+(fontspec)             8\font =6.4pt\relax \fontdimen 9\font =5.85pt\relax
+(fontspec)             \fontdimen 10\font =4.7pt\relax \fontdimen 11\font
+(fontspec)             =6.4pt\relax \fontdimen 12\font =5.85pt\relax
+(fontspec)             \fontdimen 13\font =3.6pt\relax \fontdimen 14\font
+(fontspec)             =3.6pt\relax \fontdimen 15\font =2.52pt\relax
+(fontspec)             \fontdimen 16\font =2.1pt\relax \fontdimen 17\font
+(fontspec)             =2.1pt\relax \fontdimen 18\font =2.3pt\relax \fontdimen
+(fontspec)             19\font =1.6pt\relax \fontdimen 22\font =2.58pt\relax
+(fontspec)             \fontdimen 20\font =0pt\relax \fontdimen 21\font
+(fontspec)             =0pt\relax }].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <8.5->s*[1.0001]"[fonts/STIXTwoMath-Regular]/OT:script=m
+ath;language=dflt;"<6.25-8.5>s*[1.0001]"[fonts/STIXTwoMath-Regular]/OT:script=m
+ath;language=dflt;+ssty=0;"<-6.25>s*[1.0001]"[fonts/STIXTwoMath-Regular]/OT:scr
+ipt=math;language=dflt;+ssty=1;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 8\font =6.4pt\relax \fontdimen 9\font
+(fontspec)             =5.85pt\relax \fontdimen 10\font =4.7pt\relax
+(fontspec)             \fontdimen 11\font =6.4pt\relax \fontdimen 12\font
+(fontspec)             =5.85pt\relax \fontdimen 13\font =3.6pt\relax
+(fontspec)             \fontdimen 14\font =3.6pt\relax \fontdimen 15\font
+(fontspec)             =2.52pt\relax \fontdimen 16\font =2.1pt\relax
+(fontspec)             \fontdimen 17\font =2.1pt\relax \fontdimen 18\font
+(fontspec)             =2.3pt\relax \fontdimen 19\font =1.6pt\relax \fontdimen
+(fontspec)             22\font =2.58pt\relax \fontdimen 20\font =0pt\relax
+(fontspec)             \fontdimen 21\font =0pt\relax 
+
+LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
+(Font)              `symbols' in the math version `normal' on input line 14.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> TU/STIXTwoMath-Regular(2)/m/n on input
+ line 14.
+LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
+(Font)              `symbols' in the math version `bold' on input line 14.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> TU/STIXTwoMath-Regular(2)/b/n on input
+ line 14.
+
+Package fontspec Info: STIXTwoMath-Regular scale = 0.9999.
+
+
+Package fontspec Info: STIXTwoMath-Regular scale = 0.9999.
+
+
+Package fontspec Info: STIXTwoMath-Regular scale = 0.9999.
+
+
+Package fontspec Info: STIXTwoMath-Regular scale = 0.9999.
+
+
+Package fontspec Info: Font family 'STIXTwoMath-Regular(3)' created for font
+(fontspec)             'STIXTwoMath-Regular' with options
+(fontspec)             [BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script
+=Math,SizeFeatures={{Size=8.5-},{Size=6.25-8.5,Font=STIXTwoMath-Regular,Style=M
+athScript},{Size=-6.25,Font=STIXTwoMath-Regular,Style=MathScriptScript}},Path={
+fonts/},ScaleAgain=0.9999,FontAdjustment={\fontdimen
+(fontspec)             8\font =0.68pt\relax \fontdimen 9\font =1.35pt\relax
+(fontspec)             \fontdimen 10\font =1.35pt\relax \fontdimen 11\font
+(fontspec)             =3.0pt\relax \fontdimen 12\font =6.7pt\relax \fontdimen
+(fontspec)             13\font =0pt\relax }].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <8.5->s*[0.9999]"[fonts/STIXTwoMath-Regular]/OT:script=m
+ath;language=dflt;"<6.25-8.5>s*[0.9999]"[fonts/STIXTwoMath-Regular]/OT:script=m
+ath;language=dflt;+ssty=0;"<-6.25>s*[0.9999]"[fonts/STIXTwoMath-Regular]/OT:scr
+ipt=math;language=dflt;+ssty=1;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 8\font =0.68pt\relax \fontdimen 9\font
+(fontspec)             =1.35pt\relax \fontdimen 10\font =1.35pt\relax
+(fontspec)             \fontdimen 11\font =3.0pt\relax \fontdimen 12\font
+(fontspec)             =6.7pt\relax \fontdimen 13\font =0pt\relax 
+
+LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
+(Font)              `largesymbols' in the math version `normal' on input line 1
+4.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> TU/STIXTwoMath-Regular(3)/m/n on input
+ line 14.
+LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
+(Font)              `largesymbols' in the math version `bold' on input line 14.
+
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> TU/STIXTwoMath-Regular(3)/b/n on input
+ line 14.
+ (/opt/texlive/texdir/texmf-dist/tex/latex/tools/enumerate.sty
 Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
 \@enLab=\toks23
 )
@@ -502,7 +594,7 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 \enit@count@id=\count299
 \enitdp@description=\count300
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 25.
+Package hyperref Info: Option `colorlinks' set `true' on input line 30.
 \c@definition=\count301
 \c@theorem=\count302
 \c@corollary=\count303
@@ -510,221 +602,34 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 25.
 (build/main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 49.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 54.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 49.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 54.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 49.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 54.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 49.
-
-Package fontspec Info: Font family 'latinmodern-math.otf(0)' created for font
-(fontspec)             'latinmodern-math.otf' with options
-(fontspec)             [BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script
-=Math,BoldFont={latinmodern-math.otf}].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"[latinmodern-math.otf]/OT:script=math;language=dflt;
-"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->"[latinmodern-math.otf]/OT:script=math;language=dflt;
-"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
-
-
-Package fontspec Info: Font family 'latinmodern-math.otf(1)' created for font
-(fontspec)             'latinmodern-math.otf' with options
-(fontspec)             [BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script
-=Math,SizeFeatures={{Size=8.5-},{Size=6-8.5,Font=latinmodern-math.otf,Style=Mat
-hScript},{Size=-6,Font=latinmodern-math.otf,Style=MathScriptScript}},BoldFont={
-latinmodern-math.otf}].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <8.5->"[latinmodern-math.otf]/OT:script=math;language=df
-lt;"<6-8.5>"[latinmodern-math.otf]/OT:script=math;language=dflt;+ssty=0;"<-6>"[
-latinmodern-math.otf]/OT:script=math;language=dflt;+ssty=1;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->"[latinmodern-math.otf]/OT:script=math;language=dflt;
-"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
-
-LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/STIXTwoMath(1)/m/n --> TU/latinmodern-math.otf(1)/m/
-n on input line 49.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/STIXTwoMath(1)/b/n --> TU/latinmodern-math.otf(1)/b/
-n on input line 49.
-
-Package fontspec Info: latinmodern-math scale = 1.0001.
-
-
-Package fontspec Info: latinmodern-math scale = 1.0001.
-
-
-Package fontspec Info: latinmodern-math scale = 1.0001.
-
-
-Package fontspec Info: latinmodern-math scale = 1.0001.
-
-
-Package fontspec Info: latinmodern-math scale = 1.0001.
-
-
-Package fontspec Info: Font family 'latinmodern-math.otf(2)' created for font
-(fontspec)             'latinmodern-math.otf' with options
-(fontspec)             [BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script
-=Math,SizeFeatures={{Size=8.5-},{Size=6-8.5,Font=latinmodern-math.otf,Style=Mat
-hScript},{Size=-6,Font=latinmodern-math.otf,Style=MathScriptScript}},BoldFont={
-latinmodern-math.otf},ScaleAgain=1.0001,FontAdjustment={\fontdimen
-(fontspec)             8\font =6.77pt\relax \fontdimen 9\font =3.94pt\relax
-(fontspec)             \fontdimen 10\font =4.44pt\relax \fontdimen 11\font
-(fontspec)             =6.86pt\relax \fontdimen 12\font =3.45pt\relax
-(fontspec)             \fontdimen 13\font =3.63pt\relax \fontdimen 14\font
-(fontspec)             =3.63pt\relax \fontdimen 15\font =2.89pt\relax
-(fontspec)             \fontdimen 16\font =2.47pt\relax \fontdimen 17\font
-(fontspec)             =2.47pt\relax \fontdimen 18\font =2.5pt\relax
-(fontspec)             \fontdimen 19\font =2.0pt\relax \fontdimen 22\font
-(fontspec)             =2.5pt\relax \fontdimen 20\font =0pt\relax \fontdimen
-(fontspec)             21\font =0pt\relax }].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <8.5->s*[1.0001]"[latinmodern-math.otf]/OT:script=math;l
-anguage=dflt;"<6-8.5>s*[1.0001]"[latinmodern-math.otf]/OT:script=math;language=
-dflt;+ssty=0;"<-6>s*[1.0001]"[latinmodern-math.otf]/OT:script=math;language=dfl
-t;+ssty=1;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \fontdimen 8\font =6.77pt\relax \fontdimen 9\font
-(fontspec)             =3.94pt\relax \fontdimen 10\font =4.44pt\relax
-(fontspec)             \fontdimen 11\font =6.86pt\relax \fontdimen 12\font
-(fontspec)             =3.45pt\relax \fontdimen 13\font =3.63pt\relax
-(fontspec)             \fontdimen 14\font =3.63pt\relax \fontdimen 15\font
-(fontspec)             =2.89pt\relax \fontdimen 16\font =2.47pt\relax
-(fontspec)             \fontdimen 17\font =2.47pt\relax \fontdimen 18\font
-(fontspec)             =2.5pt\relax \fontdimen 19\font =2.0pt\relax \fontdimen
-(fontspec)             22\font =2.5pt\relax \fontdimen 20\font =0pt\relax
-(fontspec)             \fontdimen 21\font =0pt\relax 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[1.0001]"[latinmodern-math.otf]/OT:script=math;lang
-uage=dflt;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \fontdimen 8\font =6.77pt\relax \fontdimen 9\font
-(fontspec)             =3.94pt\relax \fontdimen 10\font =4.44pt\relax
-(fontspec)             \fontdimen 11\font =6.86pt\relax \fontdimen 12\font
-(fontspec)             =3.45pt\relax \fontdimen 13\font =3.63pt\relax
-(fontspec)             \fontdimen 14\font =3.63pt\relax \fontdimen 15\font
-(fontspec)             =2.89pt\relax \fontdimen 16\font =2.47pt\relax
-(fontspec)             \fontdimen 17\font =2.47pt\relax \fontdimen 18\font
-(fontspec)             =2.5pt\relax \fontdimen 19\font =2.0pt\relax \fontdimen
-(fontspec)             22\font =2.5pt\relax \fontdimen 20\font =0pt\relax
-(fontspec)             \fontdimen 21\font =0pt\relax 
-
-LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 49.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  OMS/cmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on inpu
-t line 49.
-LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 49.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/cmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on inpu
-t line 49.
-
-Package fontspec Info: latinmodern-math scale = 0.9999.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999.
-
-
-Package fontspec Info: latinmodern-math scale = 0.9999.
-
-
-Package fontspec Info: Font family 'latinmodern-math.otf(3)' created for font
-(fontspec)             'latinmodern-math.otf' with options
-(fontspec)             [BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script
-=Math,SizeFeatures={{Size=8.5-},{Size=6-8.5,Font=latinmodern-math.otf,Style=Mat
-hScript},{Size=-6,Font=latinmodern-math.otf,Style=MathScriptScript}},BoldFont={
-latinmodern-math.otf},ScaleAgain=0.9999,FontAdjustment={\fontdimen
-(fontspec)             8\font =0.4pt\relax \fontdimen 9\font =2.0pt\relax
-(fontspec)             \fontdimen 10\font =1.67pt\relax \fontdimen 11\font
-(fontspec)             =1.11pt\relax \fontdimen 12\font =6.0pt\relax
-(fontspec)             \fontdimen 13\font =0pt\relax }].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <8.5->s*[0.9999]"[latinmodern-math.otf]/OT:script=math;l
-anguage=dflt;"<6-8.5>s*[0.9999]"[latinmodern-math.otf]/OT:script=math;language=
-dflt;+ssty=0;"<-6>s*[0.9999]"[latinmodern-math.otf]/OT:script=math;language=dfl
-t;+ssty=1;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \fontdimen 8\font =0.4pt\relax \fontdimen 9\font
-(fontspec)             =2.0pt\relax \fontdimen 10\font =1.67pt\relax
-(fontspec)             \fontdimen 11\font =1.11pt\relax \fontdimen 12\font
-(fontspec)             =6.0pt\relax \fontdimen 13\font =0pt\relax 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[0.9999]"[latinmodern-math.otf]/OT:script=math;lang
-uage=dflt;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
-(fontspec)             and font adjustment code:
-(fontspec)             \fontdimen 8\font =0.4pt\relax \fontdimen 9\font
-(fontspec)             =2.0pt\relax \fontdimen 10\font =1.67pt\relax
-(fontspec)             \fontdimen 11\font =1.11pt\relax \fontdimen 12\font
-(fontspec)             =6.0pt\relax \fontdimen 13\font =0pt\relax 
-
-LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 4
-9.
-LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/cmex/m/n --> TU/latinmodern-math.otf(3)/m/n on inpu
-t line 49.
-LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 49.
-
-LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/cmex/m/n --> TU/latinmodern-math.otf(3)/b/n on inpu
-t line 49.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 54.
  (/opt/texlive/texdir/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2022/01/06 v1.3d Standard LaTeX Color (DPC)
 
@@ -737,61 +642,54 @@ Package color Info: Driver file: xetex.def on input line 149.
 File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
 )
 (/opt/texlive/texdir/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-Package hyperref Info: Link coloring ON on input line 49.
+Package hyperref Info: Link coloring ON on input line 54.
 
 (build/main.out) (build/main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.00128pt on input line 52.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.00085pt on input line 52.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00064pt on input line 52.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.99872pt on input line 52.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 52.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 52.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00107pt on input line 59.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00075pt on input line 59.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00053pt on input line 59.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 59.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 59.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 59.
-
-Missing character: There is no ⟋ (U+27CB) in font [latinmodern-math.otf]/OT:scr
-ipt=math;language=dflt;!
-Missing character: There is no ⟋ (U+27CB) in font [latinmodern-math.otf]/OT:scr
-ipt=math;language=dflt;!
-Missing character: There is no ⟋ (U+27CB) in font [latinmodern-math.otf]/OT:scr
-ipt=math;language=dflt;!
-[1
+LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(2)/m/n' will be
+(Font)              scaled to size 12.00128pt on input line 57.
+LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(2)/m/n' will be
+(Font)              scaled to size 8.00085pt on input line 57.
+LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(2)/m/n' will be
+(Font)              scaled to size 6.00064pt on input line 57.
+LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(3)/m/n' will be
+(Font)              scaled to size 11.99872pt on input line 57.
+LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(3)/m/n' will be
+(Font)              scaled to size 7.99915pt on input line 57.
+LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(3)/m/n' will be
+(Font)              scaled to size 5.99936pt on input line 57.
+LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(2)/m/n' will be
+(Font)              scaled to size 10.00107pt on input line 64.
+LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(2)/m/n' will be
+(Font)              scaled to size 7.00075pt on input line 64.
+LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(2)/m/n' will be
+(Font)              scaled to size 5.50058pt on input line 64.
+LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(3)/m/n' will be
+(Font)              scaled to size 9.99893pt on input line 64.
+LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(3)/m/n' will be
+(Font)              scaled to size 6.99925pt on input line 64.
+LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(3)/m/n' will be
+(Font)              scaled to size 5.4994pt on input line 64.
+ [1
 
 ] [2] [3] [4] [5] [6] [7] [8] [9] [10]
-Overfull \hbox (2.44684pt too wide) in paragraph at lines 575--576
+Overfull \hbox (5.44684pt too wide) in paragraph at lines 580--581
 \TU/STIXTwoText(0)/m/n/10 litter permutation $[] []$, and mapping the near-litt
 er permutation $[]$ to the $[]$-structural
  []
 
 [11]
-Overfull \hbox (2.50018pt too wide) in paragraph at lines 603--605
+Overfull \hbox (1.4002pt too wide) in paragraph at lines 608--610
 \TU/STIXTwoText(0)/m/n/10 That is, an $[]$-support condition is an atom or near
 -litter, together with an $[]$-extended
  []
 
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.40152pt on input line 626.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 14.39845pt on input line 626.
+LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(2)/m/n' will be
+(Font)              scaled to size 14.40152pt on input line 631.
+LaTeX Font Info:    Font shape `TU/STIXTwoMath-Regular(3)/m/n' will be
+(Font)              scaled to size 14.39845pt on input line 631.
 [12] [13] (build/main.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
@@ -801,12 +699,12 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 7E5D037AC6FD0233658501455B1C71E5;2570.
  ) 
 Here is how much of TeX's memory you used:
- 17918 strings out of 475591
- 337396 string characters out of 5775606
+ 17908 strings out of 475591
+ 337732 string characters out of 5775606
  1929438 words of memory out of 5000000
- 39047 multiletter control sequences out of 15000+600000
- 561673 words of font info for 97 fonts, out of 8000000 for 9000
+ 39041 multiletter control sequences out of 15000+600000
+ 563248 words of font info for 100 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  86i,10n,114p,518b,541s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on build/main.xdv (13 pages, 258380 bytes).
+Output written on build/main.xdv (13 pages, 257248 bytes).

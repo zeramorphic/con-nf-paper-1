@@ -1,13 +1,14 @@
 # Fdb version 4
-["xdvipdfmx"] 1693651371 "build/main.xdv" "build/main.pdf" "build/main" 1693651371 0
-  "build/main.xdv" 1693651370 258380 ff8ba2c9ef8c9ddae44743c54447e069 "xelatex"
+["xdvipdfmx"] 1693651850 "build/main.xdv" "build/main.pdf" "build/main" 1693651850 0
+  "build/main.xdv" 1693651850 257248 764294a060469f6c71e453753574e635 "xelatex"
   (generated)
   "build/main.pdf"
   (rewritten before read)
-["xelatex"] 1693651368 "main.tex" "build/main.xdv" "main" 1693651371 0
+["xelatex"] 1693651848 "main.tex" "build/main.xdv" "main" 1693651850 0
   "/opt/texlive/texdir/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/opt/texlive/texdir/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/opt/texlive/texdir/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
+  "/opt/texlive/texdir/texmf-dist/fonts/tfm/public/cm/cmmi5.tfm" 1136768653 1508 3b32edd0d68f6498a5a375e78f9edc5e ""
   "/opt/texlive/texdir/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
   "/opt/texlive/texdir/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm" 1136768653 1520 eccf95517727cb11801f4f1aee3a21b4 ""
   "/opt/texlive/texdir/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
@@ -76,9 +77,9 @@
   "/opt/texlive/texdir/texmf-dist/web2c/texmf.cnf" 1681165822 40967 d940221f8762fd5848760382d97d1226 ""
   "/opt/texlive/texdir/texmf-var/web2c/xetex/xelatex.fmt" 1693548307 10808131 e9feeb9346a8c0818d4da506a5cd79cf ""
   "/opt/texlive/texdir/texmf.cnf" 1693548141 555 bd60ff59e4d560b42d96b004436f91d3 ""
-  "build/main.aux" 1693651370 5643 a03d19f2a39d07077d9c62f50bd90573 "xelatex"
-  "build/main.out" 1693651370 2570 7e5d037ac6fd0233658501455b1c71e5 "xelatex"
-  "main.tex" 1693651355 37210 3a6f43266e1e4fcaee84da2318e1b919 ""
+  "build/main.aux" 1693651850 5643 a03d19f2a39d07077d9c62f50bd90573 "xelatex"
+  "build/main.out" 1693651850 2570 7e5d037ac6fd0233658501455b1c71e5 "xelatex"
+  "main.tex" 1693651832 37337 9dad5b04ecab9fea3d1748f6edc0db99 ""
   (generated)
   "build/main.aux"
   "build/main.log"
