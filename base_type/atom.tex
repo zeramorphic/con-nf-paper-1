@@ -1,0 +1,28 @@
+\subsection{Atoms}
+
+\begin{definition}
+    The type of \cdef{BaseType/Atom}{Atom}{atoms} is \( \mathcal A = \mathcal L \times \kappa \).
+\end{definition}
+\begin{lemma}
+    \label{lem:mk_atom}
+    \( \#\mathcal A = \#\mu \).
+\end{lemma}
+\begin{proof}
+    \( \#\mathcal L = \#\mu \) by \cref{lem:mk_litter}, and \( \#\aleph_0 \leq \#\kappa < \#\mu \) by \cref{def:params}.
+\end{proof}
+\begin{definition}
+    The \cdef{BaseType/Atom}{litterSet}{litter set} of a litter \( L \) is the set of atoms with first projection equal to \( L \), denoted \( \mathcal A_L \).
+\end{definition}
+\begin{lemma}
+    \label{lem:litterSet}
+    \begin{enumerate}
+        \item \( \#\mathcal A_L = \#\kappa \);
+        \item the litter sets are pairwise disjoint.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    \begin{enumerate}
+        \item Each litter set is naturally in bijection with \( \kappa \).
+        \item If an atom \( a \) is in \( \mathcal A_L \) and \( \mathcal A_{L'} \), then \( \pi_1(a) = L \) and \( \pi_1(a) = L' \) so \( L = L' \).
+    \end{enumerate}
+\end{proof}

@@ -1,0 +1,18 @@
+\subsection{Position functions}
+
+\begin{definition}
+    Let \( \alpha, \beta \) be types.
+    A \cdef{Fuzz/Position}{Position}{position function} on \( \alpha \) taking values in \( \beta \) is an injection \( \alpha \to \beta \).
+    We denote all position functions by \( n : \alpha \to \beta \).
+\end{definition}
+Let \( \alpha \) have a position function taking values in \( \beta \), and suppose \( \beta \) has a relation \( < \).
+\begin{definition}
+    We then define the relation \( < \) on \( \alpha \) by \( x < y \Leftrightarrow n\ x < n\ y \).
+\end{definition}
+\begin{lemma}
+    If \( \beta \) is well-ordered, then \( \alpha \) is well-ordered.
+\end{lemma}
+\begin{proof}
+    Trichotomy and transitivity are clear.
+    The inverse image of a well-founded relation \corelem{Init/WF}{InvImage.wf}{is well-founded} by induction on accessibility, completing the proof.
+\end{proof}

@@ -1,0 +1,30 @@
+\subsection{Sets, groups, and supports}
+
+\begin{definition}
+    A \mdef{Init/Set}{Set}{set} of a type \( \alpha \) is a function \( \alpha \to \symsf{Prop} \).
+    The type of sets of \( \alpha \) is denoted \( \symsf{Set}\ \alpha \).
+\end{definition}
+\begin{definition}
+    The \mdef{Init/Set}{Set.image}{pointwise image} of a set \( s : \symsf{Set}\ \alpha \) under a function \( f \colon \alpha \to \beta \) is denoted \( f '' s = \qty{y : \beta \mid \exists x \in s, y = f\ x} \).
+    The \mdef{Data/Set/Image}{Set.preimage}{preimage} of a set \( t : \symsf{Set}\ \beta \) under \( f \) is denoted \( f^{-1}{}' t = \qty{x : \alpha \mid f\ x \in t} \).
+\end{definition}
+\begin{definition}
+    The \mdef{Order/SymmDiff}{symmDiff}{symmetric difference} of two sets \( s, t : \symsf{Set}\ \alpha \) is defined by \( s \symmdiff t = (s \setminus t) \cup (t \setminus s) \).
+\end{definition}
+\begin{definition}
+    A \mdef{GroupTheory/GroupAction/Defs}{MulAction}{group action} of \( G \) on \( \alpha \) is a function \( G \to \alpha \to \alpha \) denoted by \( \cdot \) such that for all \( x, y : G \), \( a : \alpha \), we have \( (x \cdot y) \cdot a = x \cdot (y \cdot a) \).
+\end{definition}
+\begin{definition}
+    \label{def:supports}
+    Let \( G \) be a group that acts on \( \alpha \) and \( \beta \).
+    Let \( s \) be a set of \( \alpha \), and let \( b : \beta \).
+    We say that \( s \) \mdef{GroupTheory/GroupAction/Support}{MulAction.Supports}{supports} \( b \) if for all \( x \in G \), we have \( x \cdot b = b \) whenever \( x \cdot a = a \) for all \( a \in s \).
+\end{definition}
+\begin{lemma}
+    \label{lem:smul_eq_smul_of_supports}
+    Let \( s : \symsf{Set}\ \alpha \) support \( b : \beta \) under actions of \( G \).
+    Then for \( x, y \in G \), \( x \cdot b = y \cdot b \) whenever \( x \cdot a = y \cdot a \) for all \( a \in s \).
+\end{lemma}
+\begin{proof}
+    Apply the definition of a support to \( y^{-1} \cdot x \).
+\end{proof}

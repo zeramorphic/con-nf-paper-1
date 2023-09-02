@@ -1,0 +1,46 @@
+\subsection{Trees}
+
+\begin{definition}
+    Let \( \alpha \) be a type index and \( \tau \) be a type.
+    Then the type of \cdef{Structural/Tree}{Tree}{\( \alpha \)-trees of \( \tau \)} is
+    \[ \symsf{Tree}_\tau\ \alpha = (\alpha \rightsquigarrow \bot) \to \tau \]
+\end{definition}
+\begin{definition}
+    \label{def:tree_ofBot}
+    There is a natural equivalence \( \symsf{Tree}_\tau\ \bot \simeq \tau \) given by \( a \mapsto a\ \varnothing \) and \( a \mapsto (A \mapsto a) \).
+\end{definition}
+\begin{definition}
+    Let \( \tau \) have a group structure.
+    Then we endow \( \symsf{Tree}_\tau\ \alpha \) with a group structure by defining
+    \[ (a_1 \cdot a_2)\ A = a_1\ A \cdot a_2\ A \]
+    This makes the equivalence \( \symsf{Tree}_\tau\ \bot \simeq \tau \) into an isomorphism of groups.
+\end{definition}
+\begin{definition}
+    \label{def:derivative}
+    The \cdef{Structural/Tree}{Tree.comp}{derivative} functor maps paths of type indices \( \alpha \rightsquigarrow \beta \) to functions \( \symsf{Tree}_\tau\ \alpha \to \symsf{Tree}_\tau\ \beta \).
+    Applying it to a path \( A \) and tree \( a \) gives the tree \( B \mapsto a\ (A \gg B) \).
+    The application of this functor to a path \( A \) and tree \( a \) is denoted using a subscript, so
+    \[ a_A = (B \mapsto a\ (A \gg B)) \]
+\end{definition}
+\begin{remark}
+    This is a functor from the category of type indices where the morphisms are the decreasing paths (i.e.\ the category where morphisms are elements of \( \alpha \rightsquigarrow \beta \) for \( \alpha, \beta : \lambda^\bot \)) to the category of all trees of a fixed type \( \tau \), where the morphisms are functions.
+    The map of objects is simply \( \alpha \mapsto \symsf{Tree}_\tau\ \alpha \), or more concisely, just \( \symsf{Tree}_\tau \).
+    If \( \tau \) has a group structure, this map preserves multiplication.
+    This means that we can treat this as a functor to the category of all trees on \( \tau \) where the morphisms are group homomorphisms.
+\end{remark}
+\begin{lemma}
+    \label{lem:derivative_functor}
+    The derivative map is a functor in the sense described above:
+    \begin{enumerate}
+        \item \( a_\varnothing = a \);
+        \item \( (a_A)_B = a_{A \gg B} \);
+        \item \( (a_1 \cdot a_2)_A = {a_1}_A \cdot {a_2}_A \).
+    \end{enumerate}
+    In addition, if \( A : \alpha \rightsquigarrow \bot \), then \( a_A \) and \( a\ A \) are equal up to the equivalence in \cref{def:tree_ofBot}.
+\end{lemma}
+\begin{proof}
+    All of these results follow from the basic laws of quivers.
+\end{proof}
+\begin{definition}
+    If \( \tau \) has a group action on some type \( \sigma \), we pull it back under the equivalence given in \cref{def:tree_ofBot} to give \( \symsf{Tree}_\tau\ \bot \) the same action on \( \sigma \).
+\end{definition}

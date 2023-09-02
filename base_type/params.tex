@@ -1,0 +1,66 @@
+\subsection{Model parameters}
+
+\begin{definition}
+    \label{def:params}
+    A set of \cdef{BaseType/Params}{Params}{model parameters} is
+    \begin{itemize}
+        \item a type \( \lambda \) endowed with a well-order;
+        \item a type \( \kappa \);
+        \item a type \( \mu \) endowed with a well-order,
+    \end{itemize}
+    such that
+    \begin{enumerate}
+        \item the order type of \( \lambda \) is a nonzero limit ordinal;
+        \item the order type of \( \mu \) is the initial ordinal corresponding to the cardinal \( \#\mu \);
+        \item \( \#\mu \) is a strong limit cardinal;
+        \item \( \#\lambda < \#\kappa < \#\mu \);
+        \item the cofinality of the initial ordinal corresponding to \( \#\mu \) is at least \( \#\kappa \).
+    \end{enumerate}
+\end{definition}
+\begin{lemma}
+    There exists a set of model parameters.
+\end{lemma}
+\begin{proof}
+    Take \( \lambda = \aleph_0, \kappa = \aleph_1, \mu = \beth_{\omega_1} \).
+    These form a set of model parameters by standard properties of cardinals.
+\end{proof}
+Every definition and theorem following this will implicitly assume a set of model parameters as an additional argument.
+\begin{lemma}
+    \label{lem:infinite_no_max_model_params}
+    \begin{enumerate}
+        \item \( \lambda, \kappa, \mu \) are infinite.
+        \item \( \lambda \) and \( \mu \) have no maximal element.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    \emph{Part (i).}
+    \( \lambda \) is a nonzero limit, hence is infinite; condition (iv) then guarantees the result for \( \kappa, \mu \).
+    \emph{Part (ii).}
+    Initial ordinals have no maximal element.
+\end{proof}
+\begin{definition}
+    The type of \cdef{BaseType/Params}{TypeIndex}{type indices}, denoted \( \lambda^\bot \), is \( \lambda \) together with a symbol denoted \( \bot \).
+    The order on \( \lambda^\bot \) places \( \bot \) below all elements of \( \lambda \).
+\end{definition}
+\begin{lemma}
+    \label{lem:mk_typeIndex}
+    \( \#\lambda^\bot = \#\lambda \).
+\end{lemma}
+\begin{proof}
+    \( \#\lambda^\bot = \#\lambda + 1 \), and \( \lambda \) is infinite by \cref{lem:infinite_no_max_model_params}(i).
+\end{proof}
+\begin{lemma}
+    \label{lem:typeIndex_wf}
+    The type indices are well-ordered.
+\end{lemma}
+\begin{proof}
+    They are clearly linearly ordered, and the relation \( < \) is well-founded.
+\end{proof}
+\begin{lemma}
+    \label{lem:card_Iio_lt}
+    For \( x : \mu \), \( \#\qty{y \mid y < x} < \#\mu \) and \( \#\qty{y \mid y \leq x} < \#\mu \).
+\end{lemma}
+\begin{proof}
+    \Cref{def:params} requires that the order type of \( \mu \) is an initial ordinal, so we have \( \#\qty{y \mid y < x} < \#\mu \).
+    Then \( \#\qty{y \mid y \leq x} = \#\qty{y \mid y < x} + \#\qty{x} < \#\mu \) as \( \#\mu \) is infinite by \cref{lem:infinite_no_max_model_params}(i).
+\end{proof}

@@ -1,0 +1,75 @@
+\subsection{Smallness}
+
+\begin{definition}
+    A set \( s \) of any type \( \alpha \) is called \cdef{BaseType/Small}{Small}{small} if \( \#s < \#\kappa \).
+\end{definition}
+\begin{remark}
+    Note that cardinals are defined on types and not sets: technically we mean that the cardinality of the subtype \( \qty{x : \alpha \mid x \in s} \) is less than \( \#\kappa \).
+\end{remark}
+\begin{lemma}
+    \label{lem:small}
+    Let \( f \colon \alpha \to \beta \) and \( s, t : \symsf{Set}\ \alpha \).
+    Then,
+    \begin{enumerate}
+        \item the empty set is small;
+        \item singletons are small;
+        \item if \( s \subseteq t \) and \( t \) is small then \( s \) is small;
+        \item if \( s, t \) are small then \( s \cup t \) is small;
+        \item if \( s, t \) are small then \( s \symmdiff t \) is small;
+        \item if \( s \) is small then \( s \symmdiff t \) is small if and only if \( t \) is small;
+        \item if \( \iota \) is a type with \( \#\iota < \#\kappa \) and \( g \colon \iota \to \mathsf{Set}\ \alpha \) with \( g\ i \) small for each \( i \in \iota \), then \( \bigcup_{i : \iota} g\ i \) is small;
+        \item if \( s \) is small then \( f '' s \) is small;
+        \item if \( s : \symsf{Set}\ \beta \) is small and \( f \) is injective then \( f^{-1}{}' s \) is small;
+        \item if \( t : \symsf{Set}\ \beta \) is small, \( f \) is injective, and \( f '' s \subseteq t \), then \( s \) is small;
+        \item if \( f \) is a partial function and \( s \) is small then \( f '' s \) is small.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    \begin{enumerate}
+        \item \( \#\qty{} = 0 < \aleph_0 \leq \#\kappa \) by \cref{lem:infinite_no_max_model_params}.
+        \item \( \#\qty{x} = 1 < \aleph_0 \leq \#\kappa \) by \cref{lem:infinite_no_max_model_params}.
+        \item Follows from transitivity.
+        \item \( \aleph_0 \leq \#\kappa \) so \( \#\kappa \) is additively closed.
+        \item \( s \symmdiff t \subseteq s \cup t \) so done by (iii).
+        \item \( s \symmdiff t \symmdiff s = t \) so done by applying (iv) twice.
+        \item Follows since \( \kappa \) is regular by \cref{def:params}.
+        \item The set \( f '' s \) injects into \( s \) so \( \#(f '' s) \leq \#s \).
+        \item The set \( f^{-1}{}' s \) injects into \( s \) if \( f \) is injective.
+        \item Follows from (iii) and (ix), as \( f^{-1}{}' (f '' s) = s \) for injective \( f \).
+        \item By (viii), the set of partial values of type \( \beta \) in the range of \( f \) is small, by treating \( f \) as a total function \( \alpha \to \symsf{Part}\ \beta \).
+        The result then holds by applying (x) to the natural injection \( \iota : \beta \to \symsf{Part}\ \beta \).
+    \end{enumerate}
+\end{proof}
+\begin{definition}
+    Sets are \cdef{BaseType/Small}{IsNear}{near} if their symmetric difference is small.
+\end{definition}
+\begin{lemma}
+    \label{lem:near}
+    Let \( f \colon \alpha \to \beta \) and \( s, t, u : \symsf{Set}\ \alpha \).
+    \begin{enumerate}
+        \item \( s \) is near \( s \);
+        \item if \( s \) is near \( t \) then \( t \) is near \( s \);
+        \item if \( s \) is near \( t \) and \( t \) is near \( u \) then \( s \) is near \( u \);
+        \item if \( s \) is near \( t \) then \( f '' s \) is near \( f '' t \);
+        \item if \( s \) is small, then \( s \) is near \( t \) if and only if \( t \) is small;
+        \item if \( s \) is near \( t \) and \( \#\kappa \leq \#s \), then \( \#\kappa \leq \#t \);
+        \item if \( s \) is near \( t \) and \( \#\kappa \leq \#s \), then \( \#\kappa \leq \#(s \cap t) \).
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    \begin{enumerate}
+        \item Follows from \cref{lem:small}(i).
+        \item The symmetric difference is commutative.
+        \item Follows from \cref{lem:small}(iii, iv) and the fact that \( s \symmdiff u \subseteq (s \symmdiff t) \cup (t \symmdiff u) \).
+        \item Follows from \cref{lem:small}(iii, viii) and the fact that \( (f '' s) \symmdiff (f '' t) \subseteq f '' (s \symmdiff t) \).
+        \item Follows from \cref{lem:small}(vi).
+        \item Suppose not, so \( \#t < \#\kappa \).
+        Then as \( s \) is near \( t \), \( s \) is small, contradicting the assumption.
+        \item Suppose not, so \( \#(s \cap t) < \#\kappa \).
+        As \( s \) is near \( t \), the set \( (s \cup t) \setminus (s \cap t) \) is small.
+        But
+        \[ \#(s \cup t) \leq \#((s \cup t) \setminus (s \cap t)) + \#(s \cap t) \]
+        Both summands on the right-hand side are less than \( \#\kappa \), so \( s \cup t \) must be small.
+        But this contradicts the assumption that \( \#\kappa \leq \#s \).
+    \end{enumerate}
+\end{proof}

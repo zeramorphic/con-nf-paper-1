@@ -1,0 +1,14 @@
+\subsection{Litters}
+
+\begin{definition}
+    A \cdef{BaseType/Litter}{Litter}{litter} is a triple \( L = \langle \nu, \beta, \gamma \rangle \) with \( \nu : \mu, \beta : \lambda^\bot, \gamma : \lambda \), such that \( \beta \neq \gamma \).
+    The type of litters is denoted \( \mathcal L \).
+\end{definition}
+\begin{lemma}
+    \label{lem:mk_litter}
+    \( \#\mathcal L = \#\mu \).
+\end{lemma}
+\begin{proof}
+    Note that \( \#(\mu \times \lambda^\bot \times \lambda) = \#\mu \) so \( \#\mathcal L \leq \#\mu \).
+    But \( \#\mu \leq \#\mathcal L \) by considering the injection \( \nu \mapsto \langle \nu, \bot, 0 \rangle \), so the result follows by antisymmetry.
+\end{proof}

@@ -1,0 +1,50 @@
+\subsection{Hypotheses}
+
+\begin{definition}
+    Let \( \alpha \) be a type index.
+    \cdef{Fuzz/Hypotheses}{TangleData}{Tangle data} at level \( \alpha \) is
+    \begin{itemize}
+        \item a type \( \tau_\alpha \) of \emph{tangles};
+        \item a type \( \symsf{All}_\alpha \) of \emph{allowable permutations};
+        \item a group structure on \( \symsf{All}_\alpha \);
+        \item a group homomorphism \( \symsf{All}_\alpha \to \symsf{Str}_\alpha \);
+        \item a group action of \( \symsf{All}_\alpha \) on \( \tau_\alpha \) written by juxtaposition; and
+        \item a function assigning to each \( t : \tau_\alpha \) a support for it under the action of \( \symsf{All}_\alpha \), called its \emph{designated support}.
+    \end{itemize}
+\end{definition}
+\begin{definition}
+    Let \( \alpha \) be a type index with tangle data.
+    We say that level \( \alpha \) has \cdef{Fuzz/Hypotheses}{PositionedTangles}{positioned tangles} if there is a position function on \( \tau_\alpha \) taking values in \( \mu \).
+    The existence of this position function proves that there are at most \( \#\mu \) tangles at level \( \alpha \).
+\end{definition}
+\begin{definition}
+    Let \( \alpha : \lambda \) be a proper type index with tangle data.
+    We say that we have \cdef{Fuzz/Hypotheses}{TypedObjects}{typed objects} at level \( \alpha \) if we have
+    \begin{itemize}
+        \item an injection \( \symsf{typed}^a_\alpha : \mathcal A \to \tau_\alpha \) called the \emph{typed atom} map; and
+        \item an injection \( \symsf{typed}^N_\alpha : \mathcal N \to \tau_\alpha \) called the \emph{typed near-litter} map, that commutes with allowable permutations in the sense that for all \( \rho : \symsf{All}_\alpha, N : \mathcal N \), we have
+        \[ \rho\ (\symsf{typed}^N_\alpha\ N) = \symsf{typed}^N_\alpha\ (\rho\ (\alpha \to \bot)\ N) \]
+    \end{itemize}
+\end{definition}
+\begin{definition}
+    An assignment of \cdef{Fuzz/Hypotheses}{BasePositions}{base positions} is a pair of position functions on \( \mathcal A \) and \( \mathcal N \) both taking values in \( \mu \), such that
+    \begin{itemize}
+        \item \( a \in \mathcal A_L \implies n\ (\symsf{NL}\ L) < n\ a \);
+        \item \( n\ (\symsf{NL}\ N^\circ) \leq n\ N \);
+        \item \( a \in N \symmdiff \mathcal A_{N^\circ} \implies n\ a < n\ N \);
+        \item \( n\ a \neq n\ N \).
+    \end{itemize}
+\end{definition}
+\begin{remark}
+    At the moment, we define no coherence conditions between the position function, the typed objects, and the base positions data.
+    Later, they will be tied together.
+\end{remark}
+\begin{definition}
+    Tangle data at level \( \alpha = \bot \) is defined as follows.
+    \begin{itemize}
+        \item \( \tau_\bot = \mathcal A \);
+        \item \( \symsf{All}_\bot = \mathcal P \);
+        \item the homomorphism \( \symsf{All}_\bot \to \symsf{Str}_\bot \) is given by \cref{def:tree_ofBot};
+        \item the designated support of an atom \( a : \mathcal A \) is \( \{\langle a, \varnothing \rangle\} \).
+    \end{itemize}
+\end{definition}

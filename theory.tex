@@ -1,0 +1,24 @@
+\section*{Underlying theory}
+
+All of the definitions and theorems that follow have been machine-checked by Lean.
+
+The construction described in this paper takes place in a dependent type theory with:
+\begin{itemize}
+    \item a proof-irrelevant impredicative universe of propositions called \( \symsf{Prop} \);
+    \item predicative universes indexed by \( \omega \), called \( \symsf{Type} = \symsf{Type}\ 0 : \symsf{Type}\ 1 : \dots \);
+    \item dependent function types \( \displaystyle \prod_{(x : \alpha)} \beta \) for all types \( \alpha, \beta \), where we denote function application by juxtaposition;
+    \item inductive types at each universe;
+    \item quotient types, where we denote the quotient of a type \( \alpha \) by the relation \( \sim \) by \( \faktor\alpha\sim \), and denote quotient introduction \( \alpha \to \faktor\alpha\sim \) by \( x \mapsto [x] \);
+    \item a \emph{definitional} reduction rule that if \( f \colon \alpha \to \beta \) lifts to \( g \colon \faktor\alpha\sim \to \beta \), then \( g\ [x] = f\ x \).
+\end{itemize}
+We write \( \symsf{Type}\ u = \symsf{Sort}\ (u + 1) \) and \( \symsf{Prop} = \symsf{Sort}\ 0 \) for conciseness.
+We stipulate the following axioms.
+\begin{itemize}
+    \item propositional extensionality: that if \( p \Leftrightarrow q \) then we have \( p = q \);
+    \item a form of the axiom of choice: a function for each type \( \alpha \) that maps a proof that \( \alpha \) is nonempty to some \( x : \alpha \).
+\end{itemize}
+Lean's dependent type theory satisfies these constraints.
+It is known that such a type theory can be modelled in \( \symsf{ZFC} + \qty{\text{there are \( n \) inaccessible cardinals} \mid n < \omega} \) (see \url{https://github.com/digama0/lean-type-theory/releases}).
+
+We model cardinals and ordinals as quotients over a universe of types.
+However, apart from this, we make no direct use of higher universes, so the proof can be expected to work with no inaccessible cardinal assumptions.

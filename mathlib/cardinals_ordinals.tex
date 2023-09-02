@@ -1,0 +1,62 @@
+\subsection{Cardinals and ordinals}
+
+\begin{definition}
+    An \mdef{Logic/Equiv/Defs}{Equiv}{equivalence} between two types \( \alpha \) and \( \beta \), denoted \( e : \alpha \simeq \beta \), is a pair of functions \( f \colon \alpha \to \beta, g \colon \beta \to \alpha \) that are inverses of each other.
+    Equivalences \( e : \alpha \simeq \beta \) naturally coerce to their underlying function \( f : \alpha \to \beta \).
+    We use the syntax \( e^{-1} \) to denote the inverse equivalence \( \beta \simeq \alpha \) constructed from \( g \) and \( f \).
+\end{definition}
+\begin{remark}
+    \( (e^{-1})^{-1} = e \) holds definitionally.
+\end{remark}
+\begin{definition}
+    The type of \mdef{Logic/Equiv/Defs}{Equiv.Perm}{permutations} of a type \( \alpha \) is \( \alpha \simeq \alpha \), denoted \( \symsf{Perm}\ \alpha \).
+\end{definition}
+\begin{definition}
+    The type of \mdef{SetTheory/Cardinal/Basic}{Cardinal}{cardinals} is the quotient of \( \symsf{Type} \) by the equivalence relation \( \sim \), where \( \alpha \sim \beta \) if \( \alpha \simeq \beta \) is nonempty.
+    We denote the cardinal of a type by \( \#\alpha = [\alpha] \).
+\end{definition}
+\begin{definition}
+    Let \( r : \alpha \to \alpha \to \symsf{Prop} \) be a relation on \( \alpha \).
+    We say that \( x : \alpha \) is \mdef{Init/WF}{Acc}{\( r \)-accessible} if for all \( y \) with \( r\ y\ x \), we have that \( y \) is \( r \)-accessible.
+    A relation \( r : \alpha \to \alpha \to \symsf{Prop} \) is \mdef{Init/WF}{WellFounded}{well-founded} if every element is accessible.
+\end{definition}
+\begin{remark}
+    This is a constructive form of well-foundedness that behaves very nicely in Lean's type system.
+\end{remark}
+\begin{theorem}[well-founded recursion]
+    Let \( r \) be a well-founded relation on \( \alpha \).
+    Let \( C : \alpha \to \symsf{Sort}\ u \) be a motive for the recursion.
+    Let \( h \) have type
+    \[ \prod_{(x : \alpha)} \qty(\prod_{(y : \alpha)} r\ y\ x \to C\ y) \to C\ x \]
+    Then \corelem{Init/WF}{WellFounded.recursion}{we can construct} \( C\ x \) for each \( x : \alpha \).
+\end{theorem}
+\begin{remark}
+    More rigorously, well-founded recursion over \( r \) is a function of type
+    \[ \prod_{(C : \alpha \to \symsf{Sort}\ u)} \qty[ \qty(\prod_{(x : \alpha)} \qty(\prod_{(y : \alpha)} r\ y\ x \to C\ y) \to C\ x) \to \prod_{(x : \alpha)} C\ x] \]
+    Setting \( u = 0 \) gives well-founded induction.
+    This result is obtained by recursion over accessibility, which is an inductive type.
+\end{remark}
+\begin{definition}
+    A relation is a \mdef{Order/RelClasses}{IsWellOrder}{well-order} if it is trichotomous, transitive, and well-founded.
+\end{definition}
+\begin{definition}
+    Let \( \alpha, \beta \) be endowed with relations \( r, s \).
+    An equivalence \( e : \alpha \simeq \beta \) is an \mdef{Order/Hom/Basic}{OrderIso}{order isomorphism} if for each \( x, y : \alpha \), we have \( s\ (e\ x)\ (e\ y) \Leftrightarrow r\ x\ y \).
+\end{definition}
+\begin{definition}
+    The type of \mdef{SetTheory/Ordinal/Basic}{Ordinal}{ordinals} is the quotient of the type of well-ordered elements of \( \mathsf{Type} \) by the equivalence relation \( \sim \), where \( \alpha \sim \beta \) if the type of order isomorphisms of \( \alpha \) and \( \beta \) is nonempty.
+\end{definition}
+Standard properties of cardinals and ordinals are assumed.
+\begin{definition}
+    A \mdef{Data/Part}{Part}{partial value} of a type \( \alpha \) is a proposition \( p \) and a function \( p \to \alpha \).
+    That is, if \( h : p \) is a proof of \( p \), then we can acquire a value \( x : \alpha \).
+    The type of such values is denoted \( \symsf{Part}\ \alpha \).
+\end{definition}
+\begin{definition}
+    A \mdef{Data/PFun}{PFun}{partial function} from \( \alpha \) to \( \beta \) is a function from \( \alpha \) to partial values of type \( \beta \).
+    The type of such values is denoted \( \alpha \rightdasharrow \beta \).
+\end{definition}
+We use standard function notation on partial functions.
+\begin{remark}
+    By propositional extensionality, all empty partial values are equal, and all inhabited partial values with equal values are equal.
+\end{remark}

@@ -1,0 +1,19 @@
+\subsection{Quivers and paths}
+
+\begin{definition}
+    A \mdef{Combinatorics/Quiver/Basic}{Quiver}{quiver} on a type \( \alpha \) of vertices assigns to every pair \( x, y : \alpha \) of vertices a type \( \symrm{Hom}(x, y) \) of arrows from \( x \) to \( y \).
+\end{definition}
+\begin{definition}
+    A \mdef{Combinatorics/Quiver/Path}{Quiver.Path}{path} in a quiver between two vertices \( x, y : \alpha \) is a finite list of vertices beginning with \( x \) and ending with \( y \), connecting each pair of adjacent vertices \( a, b \) with an element of \( \symrm{Hom}(a, b) \).
+    The type of such paths is written \( x \rightsquigarrow y \).
+    The empty path is written \( \varnothing : x \rightsquigarrow x \).
+    The \mdef{Combinatorics/Quiver/Path}{Quiver.Path.comp}{composition} of paths \( p : x \rightsquigarrow y, q : y \rightsquigarrow z \) is denoted by \( p \gg q : x \rightsquigarrow z \).
+\end{definition}
+\begin{remark}
+    In mathlib, paths are defined as an inductive type.
+    If there is exactly one morphism in a given hom-set \( \symrm{Hom}(a, b) \), it is denoted \( a \to b \).
+    We will implicitly convert morphisms \( e : \symrm{Hom}(a, b) \) to their \mdef{Combinatorics/Quiver/Path}{Quiver.Hom.toPath}{corresponding paths} \( e : a \rightsquigarrow b \).
+\end{remark}
+\begin{definition}
+    The \mdef{Combinatorics/Quiver/Path}{Quiver.Path.length}{length} of a path is the number of arrows in that path, or exactly one less than the number of vertices in the list.
+\end{definition}

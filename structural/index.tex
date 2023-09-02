@@ -1,0 +1,35 @@
+\subsection{Extended type indices}
+
+\begin{definition}
+    We define a quiver structure on type indices.
+    For \( \alpha, \beta \) type indices, \( \symrm{Hom}(\alpha, \beta) \) is the type \( \beta < \alpha \).
+    Thus, there is a morphism \( \alpha \to \beta \) if and only if \( \beta < \alpha \), and all such morphisms are equal by proof irrelevance.
+\end{definition}
+\begin{definition}
+    A path from a type index to \( \bot \) is called an \cdef{Structural/Index}{ExtendedIndex}{extended (type) index}.
+\end{definition}
+\begin{lemma}
+    \label{lem:path_props}
+    \begin{enumerate}
+        \item If \( A : \alpha \rightsquigarrow \beta \) is a path of type indices, \( \beta \leq \alpha \).
+        \item If \( A : \alpha \rightsquigarrow \alpha \), then \( A \) is the empty path.
+        \item If \( \alpha : \lambda \), then the extended index \( A : \alpha \rightsquigarrow \bot \) has nonzero length.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    \begin{enumerate}
+        \item Induction on \( A \).
+        \item If \( A \) were nonempty, it would be of the form \( B \gg h \) where \( B : \alpha \rightsquigarrow \beta \) and \( h : \beta \to \alpha \).
+        By (i), \( \beta \leq \alpha \), but \( h \) is the fact that \( \alpha < \beta \), giving a contradiction.
+        \item \( \alpha \neq \bot \) so \( A \) is not the empty path.
+    \end{enumerate}
+\end{proof}
+\begin{lemma}
+    \label{lem:mk_extendedIndex}
+    \( 0 \neq \#(\alpha \rightsquigarrow \bot) \leq \#\lambda \).
+\end{lemma}
+\begin{proof}
+    There is at least one extended index for each \( \alpha \): the nil path for \( \alpha = \bot \) or the one-arrow path otherwise.
+    For the other inequality, \mlem{Combinatorics/Quiver/Path}{Quiver.Path.toList}{there is an injection} from paths \( \alpha \rightsquigarrow \bot \) to lists, so it suffices to show that the type of lists of type indices has cardinality at most \( \#\lambda \).
+    But \( \aleph_0 \leq \#\lambda \) by \ref{lem:infinite_no_max_model_params}(i), so it suffices to show that \( \#\lambda^\bot \leq \#\lambda \), which is \ref{lem:mk_typeIndex}.
+\end{proof}

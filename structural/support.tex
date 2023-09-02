@@ -1,0 +1,26 @@
+\subsection{Supports and support conditions}
+
+\begin{definition}
+    For \( \alpha \) a type index, the type of \cdef{Structural/Support}{SupportCondition}{\( \alpha \)-support conditions} is
+    \[ (\alpha \rightsquigarrow \bot) \times (\mathcal A \oplus \mathcal N) \]
+    That is, an \( \alpha \)-support condition is an \( \alpha \)-extended type index, together with an atom or near-litter.
+\end{definition}
+\begin{lemma}
+    \label{lem:mk_supportCondition}
+    For each \( \alpha \), there are \( \#\mu \) \( \alpha \)-support conditions.
+\end{lemma}
+\begin{proof}
+    By \cref{lem:mk_atom} and \cref{lem:mk_nearLitter}, we must show that
+    \[ \#(\alpha \rightsquigarrow \bot) \cdot (\#\mu + \#\mu) = \#\mu \]
+    This follows from standard properties of cardinals and \cref{lem:mk_extendedIndex}.
+\end{proof}
+\begin{definition}
+    \( \alpha \)-structural permutations \( \pi \) act on \( \alpha \)-support conditions by mapping
+    \[ \langle A, x \rangle \mapsto \langle A, \pi\ A\ x \rangle \]
+    where the action of a near-litter permutation on an element of \( \mathcal A \oplus \mathcal N \) is defined in the natural way.
+\end{definition}
+\begin{definition}
+    Let \( \alpha \) be a type index, \( \tau \) be a type, \( x : \tau \), and \( G \) be a group that acts on \( \tau \).
+    A \cdef{Structural/Support}{Support}{support} for \( x \) under this action is a small set of \( \alpha \)-support conditions that support \( x \) (in the sense of \cref{def:supports}).
+    An object is said to be \cdef{Structural/Support}{Supported}{supported} if its type of supports is nonempty.
+\end{definition}

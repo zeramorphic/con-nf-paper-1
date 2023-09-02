@@ -1,0 +1,102 @@
+\subsection{Near-litters}
+
+\begin{definition}
+    A set of atoms \cdef{BaseType/NearLitter}{IsNearLitter}{is a near-litter} to a given litter \( L \) if it is near the litter set of \( L \).
+\end{definition}
+\begin{lemma}
+    \label{lem:isNearLitter}
+    \begin{enumerate}
+        \item \( \mathcal A_L \) is a near-litter to \( L \);
+        \item if \( s, t \) are near-litters to \( L \) then \( s \) is near \( t \);
+        \item if \( s \) is a near-litter to \( L \), \( \#s = \#\kappa \);
+        \item a set cannot be a near-litter to two different litters;
+        \item there are \( \mu \) near-litters to a given litter.
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    \begin{enumerate}
+        \item Direct from \cref{lem:near}(i).
+        \item Follows from \cref{lem:near}(iii).
+        \item We have
+        \[ \#s \leq \#(s \setminus \mathcal A_L) + \#(\mathcal A_L) \]
+        The first term is less than \( \#\kappa \) by \cref{lem:small}(iii); the second is exactly \( \#\kappa \) by \cref{lem:litterSet}(i).
+        Thus \( \#s \leq \#\kappa \).
+        Suppose \( \#s < \#\kappa \).
+        Note that
+        \[ \#\kappa = \#\mathcal A_L \leq \#(\mathcal A_L \setminus s) + \#s \]
+        But \( \#s < \#\kappa \) by assumption, and \( \#(\mathcal A_L \setminus s) < \#\kappa \) by \cref{lem:litterSet}(i).
+        This gives a contradiction.
+        \item First note that if \( \mathcal A_L \) is a near-litter to \( L' \), then \( L = L' \).
+        Suppose \( L \neq L' \).
+        Then \( \mathcal A_L \subseteq \mathcal A_L \symmdiff \mathcal A_{L'} \).
+        Hence the cardinality of \( \mathcal A_L \symmdiff \mathcal A_{L'} \) is at least \( \#\kappa \), contradicting nearness.
+        For general sets, if \( s \) is a near-litter to \( L \) and \( L' \), we must have that \( \mathcal A_L \) is a near-litter to \( L' \), reducing to the original case.
+        \item We argue by antisymmetry.
+        First, we show that the number of near-litters to \( L \) is at most \( \#\mu \).
+        Note that as \( \#\mu \) is a strong limit cardinal, the type of sets (of atoms, say) of size less than the cofinality of \( \#\mu \) also has cardinality \( \#\mu \).
+        But as the cofinality of \( \#\mu \) is at least \( \#\kappa \), it suffices to show an injection from the type of near-litters to \( L \) to the type of sets of atoms of size at most \( \#\kappa \), which can be done by the natural coercion.
+
+        Conversely, we need an injection from \( \mathcal A \) to the type of near-litters to \( L \).
+        The map \( a \mapsto \mathcal A_L \symmdiff \qty{a} \) suffices.
+    \end{enumerate}
+\end{proof}
+\begin{definition}
+    A \cdef{BaseType/NearLitter}{NearLitter}{near-litter} is a dependent pair \( \langle L, s \rangle \), where \( L \) is a litter and \( s \) is a set of atoms that is a near-litter to \( L \).
+    We denote the type of near-litters by \( \mathcal N \).
+    We define a natural injective coercion from a near-litter to its second component; this is often used in extensionality arguments.
+\end{definition}
+\begin{remark}
+    Retaining the data of which litter a given near-litter is near to allows us to get better definitional properties.
+\end{remark}
+\begin{definition}
+    The first projection \( \pi_1 : \mathcal N \to \mathcal L \) is written with a superscript circle: \( N \mapsto N^\circ \).
+    The injection \( \symsf{NL} : \mathcal L \to \mathcal N \) is defined by \( \symsf{NL}\ L = \langle L, \mathcal A_L \rangle \), sending a litter to its \cdef{BaseType/NearLitter}{Litter.toNearLitter}{associated near-litter}.
+\end{definition}
+\begin{lemma}
+    \label{lem:nearLitter_prop}
+    Let \( N : \mathcal N \).
+    Then \( N \symmdiff \mathcal A_{N^\circ} \) is small.
+\end{lemma}
+\begin{proof}
+    Suppose \( N = \langle L, s \rangle \).
+    Then \( s \) is near to \( \mathcal A_L \) as required.
+\end{proof}
+\begin{lemma}
+    \label{lem:mk_nearLitter}
+    \( \#\mathcal N = \#\mu \).
+\end{lemma}
+\begin{proof}
+    \begin{align*}
+        \#\mathcal N &= \#\sum_{(L : \mathcal L)} \qty{s : \symsf{Set}\ \mathcal A \mid s\ \symsf{near}\ \mathcal A_L} \\
+        &= \sum_{(L : \mathcal L)} \#\qty{s : \symsf{Set}\ \mathcal A \mid s\ \symsf{near}\ \mathcal A_L} \\
+        (\text{\cref{lem:isNearLitter}(v)}) \quad &= \sum_{(L : \mathcal L)} \#\mu \\
+        &= \#\mathcal L \cdot \#\mu \\
+        (\text{\cref{lem:mk_litter}}) \quad &= \#\mu \cdot \#\mu \\
+        (\text{\cref{lem:infinite_no_max_model_params}}) \quad &= \#\mu
+    \end{align*}
+\end{proof}
+\begin{lemma}
+    \label{lem:mk_nearLitter''}
+    Let \( N : \mathcal N \).
+    Then \( \#N = \#\kappa \).
+\end{lemma}
+\begin{proof}
+    We argue by antisymmetry that
+    \[ \#(N \symmdiff \mathcal A_{N^\circ} \symmdiff \mathcal A_{N^\circ}) = \#\kappa \]
+    First, we show that this is at most \( \#\kappa \).
+    By monotonicity it suffices to show that
+    \[ \#((N \symmdiff \mathcal A_{N^\circ}) \cup \mathcal A_{N^\circ}) \leq \#\kappa \]
+    By \cref{lem:nearLitter_prop} and \cref{lem:litterSet}(i), this holds.
+
+    Conversely, suppose \( N \symmdiff \mathcal A_{N^\circ} \symmdiff \mathcal A_{N^\circ} \) is small.
+    Then as \( N \symmdiff \mathcal A_{N^\circ} \) is small, by \cref{lem:small}(vi) we must have that \( \mathcal A_{N^\circ} \) is small, which is a contradiction.
+\end{proof}
+\begin{lemma}
+    Let \( N_1, N_2 : \mathcal N \).
+    Then if \( N_1^\circ = N_2^\circ \), their intersection \( N_1 \cap N_2 \) is nonempty.
+\end{lemma}
+\begin{proof}
+    First, note that \( N_1 \) is near \( N_2 \), so \( N_2 \setminus N_1 \) is small.
+    Suppose the intersection is empty, then \( N_2 \setminus N_1 = N_2 \).
+    But then \( N_2 \) would be small, contradicting \cref{lem:mk_nearLitter''}.
+\end{proof}
