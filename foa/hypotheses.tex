@@ -1,0 +1,57 @@
+\subsection{Hypotheses}
+
+We assume an assignment of base positions.
+\begin{definition}
+    Let \( \alpha : \lambda \) be a type index with tangle data, typed objects, and positioned tangles.
+    We say that \( \alpha \) has \cdef{Foa/Basic/Hypotheses}{PositionedTypedObjects}{positioned typed objects} if
+    \begin{enumerate}
+        \item for all atoms \( a \), \( n\ a = n\ (\symsf{typed}^a_\alpha\ a) \);
+        \item for all near-litters \( N \), \( n\ N = n\ (\symsf{typed}^N_\alpha\ N) \);
+        \item for all tangles \( t : \tau_\alpha \), \( \alpha \)-extended indices \( A \), and atoms \( a \),
+        \[ \langle A, a \rangle \in \symsf{DS}_\alpha\ t \Rightarrow n\ a \leq n\ t \]
+        \item for all tangles \( t : \tau_\alpha \), \( \alpha \)-extended indices \( A \), and near-litters \( N \),
+        \[ \langle A, N \rangle \in \symsf{DS}_\alpha\ t \Rightarrow n\ N \leq n\ t \]
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+    Let \( \alpha : \lambda \).
+    Then \cdef{Foa/Basic/Hypotheses}{FoaData}{freedom of action data} at level \( \alpha \) is
+    \begin{enumerate}
+        \item tangle data for all \( \beta : \lambda \) with \( \beta \leq \alpha \);
+        \item positioned tangles for all \( \beta : \lambda \) with \( \beta < \alpha \);
+        \item typed objects for all \( \beta : \lambda \) with \( \beta \leq \alpha \);
+        \item positioned typed objects for all \( \beta : \alpha \) with \( \beta < \alpha \).
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+    \label{def:FoaAssumptions}
+    Let \( \alpha : \lambda \).
+    Then the \cdef{Foa/Basic/Hypotheses}{FoaAssumptions}{freedom of action assumptions} at level \( \alpha \) are
+    \begin{enumerate}
+        \item freedom of action data at level \( \alpha \);
+        \item for each \( \beta, \gamma : \lambda^\bot \) with \( \gamma < \beta \leq \alpha \), a one-step derivative homomorphism \( \symsf{All}_\beta \to \symsf{All}_\gamma \);
+        \item a proof that the above homomorphism commutes with the map \( \symsf{str} : \symsf{All} \to \symsf{Str} \);
+        \item a proof for each \( \beta \leq \alpha \) that the designated support map commutes with allowable permutations, i.e.\ for all \( t : \tau_\beta \) and \( \rho : \symsf{All}_\beta \), we have
+        \[ \rho\ (\symsf{DS}_\beta\ t) = \symsf{DS}_\beta\ (\rho\ t) \]
+        \item a proof for each \( \beta, \gamma, \delta \leq \alpha \) with \( \gamma < \beta \), \( \delta < \beta \), \( \gamma \neq \delta \), that for all \( \rho : \symsf{All}_\beta \) and \( t : \tau_\gamma \),
+        \[ (\rho_\delta)_\bot\ (f_{\gamma,\delta}\ t) = f_{\gamma,\delta}\ (\rho_\gamma\ t) \]
+        where subscripts denote applications of the derivative map defined in (ii);
+        \item a function that combines a family of allowable permutations \( \rho : \prod_{(\bot \leq \gamma < \beta)} \symsf{All}_\gamma \) into a single \( \beta \)-allowable permutation \( \rho' \), given that for each \( t : \tau_\gamma \) we have
+        \[ (\rho\ \delta)_\bot\ (f_{\gamma,\delta}\ t) = f_{\gamma,\delta}\ (\rho\ \gamma\ t) \]
+        in such a way that \( \rho'_\gamma = \rho\ \gamma \).
+    \end{enumerate}
+\end{definition}
+In this section, we let \( \alpha : \lambda \) and assume freedom of action assumptions at level \( \alpha \).
+All other type indices mentioned are assumed to be at most \( \alpha \).
+\begin{definition}
+    We can define the derivative functor on allowable permutations by recursion on paths.
+    From now, subscripts on allowable permutations will refer to this map, not the one-step derivative homomorphism in \cref{def:FoaAssumptions}(ii).
+\end{definition}
+\begin{lemma}
+    \label{lem:toStructPerm_comp}
+    Let \( A : \beta \rightsquigarrow \gamma \) and \( \rho : \symsf{All}_\beta \).
+    Then \( \symsf{str}_\gamma\ \rho_A = (\symsf{str}_\beta\ \rho)_A \).
+\end{lemma}
+\begin{proof}
+    A simple induction on paths using \cref{def:FoaAssumptions}(iii).
+\end{proof}
