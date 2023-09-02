@@ -11,6 +11,7 @@
 	BoldItalicFont=*-BoldItalic,
 	]{STIXTwoText}
 \setmathfont[Path=fonts/]{STIXTwoMath-Regular}
+\setmonofont[Path=fonts/, Scale=MatchLowercase]{FiraCode-Regular}
 
 \usepackage{enumerate}
 \usepackage{amsthm}
@@ -33,6 +34,8 @@
 \newcommand{\mdef}[3]{\href{https://leanprover-community.github.io/mathlib4\_docs/Mathlib/#1.html\##2}{\emph{#3}}}
 % mathlib lemma
 \newcommand{\mlem}[3]{\href{https://leanprover-community.github.io/mathlib4\_docs/Mathlib/#1.html\##2}{#3}}
+% core lemma
+\newcommand{\corelem}[3]{\href{https://leanprover-community.github.io/mathlib4\_docs/#1.html\##2}{#3}}
 % con(nf) definition
 \newcommand{\cdef}[3]{\href{https://leanprover-community.github.io/con-nf/doc/ConNF/#1.html\#ConNF.#2}{\emph{#3}}}
 
@@ -88,28 +91,28 @@ The definitions are included so that the representations of types we use are cle
 \subsection{Sets, groups, and supports}
 
 \begin{definition}
-    A \emph{set} of a type \( \alpha \) is a function \( \alpha \to \symsf{Prop} \).
-    The type of sets of \( \alpha \) is denoted \( \symsf{set}\ \alpha \).
+    A \mdef{Init/Set}{Set}{set} of a type \( \alpha \) is a function \( \alpha \to \symsf{Prop} \).
+    The type of sets of \( \alpha \) is denoted \( \symsf{Set}\ \alpha \).
 \end{definition}
 \begin{definition}
-    The pointwise image of a set \( s : \symsf{set}\ \alpha \) under a function \( f \colon \alpha \to \beta \) is denoted \( f '' s = \qty{y : \beta \mid \exists x \in s, y = f\ x} \).
-    The preimage of a set \( t : \symsf{set}\ \beta \) under \( f \) is denoted \( f^{-1}{}' t = \qty{x : \alpha \mid f\ x \in t} \).
+    The \mdef{Init/Set}{Set.image}{pointwise image} of a set \( s : \symsf{Set}\ \alpha \) under a function \( f \colon \alpha \to \beta \) is denoted \( f '' s = \qty{y : \beta \mid \exists x \in s, y = f\ x} \).
+    The \mdef{Data/Set/Image}{Set.preimage}{preimage} of a set \( t : \symsf{Set}\ \beta \) under \( f \) is denoted \( f^{-1}{}' t = \qty{x : \alpha \mid f\ x \in t} \).
 \end{definition}
 \begin{definition}
-    The \emph{symmetric difference} of two sets \( s, t : \symsf{set}\ \alpha \) is defined by \( s \symmdiff t = (s \setminus t) \cup (t \setminus s) \).
+    The \mdef{Order/SymmDiff}{symmDiff}{symmetric difference} of two sets \( s, t : \symsf{Set}\ \alpha \) is defined by \( s \symmdiff t = (s \setminus t) \cup (t \setminus s) \).
 \end{definition}
 \begin{definition}
-    A \emph{group action} of \( G \) on \( \alpha \) is a function \( G \to \alpha \to \alpha \) denoted by \( \cdot \) such that for all \( x, y : G \), \( a : \alpha \), we have \( (x \cdot y) \cdot a = x \cdot (y \cdot a) \).
+    A \mdef{GroupTheory/GroupAction/Defs}{MulAction}{group action} of \( G \) on \( \alpha \) is a function \( G \to \alpha \to \alpha \) denoted by \( \cdot \) such that for all \( x, y : G \), \( a : \alpha \), we have \( (x \cdot y) \cdot a = x \cdot (y \cdot a) \).
 \end{definition}
 \begin{definition}
     \label{def:supports}
     Let \( G \) be a group that acts on \( \alpha \) and \( \beta \).
     Let \( s \) be a set of \( \alpha \), and let \( b : \beta \).
-    We say that \( s \) \emph{supports} \( b \) if for all \( x \in G \), we have \( x \cdot b = b \) whenever \( x \cdot a = a \) for all \( a \in s \).
+    We say that \( s \) \mdef{GroupTheory/GroupAction/Support}{MulAction.Supports}{supports} \( b \) if for all \( x \in G \), we have \( x \cdot b = b \) whenever \( x \cdot a = a \) for all \( a \in s \).
 \end{definition}
 \begin{lemma}
     \label{lem:smul_eq_smul_of_supports}
-    Let \( s : \symsf{set}\ \alpha \) support \( b : \beta \) under actions of \( G \).
+    Let \( s : \symsf{Set}\ \alpha \) support \( b : \beta \) under actions of \( G \).
     Then for \( x, y \in G \), \( x \cdot b = y \cdot b \) whenever \( x \cdot a = y \cdot a \) for all \( a \in s \).
 \end{lemma}
 \begin{proof}
@@ -127,7 +130,7 @@ The definitions are included so that the representations of types we use are cle
     \( (e^{-1})^{-1} = e \) holds definitionally.
 \end{remark}
 \begin{definition}
-    The type of \mdef{Logic/Equiv/Defs}{Equiv.Perm}{permutations} of a type \( \alpha \) is \( \alpha \simeq \alpha \), denoted \( \symsf{perm}\ \alpha \).
+    The type of \mdef{Logic/Equiv/Defs}{Equiv.Perm}{permutations} of a type \( \alpha \) is \( \alpha \simeq \alpha \), denoted \( \symsf{Perm}\ \alpha \).
 \end{definition}
 \begin{definition}
     The type of \mdef{SetTheory/Cardinal/Basic}{Cardinal}{cardinals} is the quotient of \( \symsf{Type} \) by the equivalence relation \( \sim \), where \( \alpha \sim \beta \) if \( \alpha \simeq \beta \) is nonempty.
@@ -136,8 +139,6 @@ The definitions are included so that the representations of types we use are cle
 \begin{definition}
     Let \( r : \alpha \to \alpha \to \symsf{Prop} \) be a relation on \( \alpha \).
     We say that \( x : \alpha \) is \mdef{Init/WF}{Acc}{\( r \)-accessible} if for all \( y \) with \( r\ y\ x \), we have that \( y \) is \( r \)-accessible.
-\end{definition}
-\begin{definition}
     A relation \( r : \alpha \to \alpha \to \symsf{Prop} \) is \mdef{Init/WF}{WellFounded}{well-founded} if every element is accessible.
 \end{definition}
 \begin{remark}
@@ -148,7 +149,7 @@ The definitions are included so that the representations of types we use are cle
     Let \( C : \alpha \to \symsf{Sort}\ u \) be a motive for the recursion.
     Let \( h \) have type
     \[ \prod_{(x : \alpha)} \qty(\prod_{(y : \alpha)} r\ y\ x \to C\ y) \to C\ x \]
-    Then we can construct \( C\ x \) for each \( x : \alpha \).
+    Then \corelem{Init/WF}{WellFounded.recursion}{we can construct} \( C\ x \) for each \( x : \alpha \).
 \end{theorem}
 \begin{remark}
     More rigorously, well-founded recursion over \( r \) is a function of type
@@ -166,8 +167,20 @@ The definitions are included so that the representations of types we use are cle
 \begin{definition}
     The type of \mdef{SetTheory/Ordinal/Basic}{Ordinal}{ordinals} is the quotient of the type of well-ordered elements of \( \mathsf{Type} \) by the equivalence relation \( \sim \), where \( \alpha \sim \beta \) if the type of order isomorphisms of \( \alpha \) and \( \beta \) is nonempty.
 \end{definition}
-
 Standard properties of cardinals and ordinals are assumed.
+\begin{definition}
+    A \mdef{Data/Part}{Part}{partial value} of a type \( \alpha \) is a proposition \( p \) and a function \( p \to \alpha \).
+    That is, if \( h : p \) is a proof of \( p \), then we can acquire a value \( x : \alpha \).
+    The type of such values is denoted \( \symsf{Part}\ \alpha \).
+\end{definition}
+\begin{definition}
+    A \mdef{Data/PFun}{PFun}{partial function} from \( \alpha \) to \( \beta \) is a function from \( \alpha \) to partial values of type \( \beta \).
+    The type of such values is denoted \( \alpha \rightdasharrow \beta \).
+\end{definition}
+We use standard function notation on partial functions.
+\begin{remark}
+    By propositional extensionality, all empty partial values are equal, and all inhabited partial values with equal values are equal.
+\end{remark}
 
 \subsection{Quivers and paths}
 
@@ -177,7 +190,7 @@ Standard properties of cardinals and ordinals are assumed.
 \begin{definition}
     A \mdef{Combinatorics/Quiver/Path}{Quiver.Path}{path} in a quiver between two vertices \( x, y : \alpha \) is a finite list of vertices beginning with \( x \) and ending with \( y \), connecting each pair of adjacent vertices \( a, b \) with an element of \( \symrm{Hom}(a, b) \).
     The type of such paths is written \( x \rightsquigarrow y \).
-    The empty path is written \( \varnothing : x \rightsquigarrow y \).
+    The empty path is written \( \varnothing : x \rightsquigarrow x \).
     The \mdef{Combinatorics/Quiver/Path}{Quiver.Path.comp}{composition} of paths \( p : x \rightsquigarrow y, q : y \rightsquigarrow z \) is denoted by \( p \gg q : x \rightsquigarrow z \).
 \end{definition}
 \begin{remark}
@@ -189,7 +202,7 @@ Standard properties of cardinals and ordinals are assumed.
     The \mdef{Combinatorics/Quiver/Path}{Quiver.Path.length}{length} of a path is the number of arrows in that path, or exactly one less than the number of vertices in the list.
 \end{definition}
 
-\section{The base type}
+\section{The base type (\texttt{ConNF.BaseType})}
 
 We describe the base level of our construction, as well as all of the other objects that can be described outside the main induction.
 
@@ -205,7 +218,7 @@ We describe the base level of our construction, as well as all of the other obje
     \end{itemize}
     such that
     \begin{enumerate}
-        \item the order type of \( \lambda \) is a nonzero limit ordinal, and is the initial ordinal corresponding to the cardinal \( \#\lambda \);
+        \item the order type of \( \lambda \) is a nonzero limit ordinal;
         \item the order type of \( \mu \) is the initial ordinal corresponding to the cardinal \( \#\mu \);
         \item \( \#\mu \) is a strong limit cardinal;
         \item \( \#\lambda < \#\kappa < \#\mu \);
@@ -262,7 +275,7 @@ Every definition and theorem following this will implicitly assume a set of mode
 \end{remark}
 \begin{lemma}
     \label{lem:small}
-    Let \( f \colon \alpha \to \beta \) and \( s, t : \symsf{set}\ \alpha \).
+    Let \( f \colon \alpha \to \beta \) and \( s, t : \symsf{Set}\ \alpha \).
     Then,
     \begin{enumerate}
         \item the empty set is small;
@@ -271,10 +284,11 @@ Every definition and theorem following this will implicitly assume a set of mode
         \item if \( s, t \) are small then \( s \cup t \) is small;
         \item if \( s, t \) are small then \( s \symmdiff t \) is small;
         \item if \( s \) is small then \( s \symmdiff t \) is small if and only if \( t \) is small;
-        \item if \( \iota \) is a type with \( \#\iota < \#\kappa \) and \( g \colon \iota \to \mathsf{set}\ \alpha \) with \( g\ i \) small for each \( i \in \iota \), then \( \bigcup_{i : \iota} g\ i \) is small;
+        \item if \( \iota \) is a type with \( \#\iota < \#\kappa \) and \( g \colon \iota \to \mathsf{Set}\ \alpha \) with \( g\ i \) small for each \( i \in \iota \), then \( \bigcup_{i : \iota} g\ i \) is small;
         \item if \( s \) is small then \( f '' s \) is small;
-        \item if \( s : \symsf{set}\ \beta \) is small and \( f \) is injective then \( f^{-1}{}' s \) is small;
-        \item if \( t : \symsf{set}\ \beta \) is small, \( f \) is injective, and \( f '' s \subseteq t \), then \( s \) is small.
+        \item if \( s : \symsf{Set}\ \beta \) is small and \( f \) is injective then \( f^{-1}{}' s \) is small;
+        \item if \( t : \symsf{Set}\ \beta \) is small, \( f \) is injective, and \( f '' s \subseteq t \), then \( s \) is small;
+        \item if \( f \) is a partial function and \( s \) is small then \( f '' s \) is small.
     \end{enumerate}
 \end{lemma}
 \begin{proof}
@@ -289,6 +303,8 @@ Every definition and theorem following this will implicitly assume a set of mode
         \item The set \( f '' s \) injects into \( s \) so \( \#(f '' s) \leq \#s \).
         \item The set \( f^{-1}{}' s \) injects into \( s \) if \( f \) is injective.
         \item Follows from (iii) and (ix), as \( f^{-1}{}' (f '' s) = s \) for injective \( f \).
+        \item By (viii), the set of partial values of type \( \beta \) in the range of \( f \) is small, by treating \( f \) as a total function \( \alpha \to \symsf{Part}\ \beta \).
+        The result then holds by applying (x) to the natural injection \( \iota : \beta \to \symsf{Part}\ \beta \).
     \end{enumerate}
 \end{proof}
 \begin{definition}
@@ -296,7 +312,7 @@ Every definition and theorem following this will implicitly assume a set of mode
 \end{definition}
 \begin{lemma}
     \label{lem:near}
-    Let \( f \colon \alpha \to \beta \) and \( s, t, u : \symsf{set}\ \alpha \).
+    Let \( f \colon \alpha \to \beta \) and \( s, t, u : \symsf{Set}\ \alpha \).
     \begin{enumerate}
         \item \( s \) is near \( s \);
         \item if \( s \) is near \( t \) then \( t \) is near \( s \);
@@ -453,8 +469,8 @@ Every definition and theorem following this will implicitly assume a set of mode
 \end{lemma}
 \begin{proof}
     \begin{align*}
-        \#\mathcal N &= \#\sum_{(L : \mathcal L)} \qty{s : \symsf{set}\ \mathcal A \mid s\ \symsf{near}\ \mathcal A_L} \\
-        &= \sum_{(L : \mathcal L)} \#\qty{s : \symsf{set}\ \mathcal A \mid s\ \symsf{near}\ \mathcal A_L} \\
+        \#\mathcal N &= \#\sum_{(L : \mathcal L)} \qty{s : \symsf{Set}\ \mathcal A \mid s\ \symsf{near}\ \mathcal A_L} \\
+        &= \sum_{(L : \mathcal L)} \#\qty{s : \symsf{Set}\ \mathcal A \mid s\ \symsf{near}\ \mathcal A_L} \\
         (\text{\cref{lem:isNearLitter}(v)}) \quad &= \sum_{(L : \mathcal L)} \#\mu \\
         &= \#\mathcal L \cdot \#\mu \\
         (\text{\cref{lem:mk_litter}}) \quad &= \#\mu \cdot \#\mu \\
