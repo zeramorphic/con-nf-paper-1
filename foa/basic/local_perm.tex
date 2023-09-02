@@ -1,0 +1,120 @@
+\subsection{Local permutations}
+\begin{definition}
+    Let \( \alpha \) be a type.
+    A \crootdef{Mathlib/Logic/Equiv/LocalPerm}{LocalPerm}{local permutation} on \( \alpha \) is a domain \( s : \symsf{Set}\ \alpha \) and two functions \( f, g : \alpha \to \alpha \) that map \( s \) inside itself and are inverse to each other on \( s \).
+    Such local permutations are denoted \( \pi = \langle s, f, g \rangle \).
+    We write
+    \[ \dom \pi = s;\quad \pi\ x = f\ x \]
+    The inverse local permutation is \( \pi^{-1} = \langle s, g, f \rangle \).
+\end{definition}
+\begin{remark}
+    The maps \( f, g \) are defined on all of \( \alpha \), but only have nice properties on \( s \).
+    Outside their domain, the values of the functions are unimportant.
+\end{remark}
+\begin{lemma}
+    \label{lem:localPerm_piecewise}
+    Let \( \pi, \pi' \) be local permutations on \( \alpha \) with disjoint domains.
+    Then there is a local permutation defined on \( \dom \pi \cup \dom \pi' \), whose action on \( \dom \pi \) coincides with that of \( \pi \), and correspondingly for \( \pi' \).
+\end{lemma}
+\begin{proof}
+    Define
+    \[ s = \dom \pi \cup \dom \pi';\quad
+    f\ x = \begin{cases}
+        \pi\ x & \text{if } x \in \dom \pi \\
+        \pi'\ x & \text{otherwise}
+    \end{cases};\quad
+    g\ x = \begin{cases}
+        \pi^{-1}\ x & \text{if } x \in \dom \pi \\
+        {\pi'}^{-1}\ x & \text{otherwise}
+    \end{cases} \]
+\end{proof}
+Suppose we have a function \( f : \alpha \to \alpha \), and a set \( s \) on which \( f \) is injective.
+We will construct a pair of functions \( g \) and \( h \) that agree with \( f \) and its inverse respectively on \( s \), in such a way that forms a local permutation of \( \alpha \).
+In particular, consider the diagram
+\[\begin{tikzcd}[column sep=small]
+	\cdots & {L\ 2} & {L\ 1} & {L\ 0} & {s \setminus f''s} & \cdots & {f''s \setminus s} & {R\ 0} & {R\ 1} & {R\ 2} & \cdots
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow["f", from=1-5, to=1-6]
+	\arrow["f", from=1-6, to=1-7]
+	\arrow[from=1-7, to=1-8]
+	\arrow[from=1-8, to=1-9]
+	\arrow[from=1-9, to=1-10]
+	\arrow[from=1-10, to=1-11]
+\end{tikzcd}\]
+To fill in the orbits of \( f \), we construct a sequence of disjoint subsets of \( \alpha \) called \( L : \mathbb N \to \symsf{Set}\ \alpha \) and \( R : \mathbb N \to \symsf{Set}\ \alpha \), where for each \( i : \mathbb N \),
+\[ \#(L\ i) = \#(s \setminus f '' s);\quad \#(R\ i) = \#(f '' s \setminus s) \]
+There are natural bijections along this diagram, mapping \( L\ (n + 1) \) to \( L\ n \) and \( R\ n \) to \( R\ (n + 1) \).
+There are also bijections \( f '' s \setminus s \to R\ 0 \) and \( L\ 0 \to s \setminus f '' s \).
+This yields a local permutation defined on
+\[ s \cup f '' s \cup \left( \bigcup_{i : \mathbb N} L\ i \right) \cup \left( \bigcup_{i : \mathbb N} R\ i \right) \]
+We now prove this claim using a number of intermediate lemmas.
+In this subsection, suppose that
+\begin{enumerate}
+    \item \( \alpha \) is a type;
+    \item \( f : \alpha \to \alpha \) is a function;
+    \item \( s, t : \symsf{Set}\ \alpha \);
+    \item \( \#(s \symmdiff (f '' s)) \leq \#t \) and \( \aleph_0 \leq \#t \);
+    \item the sets \( s \cup f '' s \) and \( t \) are disjoint;
+    \item \( f \) is injective on \( s \).
+\end{enumerate}
+We will contain all of the orbits of \( f \) in \( s \cup f '' s \cup t \).
+\begin{lemma}
+    There exists a subset of \( t \) with an equivalence \( e \) to the type
+    \[ (\mathbb N \times (s \setminus f '' s)) \oplus (\mathbb N \times (f '' s \setminus s)) \]
+    We denote this type \( \sigma \).
+\end{lemma}
+\begin{proof}
+    By assumption (iv),
+    \[ \#(s \setminus f '' s) + \#(f '' s \setminus s) \leq \#t \]
+    As \( \aleph_0 \leq \#t \),
+    \[ \#\mathbb N \cdot (\#(s \setminus f '' s) + \#(f '' s \setminus s)) \leq \#t\]
+    giving the result.
+\end{proof}
+For the purposes of this proof, we call this subset the \emph{sandbox} \( u \), so \( e : u \simeq \sigma \).
+Then the set described above as \( L\ i \) is the image of the map \( x \mapsto \symsf{inl}\ \langle i, x \rangle \) under the equivalence (where \( \symsf{inl} \) denotes the left injection into a sum type), and \( R\ i \) similarly with the right injection \( \symsf{inr} \).
+\begin{definition}
+    Define the \emph{shift right} function \( r : \sigma \to \alpha \) by
+    \begin{align*}
+        r\ (\symsf{inl}\ \langle 0, x \rangle) &= x \\
+        r\ (\symsf{inl}\ \langle n + 1, x \rangle) &= e^{-1}\ (\symsf{inl}\ \langle n, x \rangle) \\
+        r\ (\symsf{inr}\ \langle n, x \rangle) &= e^{-1}\ (\symsf{inr}\ \langle n + 1, x \rangle)
+    \end{align*}
+    Similarly define the \emph{shift left} function \( l : \sigma \to \alpha \) by
+    \begin{align*}
+        l\ (\symsf{inl}\ \langle n, x \rangle) &= e^{-1}\ (\symsf{inl}\ \langle n + 1, x \rangle) \\
+        l\ (\symsf{inr}\ \langle 0, x \rangle) &= x \\
+        l\ (\symsf{inr}\ \langle n + 1, x \rangle) &= e^{-1}\ (\symsf{inr}\ \langle n, x \rangle)
+    \end{align*}
+\end{definition}
+\begin{definition}
+    Define \( g : \alpha \to \alpha \) by
+    \[ g\ x = \begin{cases}
+        r\ (e\ x) & \text{if } x \in u \\
+        e^{-1}\ (\symsf{inr}\ \langle 0, x \rangle) & \text{if } x \in f '' s \setminus s \\
+        f\ x & \text{otherwise}
+    \end{cases} \]
+    Define \( h : \alpha \to \alpha \) by
+    \[ h\ x = \begin{cases}
+        l\ (e\ x) & \text{if } x \in u \\
+        e^{-1}\ (\symsf{inl}\ \langle 0, x \rangle) & \text{if } x \in s \setminus f '' s \\
+        f'\ x & \text{otherwise}
+    \end{cases} \]
+    where \( f' : \alpha \to \alpha \) is an inverse to \( f \) on \( s \), which exists by injectivity.
+\end{definition}
+The following two lemmas follow almost immediately from the definitions, although require a lot of case-checking.
+\begin{lemma}
+    If \( x \in s \cup f '' s \cup u \), \( g\ x \) and \( h\ x \) also lie in \( s \cup f '' s \cup u \).
+\end{lemma}
+\begin{lemma}
+    \( g \) and \( h \) are inverses to each other on \( s \cup f '' s \cup u \).
+\end{lemma}
+We can now prove the result.
+\begin{lemma}
+    Assuming assumptions (i)--(vi), there exists a local permutation \( \pi \) defined on a subset of \( t \) whose action agrees with \( f \) on \( s \).
+\end{lemma}
+\begin{proof}
+    The local permutation in question is \( \langle s \cup f '' s \cup u, g, h \rangle \).
+\end{proof}

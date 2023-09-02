@@ -1,5 +1,6 @@
-\documentclass{article}
+\documentclass{report}
 
+\usepackage[a4paper]{geometry}
 \usepackage{parskip}
 \usepackage{fontspec}
 \usepackage{unicode-math}
@@ -20,6 +21,7 @@
 \usepackage{hyperref}
 \usepackage{cleveref}
 \usepackage{relsize}
+\usepackage{quiver}
 
 \usepackage[shortlabels]{enumitem}
 \setlist[enumerate,1]{label={(\roman*)}}
@@ -34,18 +36,21 @@
 \newcommand{\mdef}[3]{\href{https://leanprover-community.github.io/mathlib4\_docs/Mathlib/#1.html\##2}{\emph{#3}}}
 % mathlib lemma
 \newcommand{\mlem}[3]{\href{https://leanprover-community.github.io/mathlib4\_docs/Mathlib/#1.html\##2}{#3}}
-% core lemma
-\newcommand{\corelem}[3]{\href{https://leanprover-community.github.io/mathlib4\_docs/#1.html\##2}{#3}}
+% mathlib root lemma
+\newcommand{\mrootlem}[3]{\href{https://leanprover-community.github.io/mathlib4\_docs/#1.html\##2}{#3}}
 % con(nf) definition
 \newcommand{\cdef}[3]{\href{https://leanprover-community.github.io/con-nf/doc/ConNF/#1.html\#ConNF.#2}{\emph{#3}}}
 % con(nf) lemma
 \newcommand{\clem}[3]{\href{https://leanprover-community.github.io/con-nf/doc/ConNF/#1.html\#ConNF.#2}{#3}}
+% con(nf) root definition
+\newcommand{\crootdef}[3]{\href{https://leanprover-community.github.io/con-nf/doc/ConNF/#1.html\#2}{\emph{#3}}}
 
 \newcommand{\symmdiff}{\mathrel{\raisebox{1pt}{\( \mathsmaller\triangle \)}}}
+\newcommand{\dom}{\operatorname{dom}}
 
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
-\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}{Corollary}[theorem]
 

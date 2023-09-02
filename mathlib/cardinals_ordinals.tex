@@ -1,4 +1,4 @@
-\subsection{Cardinals and ordinals}
+\section{Cardinals and ordinals}
 
 \begin{definition}
     An \mdef{Logic/Equiv/Defs}{Equiv}{equivalence} between two types \( \alpha \) and \( \beta \), denoted \( e : \alpha \simeq \beta \), is a pair of functions \( f \colon \alpha \to \beta, g \colon \beta \to \alpha \) that are inverses of each other.
@@ -28,7 +28,7 @@
     Let \( C : \alpha \to \symsf{Sort}\ u \) be a motive for the recursion.
     Let \( h \) have type
     \[ \prod_{(x : \alpha)} \qty(\prod_{(y : \alpha)} r\ y\ x \to C\ y) \to C\ x \]
-    Then \corelem{Init/WF}{WellFounded.recursion}{we can construct} \( C\ x \) for each \( x : \alpha \).
+    Then \mrootlem{Init/WF}{WellFounded.recursion}{we can construct} \( C\ x \) for each \( x : \alpha \).
 \end{theorem}
 \begin{remark}
     More rigorously, well-founded recursion over \( r \) is a function of type
