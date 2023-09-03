@@ -369,9 +369,15 @@ INPUT foa/basic.tex
 INPUT ./foa/basic/local_perm.tex
 INPUT ./foa/basic/local_perm.tex
 INPUT foa/basic/local_perm.tex
+INPUT ./foa/basic/sublitter.tex
+INPUT ./foa/basic/sublitter.tex
+INPUT foa/basic/sublitter.tex
 INPUT ./foa/basic/hypotheses.tex
 INPUT ./foa/basic/hypotheses.tex
 INPUT foa/basic/hypotheses.tex
+INPUT ./foa/basic/constrains.tex
+INPUT ./foa/basic/constrains.tex
+INPUT foa/basic/constrains.tex
 INPUT build/main.aux
 INPUT build/main.out
 INPUT build/main.out

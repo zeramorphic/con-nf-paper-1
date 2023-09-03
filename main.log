@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.9.1)  2 SEP 2023 23:46
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.9.1)  3 SEP 2023 00:44
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1028,9 +1028,8 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 \enitdp@description=\count327
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 33.
-\c@definition=\count328
-\c@theorem=\count329
-\c@corollary=\count330
+\c@theorem=\count328
+\c@corollary=\count329
 
 (build/main.aux)
 \openout1 = `main.aux'.
@@ -1187,7 +1186,15 @@ Chapter 6.
 (./foa/basic.tex (./foa/basic/local_perm.tex [19
 
 ] [20])
-(./foa/basic/hypotheses.tex [21]))) [22] (build/main.aux)
+(./foa/basic/sublitter.tex) (./foa/basic/hypotheses.tex [21])
+(./foa/basic/constrains.tex [22]
+Overfull \hbox (0.37321pt too wide) in paragraph at lines 15--17
+[]\TU/STIXTwoText(0)/b/n/10 Definition 6.17. []\TU/STIXTwoText(0)/m/n/10 We def
+ine a position function that assigns an $[]$-condition position to each $[]$-su
+pport
+ []
+
+[23]))) [24] (build/main.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
@@ -1197,15 +1204,15 @@ L3 programming layer <2023-08-29>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: DC0044824B9C09786D1846EE142A4B66;3764.
+(rerunfilecheck)             Checksum: FEEDFC07951A0F51437B4183DF1929BB;3993.
  ) 
 Here is how much of TeX's memory you used:
- 30901 strings out of 475591
- 629382 string characters out of 5775606
+ 30925 strings out of 475591
+ 629999 string characters out of 5775606
  1934438 words of memory out of 5000000
- 51669 multiletter control sequences out of 15000+600000
+ 51687 multiletter control sequences out of 15000+600000
  564458 words of font info for 121 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  131i,15n,135p,518b,963s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on build/main.xdv (23 pages, 393712 bytes).
+Output written on build/main.xdv (25 pages, 432264 bytes).
