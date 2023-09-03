@@ -393,6 +393,15 @@ INPUT foa/approximation/near_litter_approx.tex
 INPUT ./foa/approximation/struct_approx.tex
 INPUT ./foa/approximation/struct_approx.tex
 INPUT foa/approximation/struct_approx.tex
+INPUT ./foa/action.tex
+INPUT ./foa/action.tex
+INPUT foa/action.tex
+INPUT ./foa/action/near_litter_action.tex
+INPUT ./foa/action/near_litter_action.tex
+INPUT foa/action/near_litter_action.tex
+INPUT ./foa/action/struct_action.tex
+INPUT ./foa/action/struct_action.tex
+INPUT foa/action/struct_action.tex
 INPUT build/main.aux
 INPUT build/main.out
 INPUT build/main.out
