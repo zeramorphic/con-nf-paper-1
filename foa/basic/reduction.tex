@@ -1,0 +1,65 @@
+\subsection{Reductions of supports}
+\begin{definition}
+    A support condition is \emph{reduced} if its second component is an atom or a litter.
+\end{definition}
+\begin{definition}
+    Let \( S \) be a set of \( \beta \)-support conditions.
+    The \cdef{Foa/Basic/Reduction}{reflTransClosure}{reflexive transitive closure} of \( S \) is
+    \[ \{c \mid \exists d \in S,\, c \leq d\} \]
+    The \cdef{Foa/Basic/Reduction}{transClosure}{transitive closure} of \( S \) is
+    \[ \{c \mid \exists d \in S,\, c < d\} \]
+\end{definition}
+\begin{definition}
+    Let \( S \) be a set of support conditions.
+    The \cdef{Foa/Basic/Reduction}{reduction}{reduction} of \( S \) is the reflexive transitive closure of \( S \), but we only keep reduced conditions.
+    That is,
+    \[ \{c \mid (\exists d \in S,\, c \leq d) \wedge c \text{ reduced}\} \]
+\end{definition}
+We now prove that the reduction of a small set is small.
+\begin{definition}
+    Define the \( n \)th closure recursively by
+    \begin{align*}
+        \symsf{nthClosure}\ S\ 0 &= S \\
+        \symsf{nthClosure}\ S\ (n + 1) &= \{ c \mid \exists d \in \symsf{nthClosure}\ S\ n,\, c \prec d \}
+    \end{align*}
+\end{definition}
+\begin{lemma}
+    \label{lem:nthClosure_small}
+    Let \( S \) be small.
+    Then \( \symsf{nthClosure}\ S\ n \) is small.
+\end{lemma}
+\begin{proof}
+    Induction on \( n \) using \cref{lem:small}(vii) and \cref{lem:small_constrains}.
+\end{proof}
+\begin{lemma}
+    \label{lem:reflTransClosure_eq_iUnion_nthClosure}
+    The reflexive transitive closure of \( S \) is the union of the \( n \)th closures.
+\end{lemma}
+\begin{proof}
+    Use the fact that any element \( c \) of the reflexive transitive closure of \( S \) \mlem{Data/List/Chain}{List.exists_chain_of_relationReflTransGen}{gives rise to} a finite list of elements starting with \( c \) and ending with an element of \( S \), and if \( c_1 \) and \( c_2 \) are neighbours in the list, then \( c_1 \prec c_2 \).
+\end{proof}
+\begin{lemma}
+    Let \( S \) be small.
+    Then the reflexive transitive closure of \( S \) is small.
+    Hence the transitive closure and the reduction of \( S \) are small as they are subsets.
+\end{lemma}
+\begin{proof}
+    Use \cref{lem:reflTransClosure_eq_iUnion_nthClosure,lem:nthClosure_small}.
+\end{proof}
+\begin{lemma}
+    \label{lem:reduction_supports}
+    Let \( c \in S \).
+    Then the reduction of \( S \) supports \( c \) under the action of structural permutations.
+\end{lemma}
+\begin{proof}
+    Let \( \pi \) be a \( \beta \)-structural permutation, and suppose \( \pi \) fixes every element of the reduction of \( S \).
+    If \( c = \langle A, a \rangle \) where \( a \) is an atom, \( c \) is reduced so is in the reduction of \( S \).
+    If \( c = \langle A, \symsf{NL}\ L \rangle \) where \( L \) is a litter, \( c \) is again reduced.
+    So consider the case where \( c = \langle A, N \rangle \) and \( \mathcal A_{N^\circ} \neq N \).
+    Applying \cref{lem:smul_nearLitter_eq_smul_symmDiff_smul}, we must show that
+    \[ (\pi_A\ (\mathsf{NL}\ N^\circ)) \symmdiff ({\pi_A} '' (\mathcal A_{N^\circ} \symmdiff N)) = \mathcal A_{N^\circ} \symmdiff (\mathcal A_{N^\circ} \symmdiff N) \]
+    As \( \langle A, \mathsf{NL}\ N^\circ \rangle \) is reduced and \( \langle A, a \rangle \) is reduced for each atom in \( \mathcal A_{N^\circ} \symmdiff N \), the result holds.
+\end{proof}
+\begin{definition}
+    The \cdef{Foa/Basic/Reduction}{reducedSupport}{reduced support} for a tangle \( t : \tau_\beta \) is the reduction of its designated support, which supports it under the action of allowable permutations by \cref{lem:reduction_supports}.
+\end{definition}
