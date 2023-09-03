@@ -6,12 +6,12 @@ We assume an assignment of base positions.
     Let \( \alpha : \lambda \) be a type index with tangle data, typed objects, and positioned tangles.
     We say that \( \alpha \) has \cdef{Foa/Basic/Hypotheses}{PositionedTypedObjects}{positioned typed objects} if
     \begin{enumerate}
-        \item for all atoms \( a \), \( n\ a = n\ (\symsf{typed}^a_\alpha\ a) \);
-        \item for all near-litters \( N \), \( n\ N = n\ (\symsf{typed}^N_\alpha\ N) \);
+        \item for all atoms \( a \), \( \iota\ a = \iota\ (\symsf{typed}^a_\alpha\ a) \);
+        \item for all near-litters \( N \), \( \iota\ N = \iota\ (\symsf{typed}^N_\alpha\ N) \);
         \item for all tangles \( t : \tau_\alpha \), \( \alpha \)-extended indices \( A \), and atoms \( a \),
-        \[ \langle A, a \rangle \in \symsf{DS}_\alpha\ t \Rightarrow n\ a \leq n\ t \]
+        \[ \langle A, a \rangle \in \symsf{DS}_\alpha\ t \Rightarrow \iota\ a \leq \iota\ t \]
         \item for all tangles \( t : \tau_\alpha \), \( \alpha \)-extended indices \( A \), and near-litters \( N \),
-        \[ \langle A, N \rangle \in \symsf{DS}_\alpha\ t \Rightarrow n\ N \leq n\ t \]
+        \[ \langle A, N \rangle \in \symsf{DS}_\alpha\ t \Rightarrow \iota\ N \leq \iota\ t \]
     \end{enumerate}
 \end{definition}
 \begin{definition}

@@ -27,8 +27,8 @@ Let \( \gamma \) have typed objects.
     \label{def:fuzz_deny}
     Construct the function \( d : \tau_\beta \to \symsf{Set}\ \mu \) by
     \begin{align*}
-        \nu \in d\ t &\Leftrightarrow (\exists N : \mathcal N,\, N^\circ = \langle \nu, \beta, \gamma \rangle \wedge n\ (\symsf{typed}^N_\gamma\ N) \leq n\ t) \\
-        &\quad\vee (\beta = \bot \wedge n\ (\symsf{typed}^N_\gamma\ (\symsf{NL}\ \langle \nu, \bot, \gamma \rangle)) \leq n\ t)
+        \nu \in d\ t &\Leftrightarrow (\exists N : \mathcal N,\, N^\circ = \langle \nu, \beta, \gamma \rangle \wedge \iota\ (\symsf{typed}^N_\gamma\ N) \leq \iota\ t) \\
+        &\quad\vee (\beta = \bot \wedge \iota\ (\symsf{typed}^N_\gamma\ (\symsf{NL}\ \langle \nu, \bot, \gamma \rangle)) \leq \iota\ t)
     \end{align*}
 \end{definition}
 \begin{lemma}
@@ -37,15 +37,15 @@ Let \( \gamma \) have typed objects.
     Then
     \begin{enumerate}
         \item \( \#\{ t' : \tau_\beta \mid t' < t \} < \#\mu \);
-        \item \( \#\{ t' : \tau_\gamma \mid n\ t' \leq n\ t \} < \#\mu \).
+        \item \( \#\{ t' : \tau_\gamma \mid \iota\ t' \leq \iota\ t \} < \#\mu \).
     \end{enumerate}
 \end{lemma}
 \begin{proof}
     Both proofs follow the same strategy.
     First, we use \cref{lem:card_Iio_lt} to reduce to showing that
-    \[ \#\{ t' : \tau_\beta \mid t' < t \} \leq \#\{ \nu : \mu \mid \nu < n\ t \} \]
+    \[ \#\{ t' : \tau_\beta \mid t' < t \} \leq \#\{ \nu : \mu \mid \nu < \iota\ t \} \]
     and
-    \[ \#\{ t' : \tau_\gamma \mid n\ t' < n\ t \} \leq \#\{ \nu : \mu \mid \nu \leq n\ t \} \]
+    \[ \#\{ t' : \tau_\gamma \mid \iota\ t' < \iota\ t \} \leq \#\{ \nu : \mu \mid \nu \leq \iota\ t \} \]
     These inequalities of cardinals can be easily shown by proving that the injection \( n \) has the correct codomain in each case.
 \end{proof}
 \begin{lemma}
@@ -58,16 +58,16 @@ Let \( \gamma \) have typed objects.
     We show that there are less than \( \mu \) positions that satisfy each of the two conditions in \cref{def:fuzz_deny}.
 
     For the first condition, we must show that
-    \[ \#\{ \nu : \mu \mid \exists N : \mathcal N,\, N^\circ = \langle \nu, \beta, \gamma \rangle \wedge n\ (\symsf{typed}^N_\gamma\ N) \leq n\ t \} < \#\mu \]
+    \[ \#\{ \nu : \mu \mid \exists N : \mathcal N,\, N^\circ = \langle \nu, \beta, \gamma \rangle \wedge \iota\ (\symsf{typed}^N_\gamma\ N) \leq \iota\ t \} < \#\mu \]
     By \cref{lem:mk_invImage_lt_le}(ii) it suffices to produce an injection
-    \[ \{ \nu : \mu \mid \exists N : \mathcal N,\, N^\circ = \langle \nu, \beta, \gamma \rangle \wedge n\ (\symsf{typed}^N_\gamma\ N) \leq n\ t \} \to \{ t' : \tau_\gamma \mid n\ t' \leq n\ t \} \]
-    This injection is given by mapping \( \nu \) to \( \symsf{typed}^N_\gamma\ N \) where \( N \) is chosen such that \( N^\circ = \langle \nu, \beta, \gamma \rangle \) and \( n\ (\symsf{typed}^N_\gamma\ N) \leq n\ t \).
+    \[ \{ \nu : \mu \mid \exists N : \mathcal N,\, N^\circ = \langle \nu, \beta, \gamma \rangle \wedge \iota\ (\symsf{typed}^N_\gamma\ N) \leq \iota\ t \} \to \{ t' : \tau_\gamma \mid \iota\ t' \leq \iota\ t \} \]
+    This injection is given by mapping \( \nu \) to \( \symsf{typed}^N_\gamma\ N \) where \( N \) is chosen such that \( N^\circ = \langle \nu, \beta, \gamma \rangle \) and \( \iota\ (\symsf{typed}^N_\gamma\ N) \leq \iota\ t \).
     It can be seen that this is an injection as the typed near-litter map is injective.
 
     Now suppose \( \beta = \bot \).
     For the second condition, it suffices by \cref{lem:card_Iio_lt} to produce an injection
-    \[ \{ \nu : \mu \mid n\ (\symsf{typed}^N_\gamma\ (\symsf{NL}\ \langle \nu, \bot, \gamma \rangle)) \leq n\ t \} \to \{ \nu : \mu \mid \nu \leq n\ t \} \]
-    In this case, we map \( \nu \) to \( n\ (\symsf{typed}^N_\gamma\ (\symsf{NL}\ \langle \nu, \bot, \gamma \rangle)) \).
+    \[ \{ \nu : \mu \mid \iota\ (\symsf{typed}^N_\gamma\ (\symsf{NL}\ \langle \nu, \bot, \gamma \rangle)) \leq \iota\ t \} \to \{ \nu : \mu \mid \nu \leq \iota\ t \} \]
+    In this case, we map \( \nu \) to \( \iota\ (\symsf{typed}^N_\gamma\ (\symsf{NL}\ \langle \nu, \bot, \gamma \rangle)) \).
     This is also injective, as required.
 \end{proof}
 \begin{definition}
@@ -92,7 +92,7 @@ Let \( \gamma \) have typed objects.
 \begin{lemma}
     \label{lem:fuzz_pos}
     Let \( N \) be a near-litter with \( N^\circ = f_{\beta,\gamma}\ t \).
-    Then \( n\ t < n\ (\symsf{typed}^N_\gamma N) \).
+    Then \( \iota\ t < \iota\ (\symsf{typed}^N_\gamma N) \).
 \end{lemma}
 \begin{proof}
     Follows from \cref{lem:chooseWf} and \cref{def:fuzz_deny}.
@@ -100,7 +100,7 @@ Let \( \gamma \) have typed objects.
 \begin{lemma}
     \label{lem:pos_atom_lt_fuzz}
     Let \( a \) be an atom.
-    Then \( n\ a < n\ (\symsf{typed}^N_\gamma (\symsf{NL}\ (f_{\bot,\gamma}\ a))) \).
+    Then \( \iota\ a < \iota\ (\symsf{typed}^N_\gamma (\symsf{NL}\ (f_{\bot,\gamma}\ a))) \).
 \end{lemma}
 \begin{proof}
     Follows from \cref{lem:chooseWf} and \cref{def:fuzz_deny}.
