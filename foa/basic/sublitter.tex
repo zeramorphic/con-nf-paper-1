@@ -1,0 +1,21 @@
+\subsection{Sublitters}
+\begin{definition}
+    A \emph{sublitter} is a litter \( L \) and a set of atoms \( s \) such that \( s \subseteq \mathcal A_L \), and \( \mathcal A_L \setminus s \) is small.
+\end{definition}
+A sublitter has a natural coercion into a set of atoms, and into a near-litter.
+\begin{lemma}
+    \label{lem:mk_sublitter}
+    The cardinality of any sublitter is \( \#\kappa \).
+\end{lemma}
+\begin{proof}
+    Follows directly from \cref{lem:mk_nearLitter''}.
+\end{proof}
+\begin{lemma}
+    \label{lem:Sublitter.equiv}
+    Let \( S, T \) be sublitters.
+    Then there is an equivalence \( S \simeq T \).
+    For each such pair we make a choice of equivalence denoted \( \pi_{S, T} : S \simeq T \).
+\end{lemma}
+\begin{proof}
+    Both have cardinality \( \#\kappa \) by \cref{lem:mk_sublitter}.
+\end{proof}

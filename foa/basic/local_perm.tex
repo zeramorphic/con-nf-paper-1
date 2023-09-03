@@ -1,4 +1,5 @@
 \subsection{Local permutations}
+
 \begin{definition}
     Let \( \alpha \) be a type.
     A \crootdef{Mathlib/Logic/Equiv/LocalPerm}{LocalPerm}{local permutation} on \( \alpha \) is a domain \( s : \symsf{Set}\ \alpha \) and two functions \( f, g : \alpha \to \alpha \) that map \( s \) inside itself and are inverse to each other on \( s \).
@@ -104,17 +105,11 @@ Then the set described above as \( L\ i \) is the image of the map \( x \mapsto 
     \end{cases} \]
     where \( f' : \alpha \to \alpha \) is an inverse to \( f \) on \( s \), which exists by injectivity.
 \end{definition}
-The following two lemmas follow almost immediately from the definitions, although require a lot of case-checking.
-\begin{lemma}
-    If \( x \in s \cup f '' s \cup u \), \( g\ x \) and \( h\ x \) also lie in \( s \cup f '' s \cup u \).
-\end{lemma}
-\begin{lemma}
-    \( g \) and \( h \) are inverses to each other on \( s \cup f '' s \cup u \).
-\end{lemma}
 We can now prove the result.
 \begin{lemma}
     Assuming assumptions (i)--(vi), there exists a local permutation \( \pi \) defined on a subset of \( t \) whose action agrees with \( f \) on \( s \).
 \end{lemma}
 \begin{proof}
     The local permutation in question is \( \langle s \cup f '' s \cup u, g, h \rangle \).
+    The required properties of a local permutation follow almost immediately from the definitions, although require a lot of case-checking.
 \end{proof}

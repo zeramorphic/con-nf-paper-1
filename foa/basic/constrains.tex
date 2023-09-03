@@ -1,0 +1,92 @@
+\subsection{Constraints}
+
+Support conditions can be said to constrain each other in a number of ways.
+The `constrains' relation is well-founded.
+
+\begin{definition}
+    Define a well-order on \( \mathcal A \oplus \mathcal L \) by the pullback of the two base position functions, which were stipulated to be injective and disjoint in \cref{def:BasePositions}.
+\end{definition}
+\begin{definition}
+    The type of \cdef{Foa/Basic/Constrains}{ConditionPosition}{\( \alpha \)-condition positions} is
+    \[ (\mathcal A \oplus \mathcal N) \times (\alpha \rightsquigarrow \bot) \]
+    It is well-ordered by the lexicographic order, where the type \( \alpha \rightsquigarrow \bot \) is well-ordered arbitrarily.
+\end{definition}
+\begin{definition}
+    We define a position function that assigns an \( \alpha \)-condition position to each \( \alpha \)-support condition, by \( \langle A, x \rangle \mapsto \langle x, A \rangle \).
+    In this case, we do \emph{not} use the notation \( < \) to denote the pullback well-order on \( \alpha \)-support conditions.
+\end{definition}
+\begin{definition}
+    \label{def:Constrains}
+    We inductively define the \cdef{Foa/Basic/Constrains}{Constrains}{constrains} relation on \( \beta \)-support conditions, denoted \( \prec \), by the following constructors.
+    \begin{enumerate}
+        \item Let \( A : \beta \rightsquigarrow \bot \) and \( a : \mathcal A \).
+        Then
+        \[ \langle A, \pi_1\ a \rangle \prec \langle A, a \rangle \]
+        \item Let \( A : \beta \rightsquigarrow \bot \) and \( N : \mathcal N \) with \( \mathcal A_{N^\circ} \neq N \).
+        Then
+        \[ \langle A, \symsf{NL}\ N^\circ \rangle \prec \langle A, N \rangle \]
+        \item Let \( A : \beta \rightsquigarrow \bot \), \( a : \mathcal A \), and \( N : \mathcal N \), such that \( a \in \mathcal A_{N^\circ} \symmdiff N \).
+        Then
+        \[ \langle A, a \rangle \prec \langle A, N \rangle \]
+        \item Let \( \gamma, \delta, \varepsilon : \lambda \) with \( \delta, \varepsilon < \gamma \) and \( \delta \neq \varepsilon \).
+        Let \( A : \beta \rightsquigarrow \gamma \), \( t : \tau_\delta \), and \( c \in \symsf{DS}_\delta\ t \).
+        Then
+        \[ \langle A \gg (\gamma \to \delta) \gg \pi_1\ c, \pi_2\ c \rangle \prec \langle A \gg (\gamma \to \varepsilon) \gg (\varepsilon \to \bot), f_{\delta, \varepsilon}\ t \rangle \]
+        \item Let \( \gamma, \varepsilon : \lambda \) with \( \varepsilon < \gamma \).
+        Let \( A : \beta \rightsquigarrow \gamma \) and \( a : \mathcal A \).
+        Then
+        \[ \langle A \gg (\gamma \to \bot), a \rangle \prec \langle A \gg (\gamma \to \varepsilon) \gg (\varepsilon \to \bot), f_{\bot, \varepsilon}\ a \rangle \]
+    \end{enumerate}
+\end{definition}
+\begin{lemma}
+    Let \( c, d \) be \( \beta \)-support conditions.
+    Then \( c \prec d \Rightarrow n\ c < n\ d \).
+\end{lemma}
+\begin{proof}
+    It suffices to show that \( n\ (\pi_1\ c) < n\ (\pi_1\ d) \).
+    By analysing each case, this holds by \cref{def:BasePositions,def:PositionedTypedObjects,lem:fuzz_pos,lem:pos_atom_lt_fuzz}.
+\end{proof}
+\begin{lemma}
+    The relation \( \prec \) is well-founded.
+\end{lemma}
+\begin{proof}
+    It is a subrelation of the inverse image of a well-founded relation (\( < \) on \( \mu \)).
+\end{proof}
+\begin{lemma}
+    Let \( A : \beta \rightsquigarrow \gamma \) and \( c \prec d \) be \( \gamma \)-support conditions.
+    Then \( \langle A \gg \pi_1\ c, \pi_2\ c \rangle \prec \langle A \gg \pi_1\ d, \pi_2\ d \rangle \).
+\end{lemma}
+\begin{proof}
+    Follows from simple case analysis.
+\end{proof}
+\begin{definition}
+    We define the relation \( < \) on \( \beta \)-support conditions by the reflexive closure of \( \prec \).
+    We define \( \leq \) by the transitive closure of \( < \).
+\end{definition}
+\begin{remark}
+    This relation \( < \) is a subrelation of the pullback of \( < \) under the position function.
+\end{remark}
+\begin{lemma}
+    The relation \( < \) on \( \beta \)-support conditions is well-founded.
+\end{lemma}
+\begin{proof}
+    The transitive closure of a well-founded relation is well-founded.
+\end{proof}
+\begin{lemma}
+    \label{lem:small_constrains}
+    Let \( c \) be a \( \beta \)-support condition.
+    Then the set \( \{d \mid d \prec c\} \) is small.
+\end{lemma}
+\begin{proof}
+    First suppose \( c = \langle A, a \rangle \) for an atom \( a \).
+    Then \( \{d \mid d \prec c\} = \{\langle A, \pi_1\ a \rangle\} \), which is a singleton and thus small by \cref{lem:small}(ii).
+
+    Now suppose \( c = \langle A, N \rangle \) for a near-litter \( N \).
+    By \cref{lem:small}(iv), it suffices to show that the amount of predecessors under each constructor is small, then their union will be small.
+
+    Constructor (i) cannot occur.
+    Constructor (ii) yields a singleton, which is small.
+    As \( \mathcal A_{N^\circ} \symmdiff N \) is small, the set of predecessors under constructor (iii) is small.
+    As designated supports are small, (iv) yields a small set.
+    Finally, constructor (v) yields a singleton.
+\end{proof}
