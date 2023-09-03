@@ -381,6 +381,9 @@ INPUT foa/basic/constrains.tex
 INPUT ./foa/basic/reduction.tex
 INPUT ./foa/basic/reduction.tex
 INPUT foa/basic/reduction.tex
+INPUT ./foa/basic/flexible.tex
+INPUT ./foa/basic/flexible.tex
+INPUT foa/basic/flexible.tex
 INPUT build/main.aux
 INPUT build/main.out
 INPUT build/main.out
