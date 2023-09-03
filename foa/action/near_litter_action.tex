@@ -1,0 +1,76 @@
+\subsection{Near-litter actions}
+
+\begin{definition}
+    A \cdef{Foa/Action/NearLitterAction}{NearLitterAction}{near-litter action} is a pair \( \psi = \langle \psi^A, \psi^L \rangle \) where \( \psi^A : \mathcal A \rightdasharrow \mathcal A \) and \( \psi^L : \mathcal L \rightdasharrow \mathcal N \), such that \( \dom \psi^A \) and \( \dom \psi^L \) are small.
+\end{definition}
+We let near-litter actions act on all atoms and litters, where the action on a litter yields a near-litter.
+If the atom or litter does not lie in the domain, its value is irrelevant.
+\begin{definition}
+    A near-litter action is \cdef{Foa/Action/NearLitterAction}{NearLitterAction.Lawful}{lawful} if
+    \begin{enumerate}
+        \item \( \psi^A \) is injective;
+        \item \( \psi^L \) is injective in the sense that if \( \psi\ L_1 \cap \psi\ L_2 \neq \varnothing \) then \( L_1 = L_2 \);
+        \item for \( a \in \dom \psi^A \) and \( L \in \dom \psi^L \), \( a^\circ = L \Leftrightarrow \psi\ a \in \psi\ L \).
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+    Let \( \psi \) be a near-litter action.
+    A litter \( L \) is \cdef{Foa/Action/NearLitterAction}{NearLitterAction.BannedLitter}{\( \psi \)-banned} if one of the following holds.
+    \begin{enumerate}
+        \item \( L = a^\circ \) for some \( a \in \dom \psi^A \);
+        \item \( L \in \dom \psi^L \);
+        \item \( L = (\psi\ a)^\circ \) for some \( a \in \dom \psi^A \);
+        \item \( L = (\psi\ L')^\circ \) for some \( L' \in \dom \psi^L \);
+        \item \( L = a^\circ \) for some \( a : \mathcal A \) with a litter \( L' \in \dom \psi^L \) such that \( a \in \psi\ L' \setminus \mathcal A_{(\psi\ L')^\circ} \).
+    \end{enumerate}
+\end{definition}
+\begin{lemma}
+    Let \( L \in \dom \psi^L \).
+    Then for all \( a \in \psi\ L \), \( a^\circ \) is \( \psi \)-banned.
+\end{lemma}
+\begin{proof}
+    Either case (iv) or (v) will apply for each atom \( a \in \psi\ L \).
+\end{proof}
+\begin{lemma}
+    \label{lem:bannedLitter_small}
+    The set of \( \psi \)-banned litters is small.
+    In particular, the set of non-\( \psi \)-banned litters has cardinality \( \#\mu \).
+\end{lemma}
+\begin{proof}
+    We show that each constructor gives rise to only a small amount of litters.
+    Cases (i) and (iii) follow as \( \dom \psi^A \) is small; cases (ii) and (iv) follow as \( \dom \psi^L \) is small.
+    For case (v), first note that the following set is small by \cref{lem:small}(vii), giving the result.
+    \[ \bigcup_{L \in \dom \psi^L} \psi\ L \setminus \mathcal A_{(\psi\ L)^\circ} \]
+\end{proof}
+\begin{definition}
+    For each near-litter action \( \psi \), define a \cdef{Foa/Action/NearLitterAction}{NearLitterAction.sandboxLitter}{sandbox litter} which is an arbitrary non-\( \psi \)-banned litter.
+\end{definition}
+\begin{lemma}
+    The sandbox litter is disjoint from \( \dom \psi^A \cup \psi '' \dom \psi^A \).
+\end{lemma}
+\begin{proof}
+    Use constructors (i) and (iii) for banned litters to prove that any element of \( \dom \psi^A \cup \psi '' \dom \psi^A \) lies in a banned litter.
+\end{proof}
+\begin{definition}
+    We define a partial order structure on partial functions of type \( \alpha \rightdasharrow \beta \): we say that \( f \leq g \) if \( \dom f \subseteq \dom g \) and \( f\ x = g\ x \) for all \( x \in \dom f \).
+\end{definition}
+\begin{definition}
+    We define a partial order on near-litter actions: \( \psi_1 \leq \psi_2 \) if \( \psi_1^A \leq \psi_2^A \) and \( \psi_1^L \leq \psi_2^L \).
+\end{definition}
+\begin{lemma}
+    \label{lem:NearLitterAction.Lawful.le}
+    If \( \psi_1 \leq \psi_2 \) and \( \psi_2 \) is lawful, then \( \psi_1 \) is lawful.
+\end{lemma}
+\begin{proof}
+    By combining the definitions.
+\end{proof}
+\begin{definition}
+    Let \( \psi \) be a near-litter action and \( L \in \dom \psi^L \).
+    We say that \( \psi \) is \cdef{Foa/Action/NearLitterAction}{NearLitterAction.PreciseAt}{precise at \( L \)} if
+    \begin{enumerate}
+        \item \( \psi\ L \symmdiff \mathcal A_{(\psi\ L)^\circ} \subseteq \ran \psi^A \);
+        \item \( \ran \psi^A \cap \mathcal A_L \subseteq \dom \psi^A \);
+        \item \( \dom \psi^A \cap \psi\ L \subseteq \ran \psi^A \).
+    \end{enumerate}
+    We say that \( \psi \) is \cdef{Foa/Action/NearLitterAction}{NearLitterAction.Precise}{precise} if it is precise at every litter in its domain.
+\end{definition}
