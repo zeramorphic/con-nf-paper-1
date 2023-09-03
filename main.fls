@@ -384,6 +384,15 @@ INPUT foa/basic/reduction.tex
 INPUT ./foa/basic/flexible.tex
 INPUT ./foa/basic/flexible.tex
 INPUT foa/basic/flexible.tex
+INPUT ./foa/approximation.tex
+INPUT ./foa/approximation.tex
+INPUT foa/approximation.tex
+INPUT ./foa/approximation/near_litter_approx.tex
+INPUT ./foa/approximation/near_litter_approx.tex
+INPUT foa/approximation/near_litter_approx.tex
+INPUT ./foa/approximation/struct_approx.tex
+INPUT ./foa/approximation/struct_approx.tex
+INPUT foa/approximation/struct_approx.tex
 INPUT build/main.aux
 INPUT build/main.out
 INPUT build/main.out
