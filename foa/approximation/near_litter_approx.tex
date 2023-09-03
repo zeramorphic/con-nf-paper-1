@@ -1,0 +1,41 @@
+\subsection{Near-litter approximations}
+\begin{definition}
+    A \cdef{Foa/Approximation/NearLitterApprox}{NearLitterApprox}{near-litter approximation} is a pair \( \varphi = \langle \varphi^A, \varphi^L \rangle \) where \( \varphi^A \) is a local permutation of atoms and \( \varphi^L \) is a local permutation of litters, such that for each litter \( L \), the set \( \mathcal A_L \cap \dom \varphi^A \) is small.
+\end{definition}
+As with near-litter permutations, we often suppress the superscripts, and allow this type to act on atoms and litters, even those not in the domain of the local permutations in question.
+Near-litter approximations have inverses \( \varphi^{-1} = \langle (\varphi^A)^{-1}, (\varphi^A)^{-1} \rangle \).
+\begin{lemma}
+    \label{lem:nearLitter_domain_small}
+    Let \( N \) be a near-litter.
+    Then \( N \cap \dom \varphi^A \) is small.
+\end{lemma}
+\begin{proof}
+    It suffices to show that the following set is small.
+    \[ (\mathcal A_{N^\circ} \cap \dom \varphi^A) \symmdiff ((\mathcal A_{N^\circ} \symmdiff N) \cap \dom \varphi^A) \]
+    The left and right components are both small, giving the result by \cref{lem:small}(v).
+\end{proof}
+\begin{definition}
+    Let \( L \) be a litter and \( \varphi \) be a near-litter approximation.
+    Define the \cdef{Foa/Approximation/NearLitterApprox}{NearLitterApprox.largestSublitter}{\( \varphi \)-largest sublitter} of \( L \) to be \( L \setminus \dom \varphi^A \); it is a sublitter by the definition of a near-litter approximation.
+    This is the largest sublitter of \( L \) disjoint from the domain of \( \varphi^A \).
+\end{definition}
+\begin{lemma}
+    Let \( a \) be an atom and \( \varphi \) be a near-litter approximation.
+    Then \( a \) is in the \( \varphi \)-largest sublitter of \( a^\circ \) if and only if \( a \not\in \dom \varphi \).
+\end{lemma}
+\begin{proof}
+    Almost by definition, using \cref{lem:litterSet}(ii).
+\end{proof}
+\begin{definition}
+    An atom \( a \) is an \cdef{Foa/Approximation/NearLitterApprox}{NearLitterPerm.IsException}{exception} to a near-litter permutation \( \pi \) if
+    \[ (\pi\ a)^\circ \neq \pi\ a^\circ \text{ or } (\pi^{-1}\ a)^\circ \neq \pi^{-1}\ a^\circ \]
+\end{definition}
+\begin{definition}
+    A near-litter approximation \( \varphi \) \cdef{Foa/Approximation/NearLitterApprox}{NearLitterApprox.Approximates}{approximates} a near-litter permutation \( \pi \) if for all \( a \in \dom \varphi^A \) and \( L \in \dom \varphi^L \), we have
+    \[ \pi\ a = \varphi\ a;\quad \pi\ L = \varphi\ L \]
+    We say that \( \varphi \) \cdef{Foa/Approximation/NearLitterApprox}{NearLitterApprox.Approximates}{exactly approximates} \( \pi \) if in addition every exception to \( \pi \) lies in \( \dom \varphi^A \).
+\end{definition}
+\begin{definition}
+    Let \( A \) be a \( \beta \)-extended type index.
+    We say that a near-litter approximation \( \varphi \) is \cdef{Foa/Approximation/NearLitterApprox}{NearLitterApprox.Free}{\( A \)-free} if every litter in \( \dom \varphi^L \) is \( A \)-flexible.
+\end{definition}

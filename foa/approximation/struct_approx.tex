@@ -1,0 +1,18 @@
+\subsection{Structural approximations}
+\begin{definition}
+    Let \( \beta \) be a type index.
+    A \cdef{Foa/Approximation/StructApprox}{StructApprox}{\( \beta \)-structural approximation} is a \( \beta \)-tree of near-litter approximations.
+\end{definition}
+\begin{definition}
+    Let \( \varphi \) be a \( \beta \)-structural approximation, and \( \pi \) be a \( \beta \)-structural permutation.
+    We say that \( \varphi \) \cdef{Foa/Approximation/StructApprox}{StructApprox.ExactlyApproximates}{(exactly)} \cdef{Foa/Approximation/StructApprox}{StructApprox.Approximates}{approximates} \( \pi \) if for each \( \beta \)-extended index \( A \), \( \varphi\ A \) (exactly) approximates \( \pi\ A \).
+    We say \( \varphi \) is \cdef{Foa/Approximation/StructApprox}{StructApprox.Free}{free} if for each \( \beta \)-extended index \( A \), \( \varphi\ A \) is \( A \)-free.
+\end{definition}
+\begin{lemma}
+    Let \( \varphi \) be a \( \beta \)-structural approximation, \( \pi \) be a \( \beta \)-structural permutation, and \( A : \beta \rightsquigarrow \gamma \).
+    Suppose \( \varphi \) (exactly) approximates \( \pi \).
+    Then \( \varphi_A \) (exactly) approximates \( \pi_A \).
+\end{lemma}
+\begin{proof}
+    Almost by definition.
+\end{proof}

@@ -1,13 +1,13 @@
 \section{Near-litter permutations}
 
 \begin{definition}
-    A \cdef{BaseType/NearLitterPerm}{NearLitterPerm}{near-litter permutation} is a pair \( \pi = \langle \pi^A, \pi^L \rangle \) where \( \pi^A : \symsf{perm}\ \mathcal A \) and \( \pi^L : \symsf{perm}\ \mathcal L \), such that if \( s \) is a near-litter to \( L \), \( {\pi^A} '' s \) is a near-litter to \( \pi^L\ L \).
+    A \cdef{BaseType/NearLitterPerm}{NearLitterPerm}{near-litter permutation} is a pair \( \pi = \langle \pi^A, \pi^L \rangle \) where \( \pi^A : \symsf{Perm}\ \mathcal A \) and \( \pi^L : \symsf{Perm}\ \mathcal L \), such that if \( s \) is a near-litter to \( L \), \( {\pi^A} '' s \) is a near-litter to \( \pi^L\ L \).
     Thus a near-litter permutation induces a permutation of near-litters.
     The type of near-litter permutations is denoted \( \mathcal P \).
 \end{definition}
 We suppress the superscripts on near-litter permutations and use function application syntax for the action of a near-litter permutation on atoms, litters, and near-litters: for example, \( \pi^A\ a = \pi\ a \).
 Note that the action on litters is `rough': we map litters to litters and not near-litters.
-If the precise image of a litter \( L \) under a permutation \( \pi \) is desired, it can be obtained using \( \pi(\symsf{NL}\ L) \).
+If the precise image of a litter \( L \) under a permutation \( \pi \) is desired, it can be obtained using \( \pi\ (\symsf{NL}\ L) \).
 \begin{lemma}
     \label{lem:NearLitterPerm.atomPerm_injective}
     If the atom permutations of two near-litter permutations agree, then the permutations are equal.

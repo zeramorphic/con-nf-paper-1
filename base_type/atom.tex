@@ -2,6 +2,7 @@
 
 \begin{definition}
     The type of \cdef{BaseType/Atom}{Atom}{atoms} is \( \mathcal A = \mathcal L \times \kappa \).
+    We denote the first projection of an atom \( a \) by \( \pi_1\ a = a^\circ \).
 \end{definition}
 \begin{lemma}
     \label{lem:mk_atom}
@@ -17,12 +18,13 @@
     \label{lem:litterSet}
     \begin{enumerate}
         \item \( \#\mathcal A_L = \#\kappa \);
+        \item \( a \in \mathcal A_L \Leftrightarrow a^\circ = L \);
         \item the litter sets are pairwise disjoint.
     \end{enumerate}
 \end{lemma}
 \begin{proof}
     \begin{enumerate}
         \item Each litter set is naturally in bijection with \( \kappa \).
-        \item If an atom \( a \) is in \( \mathcal A_L \) and \( \mathcal A_{L'} \), then \( \pi_1(a) = L \) and \( \pi_1(a) = L' \) so \( L = L' \).
+        \item If an atom \( a \) is in \( \mathcal A_L \) and \( \mathcal A_{L'} \), then \( a^\circ = L \) and \( a^\circ = L' \) so \( L = L' \).
     \end{enumerate}
 \end{proof}
