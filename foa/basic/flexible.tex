@@ -1,0 +1,38 @@
+\subsection{Flexibility of litters}
+\begin{definition}
+    Let \( A \) be a \( \beta \)-extended type index and \( L \) a litter.
+    We say that \( L \) is \cdef{Foa/Basic/Flexible}{Inflexible}{\( A \)-inflexible} if either
+    \begin{enumerate}
+        \item there exist \( \gamma, \delta, \varepsilon : \lambda \) with \( \delta, \varepsilon < \gamma \) and \( \delta \neq \varepsilon \), and a path \( B : \beta \rightsquigarrow \gamma \) and tangle \( t : \tau_\delta \), such that
+        \[ A = B \gg (\gamma \to \varepsilon) \gg (\varepsilon \to \bot);\quad L = f_{\delta,\varepsilon}\ t \]
+        or
+        \item there exist \( \gamma, \varepsilon : \lambda \) with \( \varepsilon < \gamma \), and a path \( B : \beta \rightsquigarrow \gamma \) and atom \( a \), such that
+        \[ A = B \gg (\gamma \to \varepsilon) \gg (\varepsilon \to \bot);\quad L = f_{\bot,\varepsilon}\ a \]
+    \end{enumerate}
+    We call (i) the \emph{proper} case and (ii) the \emph{base} case.
+    A litter which is not \( A \)-inflexible is called \cdef{Foa/Basic/Flexible}{Flexible}{\( A \)-flexible}.
+\end{definition}
+\begin{lemma}
+    \label{lem:comp_flexible}
+    If \( L \) is \( A \)-inflexible, then \( L \) is \( B \gg A \)-inflexible.
+    Conversely, if \( L \) is \( B \gg A \)-flexible, \( L \) is \( A \)-flexible.
+\end{lemma}
+\begin{proof}
+    Case checking.
+\end{proof}
+\begin{definition}
+    \cdef{Foa/Basic/Flexible}{InflexibleCoePath}{Proper \( A \)-inflexible path data} is a tuple \( \langle \gamma, \delta, \varepsilon, B \rangle \) where
+    \[ \delta, \varepsilon < \gamma;\quad \delta \neq \varepsilon; \quad A = B \gg (\gamma \to \varepsilon) \gg (\varepsilon \to \bot) \]
+    \cdef{Foa/Basic/Flexible}{InflexibleBotPath}{Base \( A \)-inflexible path data} is a tuple \( \langle \gamma, \varepsilon, B \rangle \) where
+    \[ \varepsilon < \gamma; \quad A = B \gg (\gamma \to \varepsilon) \gg (\varepsilon \to \bot) \]
+\end{definition}
+\begin{definition}
+    \cdef{Foa/Basic/Flexible}{InflexibleCoe}{Proper \( \langle A, L \rangle \)-inflexible data} is a pair \( \langle D, t \rangle \) where \( D \) is proper \( A \)-inflexible path data and \( L = f_{\delta,\varepsilon}\ t \).
+    \cdef{Foa/Basic/Flexible}{InflexibleBot}{Base \( \langle A, L \rangle \)-inflexible data} is a pair \( \langle D, a \rangle \) where \( D \) is base \( A \)-inflexible path data and \( L = f_{\bot,\varepsilon}\ a \).
+\end{definition}
+\begin{lemma}
+    A litter can be \( A \)-inflexible in precisely one way; that is, the types of proper and base \( \langle A, L \rangle \)-inflexible data are jointly a subsingleton.
+\end{lemma}
+\begin{proof}
+    Use \cref{lem:fuzz_congr}.
+\end{proof}
