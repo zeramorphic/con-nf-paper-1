@@ -378,6 +378,9 @@ INPUT foa/basic/hypotheses.tex
 INPUT ./foa/basic/constrains.tex
 INPUT ./foa/basic/constrains.tex
 INPUT foa/basic/constrains.tex
+INPUT ./foa/basic/reduction.tex
+INPUT ./foa/basic/reduction.tex
+INPUT foa/basic/reduction.tex
 INPUT build/main.aux
 INPUT build/main.out
 INPUT build/main.out
