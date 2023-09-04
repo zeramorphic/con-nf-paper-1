@@ -14,6 +14,17 @@
     A litter which is not \( A \)-inflexible is called \cdef{Foa/Basic/Flexible}{Flexible}{\( A \)-flexible}.
 \end{definition}
 \begin{lemma}
+    \label{lem:mk_flexible}
+    Let \( A \) be a \( \beta \)-extended type index.
+    Then there are exactly \( \#\mu \) \( A \)-flexible litters.
+\end{lemma}
+\begin{proof}
+    Since there are \( \#\mu \) litters by \cref{lem:mk_litter}, we need only show that there are at least \( \#\mu \) such litters.
+    To each \( \nu : \mu \) we assign the litter \( \langle \nu, \bot, \alpha \rangle \).
+    Clearly this assignment is injective.
+    Since \( \varepsilon < \alpha \) in each case of inflexibility, these litters must be \( A \)-flexible.
+\end{proof}
+\begin{lemma}
     \label{lem:comp_flexible}
     If \( L \) is \( A \)-inflexible, then \( L \) is \( B \gg A \)-inflexible.
     Conversely, if \( L \) is \( B \gg A \)-flexible, \( L \) is \( A \)-flexible.
