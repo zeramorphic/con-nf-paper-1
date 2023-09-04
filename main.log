@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.9.1)  3 SEP 2023 21:40
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.9.1)  4 SEP 2023 11:30
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1198,12 +1198,12 @@ pport
 (./foa/approximation.tex (./foa/approximation/near_litter_approx.tex)
 (./foa/approximation/struct_approx.tex [26])) (./foa/action.tex
 (./foa/action/near_litter_action.tex [27]
-Overfull \hbox (1.79335pt too wide) in paragraph at lines 52--53
-[]\TU/STIXTwoText(0)/m/n/10 Use constructors (i) and (iii) for banned litters t
-o prove that any element of $[] [][] [] [][] [] [][]$
+Overfull \hbox (3.12901pt too wide) in paragraph at lines 91--92
+[]\TU/STIXTwoText(0)/m/n/10 Follows from cardinal arithmetic after unfolding th
+e definition of the sandbox subset as $[] [][]$
  []
 
-) (./foa/action/struct_action.tex))) [28] (build/main.aux)
+[28] [29]) (./foa/action/struct_action.tex))) [30] (build/main.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
@@ -1216,12 +1216,12 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 000291BD778EEC0ADD46FF3FA7F4FA55;5264.
  ) 
 Here is how much of TeX's memory you used:
- 30994 strings out of 475591
- 631917 string characters out of 5775606
- 1934438 words of memory out of 5000000
- 51730 multiletter control sequences out of 15000+600000
+ 31004 strings out of 475591
+ 632232 string characters out of 5775606
+ 1935438 words of memory out of 5000000
+ 51740 multiletter control sequences out of 15000+600000
  564458 words of font info for 121 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  131i,15n,135p,518b,963s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on build/main.xdv (29 pages, 536520 bytes).
+Output written on build/main.xdv (31 pages, 589860 bytes).
