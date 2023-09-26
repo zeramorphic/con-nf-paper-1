@@ -116,11 +116,13 @@ We now define the set of atoms we will add to \( \psi \).
     We can now define the image of an atom in \( o_L \) under the extended \( \psi \).
     First, define
     \[ S = \bigcup_{L \in \dom \pi^L} \{ a \in o_L \mid e_L\ a \in S_L \} \]
+    % S = nextImageCoreDomain
     Let \( g_L : o_L \to \mathcal A \) be defined by
     \[ g_L\ a : \begin{cases}
         f_L\ x & e_L\ a = \symsf{inr}\ x \\
         b_L\ x & e_L\ a = \symsf{inl}\ x
     \end{cases} \]
+    % g = nextImageCore
 \end{definition}
 \begin{lemma}
     \label{lem:FillAtomOrbits.S_small}
@@ -164,11 +166,13 @@ We now extend \( g \) to be also defined on \( (\ran \psi^A \setminus \dom \psi^
 \begin{definition}
     Define
     \[ T = ((\ran \psi^A \setminus \dom \psi^A) \cap \{ a \mid a^\circ \in \dom \pi^L \}) \cup S \]
+    % T = nextImageDomain
     Then define \( h : T \to \mathcal A \) piecewise by
     \[ h\ a = \begin{cases}
         e_{\pi\ L}^{-1}\ (\symsf{inr}\ \langle 0, a \rangle) & \text{if } a \in (\ran \psi^A \setminus \dom \psi^A) \cap \{ a \mid a^\circ \in \dom \pi^L \} \\
         g\ a & \text{if } a \in S
     \end{cases} \]
+    % h = nextImage
 \end{definition}
 \begin{lemma}
     \( \#T < \#\kappa \), and \( \ran \psi^A \setminus \dom \psi^A \) is disjoint from \( S \).
@@ -187,8 +191,77 @@ We now extend \( g \) to be also defined on \( (\ran \psi^A \setminus \dom \psi^
     Otherwise, this follows from \cref{lem:FillAtomOrbits.equiv_injective}.
 \end{proof}
 \begin{lemma}
+    \label{lem:FillAtomOrbits.h_injective}
     \( h \) is injective.
 \end{lemma}
 \begin{proof}
     Follows directly from \cref{lem:FillAtomOrbits.equiv_injective,lem:FillAtomOrbits.h_ne_h,lem:FillAtomOrbits.g_injective}.
+\end{proof}
+\begin{lemma}
+    \label{lem:FillAtomOrbits.h_spec}
+    Let \( a \in T \).
+    Then \( h\ a \in \mathcal A_{\pi\ a^\circ} \setminus \ran \psi^A \).
+\end{lemma}
+\begin{proof}
+    The only nontrivial case is \( a = e_{a^\circ}^{-1}\ (\symsf{inl}\ \langle 0, a' \rangle) \).
+    In this case, \( \pi\ a^\circ = {a'}^\circ \), giving \( h\ a \in \mathcal A_{\pi\ a^\circ} \).
+    Additionally, \( a' \in \dom \psi^A \setminus \ran \psi^A \), so \( h\ a = a' \not\in \ran \psi^A \).
+\end{proof}
+\begin{lemma}
+    \( \dom \psi^A \) and \( T \) are disjoint.
+\end{lemma}
+\begin{proof}
+    Clearly \( \dom \psi^A \) and \( (\ran \psi^A \setminus \dom \psi^A) \cap \{ a \mid a^\circ \in \dom \pi^L \} \) are disjoint.
+    By \cref{lem:orbitSet_equiv_spec}(ii), \( a \in S \) implies \( a \not\in (\dom \psi^A \cup \ran \psi^A) \), so \( \dom \psi^A \) and \( S \) are also disjoint.
+\end{proof}
+\begin{definition}
+    Define \( k : \dom \psi^A \cup T \to \mathcal A \) piecewise by \( \psi^A \) and \( h \).
+    % k = orbitAtomMap
+\end{definition}
+\begin{lemma}
+    \label{lem:FillAtomOrbits.k_ne_k}
+    Let \( a \in \dom \psi^A \) and \( b \in T \).
+    Then \( k\ a \neq k\ b \).
+\end{lemma}
+\begin{proof}
+    First suppose \( b \in (\ran \psi^A \setminus \dom \psi^A) \cap \{ a \mid a^\circ \in \dom \pi^L \} \).
+    Note that \( k\ b = e_{\pi\ b^\circ}^{-1}\ (\symsf{inr}\ \langle 0, b \rangle) \not\in \dom \psi^A \cup \ran \psi^A \).
+    But \( k\ a = \psi\ a \in \ran \psi^A \), contradicting \( k\ a = k\ b \).
+
+    Now suppose \( b \in T \).
+    If \( b = e_{b^\circ}^{-1}\ (\symsf{inl}\ \langle 0, b' \rangle) \), then \( k\ b = b' \), and \( b' \not\in \ran \psi^A \), but \( k\ a = \psi\ a \) so \( k\ a \neq k\ b \).
+    If \( b = e_{b^\circ}^{-1}\ (\symsf{inl}\ \langle n + 1, b' \rangle) \), then \( k\ b = e_{\pi\ b^\circ}^{-1}\ (\symsf{inl}\ \langle n, b' \rangle) \) so \( k\ b \not\in \dom \psi^A \cup \ran \psi^A \).
+    Finally, if \( b = e_{b^\circ}^{-1}\ (\symsf{inr}\ \langle n, b' \rangle) \), then \( k\ b = e_{\pi\ b^\circ}^{-1}\ (\symsf{inr}\ \langle n + 1, b' \rangle) \) so \( k\ b \not\in \dom \psi^A \cup \ran \psi^A \).
+\end{proof}
+\begin{lemma}
+    \( k \) is injective.
+\end{lemma}
+\begin{proof}
+    Note that \( \psi^A \) is injective as \( \psi \) is lawful.
+    The result follows from this observation and \cref{lem:FillAtomOrbits.h_injective,lem:FillAtomOrbits.k_ne_k}.
+\end{proof}
+\begin{definition}
+    Let \( \psi' \) be the near-litter action with atom map \( k \) and litter map \( \psi^L \).
+\end{definition}
+We will now impose an additional assumption on \( \psi \), namely that
+\[ \forall L \in \dom \psi^L,\, \psi\ L \symmdiff \mathcal A_{(\psi\ L)^\circ} \subseteq \ran \psi^A \]
+If \( \psi \) satisfies this, we say it has \emph{full atom ranges}.
+\begin{lemma}
+    Suppose \( \psi \) has full atom ranges.
+    Let \( a \in S \) and \( L \in \dom \psi^L \).
+    Then
+    \[ a^\circ = L \Leftrightarrow g_{a^\circ}\ a \in \psi\ L \]
+\end{lemma}
+\begin{proof}
+    First, note that \( (g_{a^\circ}\ a)^\circ = \pi\ a^\circ \) and \( g_{a^\circ}\ a \not\in \ran \psi^A \) by \cref{lem:FillAtomOrbits.h_spec}.
+    In particular, as \( \psi \) has full atom ranges, \( g_{a^\circ}\ a \not\in \psi\ L \symmdiff \mathcal A_{(\psi\ L)^\circ} \).
+    Note also that \( \pi\ L = \psi\ L \).
+
+    Suppose \( a^\circ = L \).
+    Then either \( (g_{a^\circ}\ a)^\circ \neq (\psi\ L)^\circ \) or \( g_{a^\circ}\ a \in \psi\ L \).
+    But since \( (g_{a^\circ}\ a)^\circ = (\psi\ L)^\circ \), we must have \( g_{a^\circ}\ a \in \psi\ L \).
+
+    Now suppose \( g_{a^\circ}\ a \in \psi\ L \).
+    Then, \( (g_{a^\circ}\ a)^\circ = (\psi\ L)^\circ \).
+    But \( (g_{a^\circ}\ a)^\circ = \pi\ a^\circ \), so \( a^\circ = L \).
 \end{proof}
