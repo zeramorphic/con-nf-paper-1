@@ -1,0 +1,194 @@
+\subsection{Filling in orbits of atoms}
+We now intend to demonstrate actions can be made precise by defining their action on more atoms.
+In particular, we need to fill in the orbits of atoms in such a way that preserves lawfulness (as in \cref{def:NearLitterAction.Lawful}).
+Condition (iii) is the hardest to satisfy, because we need the atoms to cohere with the predefined action on litters.
+If this condition were not required, an application of \cref{lem:LocalPerm.complete} would suffice.
+In any case, the proof in this section will roughly follow the proof of \cref{lem:LocalPerm.complete}.
+
+Let \( \psi \) be a lawful near-litter action.
+We begin by completing this litter action into a local permutation on litters so that we can walk forwards and backwards along orbits.
+\begin{definition}
+    The \cdef{Foa/Action/FillAtomOrbits}{litterPerm}{litter permutation} on \( \psi \) is a local permutation \( \pi^L \) that agrees with \( \psi \) on its domain, extended to also be defined on all banned litters.
+    This can be done by first completing \( \psi^L \) into \( \pi^L_1 \) using \cref{lem:LocalPerm.complete}, then constructing the identity local permutation on banned litters not in \( \dom \pi^L_1 \), and finally using \cref{lem:localPerm_piecewise} to combine them piecewise to give \( \pi^L \).
+\end{definition}
+\begin{lemma}
+    \( \#(\dom \pi^L) < \#\kappa \).
+\end{lemma}
+\begin{proof}
+    This proof is simple cardinal arithmetic, noting that there are only a small number of banned litters by \cref{lem:bannedLitter_small}.
+\end{proof}
+In the same way as \cref{lem:LocalPerm.complete}, we will construct inverse functions walking forwards and backwards along orbits of atoms.
+Morally, we want to produce the following diagram.
+\[\begin{tikzcd}[column sep=small]
+	\cdots & {L\ 1} & {L\ 0} & {\dom \psi^A \setminus \ran \psi^A} & \cdots & {\ran \psi^A \setminus \dom \psi^A} & {R\ 0} & {R\ 1} & \cdots
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow["\psi", from=1-4, to=1-5]
+	\arrow["\psi", from=1-5, to=1-6]
+	\arrow[from=1-6, to=1-7]
+	\arrow[from=1-7, to=1-8]
+	\arrow[from=1-8, to=1-9]
+\end{tikzcd}\]
+Because we need to satisfy \cref{def:NearLitterAction.Lawful}(iii), the sets \( L\ n \) and \( R\ n \) need to be spread across every litter in \( \dom \pi^L \), ensuring that atoms are mapped inside the relevant image litter.
+\begin{lemma}
+    For each \( L \), there exists a subset of \( \mathcal A_L \setminus (\dom \psi^A \cup \ran \psi^A) \) with an equivalence \( e_L \) to the type
+    \[ (\mathbb N \times (\dom \psi^A \setminus \ran \psi^A)) \oplus (\mathbb N \times (\psi^A \setminus \dom \psi^A)) \]
+    We denote this type \( \sigma \).
+    The subset is called the \cdef{Foa/Action/FillAtomOrbits}{NearLitterAction.orbitSet}{orbit set}, denoted \( o_L \), as it is where we will place orbits of atoms.
+\end{lemma}
+\begin{proof}
+    Note that \( \mathcal A_L \setminus (\dom \psi^A \cup \ran \psi^A) \) has cardinality \( \#\kappa \), and \( \#\sigma < \#\kappa \).
+    In particular, \( \#\sigma \leq \#(\mathcal A_L \setminus (\dom \psi^A \cup \ran \psi^A)) \), so there is an injection \( \sigma \to \mathcal A_L \setminus (\dom \psi^A \cup \ran \psi^A) \).
+    This injection is an equivalence onto its image.
+\end{proof}
+\begin{lemma}
+    \label{lem:FillAtomOrbits.equiv_injective}
+    The \( e_L^{-1} : \sigma \to \mathcal A \) are jointly injective.
+    That is, if \( e_{L_1}^{-1}\ x_1 = e_{L_2}^{-1}\ x_2 \), then \( L_1 = L_2 \) and \( x_1 = x_2 \).
+\end{lemma}
+\begin{proof}
+    First note that \( e_{L_1}^{-1}\ x_1 \in \mathcal A_{L_1} \) and \( e_{L_2}^{-1}\ x_2 \in \mathcal A_{L_2} \), so \( L_1 = L_2 \).
+    Then \( e_{L_1}^{-1}\ x_1 = e_{L_1}^{-1}\ x_2 \), so by injectivity we have \( x_1 = x_2 \) as required.
+\end{proof}
+\begin{lemma}
+    \label{lem:orbitSet_small}
+    \( \#o_L < \#\kappa \).
+\end{lemma}
+\begin{proof}
+    \( \sigma \) is small, and \( e_L \) shows they have the same cardinality.
+\end{proof}
+We now define the set of atoms we will add to \( \psi \).
+\begin{definition}
+    For each \( L \), define the forward and backward domains
+    \[ F_L \subseteq \mathbb N \times (\ran \psi^A \setminus \dom \psi^A);\quad B_L \subseteq \mathbb N \times (\dom \psi^A \setminus \ran \psi^A) \]
+    by
+    \begin{align*}
+        \langle n, a \rangle \in F_L &\Leftrightarrow a^\circ \in \dom \pi^L \wedge \pi^{n+1}\ a^\circ = L \\
+        \langle n, a \rangle \in B_L &\Leftrightarrow a^\circ \in \dom \pi^L \wedge \pi^{-(n+1)}\ a^\circ = L
+    \end{align*}
+    and define \( S_L \subseteq \sigma \) by
+    \[ \symsf{inl}\ x \in S_L \Leftrightarrow x \in B_L;\quad \symsf{inr}\ x \in S_L \Leftrightarrow x \in F_L \]
+    \( S_L \) is thus the set of atoms to be added to \( \psi \) whose orbits originate from \( L \).
+\end{definition}
+\begin{definition}
+    Define \( f_L : \mathbb N \times (\ran \psi^A \setminus \dom \psi^A) \to \mathcal A \) by
+    \[ f_L\ \langle n, a \rangle = e_{\pi\ L}^{-1}\ (\symsf{inr}\ \langle n + 1, a \rangle) \]
+    Similarly, define \( b_L : \mathbb N \times (\dom \psi^A \setminus \ran \psi^A) \to \mathcal A \) by
+    \begin{align*}
+        b_L\ \langle 0, a \rangle = a \\
+        b_L\ \langle n + 1, a \rangle = e_{\pi\ L}^{-1}\ (\symsf{inl}\ \langle n, a \rangle)
+    \end{align*}
+\end{definition}
+\begin{lemma}
+    \label{cref:FillAtomOrbits.forward_injective}
+    Let \( x_1, x_2 : \mathbb N \times (\ran \psi^A \setminus \dom \psi^A) \).
+    Let \( L_1, L_2 \in \dom \pi^L \) such that \( f_{L_1}\ x_1 = f_{L_2}\ x_2 \).
+    Then \( L_1 = L_2 \) and \( x_1 = x_2 \).
+\end{lemma}
+\begin{proof}
+    We have that \( f_{L_1}\ x_1 \in \mathcal A_{\pi\ L_1} \) and \( f_{L_2}\ x_2 \in \mathcal A_{\pi\ L_2} \).
+    Thus by \cref{lem:litterSet}(iii), \( \pi\ L_1 = \pi\ L_2 \), giving \( L_1 = L_2 \).
+    As \( e_{L_1}^{-1} \) is injective, by unfolding the definition of \( f_{L_1} \) we have \( x_1 = x_2 \).
+\end{proof}
+\begin{lemma}
+    \label{cref:FillAtomOrbits.backward_injective}
+    Let \( x_1, x_2 : \mathbb N \times (\dom \psi^A \setminus \ran \psi^A) \).
+    Let \( L_1, L_2 \in \dom \pi^L \) such that \( b_{L_1}\ x_1 = b_{L_2}\ x_2 \).
+    Then \( L_1 = L_2 \) and \( x_1 = x_2 \).
+\end{lemma}
+\begin{proof}
+    In the case \( \pr_1 x_1, \pr_1 x_2 > 0 \), the proof is identical to the previous one.
+    If \( \pr_1 x_1 = \pr_2 x_2 = 0 \), then \( x_1 = x_2 \) immediately, and as \( b_{L_1}\ x_1 \in \mathcal A_{\pi\ L_1} \) and \( b_{L_2}\ x_2 \in \mathcal A_{\pi\ L_2} \), we have \( L_1 = L_2 \) as before.
+    The other cases are impossible, as \( o_{L_1}, o_{L_2} \) are disjoint from \( \dom \psi^A \cup \ran \psi^A \) by construction.
+\end{proof}
+\begin{lemma}
+    \label{lem:forward_ne_backward}
+    Let \( x : \mathbb N \times (\ran \psi^A \setminus \dom \psi^A) \) and \( y : \mathbb N \times (\dom \psi^A \setminus \ran \psi^A) \).
+    Then for any \( L_1, L_2 \), \( f_{L_1}\ x \neq b_{L_2}\ y \).
+\end{lemma}
+\begin{proof}
+    Note that \( f_{L_1}\ x \not\in \dom \psi^A \cup \ran \psi^A \).
+    If \( \pr_1 y = 0 \), then \( f_{L_1}\ x = b_{L_2}\ y = \pr_2 y \) would imply that \( \pr_2 y \not\in \dom \psi^A \cup \ran \psi^A \), but this is false.
+    If instead \( \pr_1 y \neq 0 \), then we can apply \cref{lem:FillAtomOrbits.equiv_injective} to deduce a contradiction, as \( \symsf{inl} \) and \( \symsf{inr} \) have disjoint ranges.
+\end{proof}
+\begin{definition}
+    We can now define the image of an atom in \( o_L \) under the extended \( \psi \).
+    First, define
+    \[ S = \bigcup_{L \in \dom \pi^L} \{ a \in o_L \mid e_L\ a \in S_L \} \]
+    Let \( g_L : o_L \to \mathcal A \) be defined by
+    \[ g_L\ a : \begin{cases}
+        f_L\ x & e_L\ a = \symsf{inr}\ x \\
+        b_L\ x & e_L\ a = \symsf{inl}\ x
+    \end{cases} \]
+\end{definition}
+\begin{lemma}
+    \label{lem:FillAtomOrbits.S_small}
+    \( \#S < \#\kappa \).
+\end{lemma}
+\begin{proof}
+    By \cref{lem:small}(vii) and \cref{lem:orbitSet_small}.
+\end{proof}
+\begin{lemma}
+    \label{lem:orbitSet_equiv_spec}
+    Let \( a \in S \).
+    Then,
+    \begin{enumerate}
+        \item \( a^\circ \in \dom \pi^L \);
+        \item \( a \in o_{a^\circ} \);
+        \item if \( e_{a^\circ}\ a = \symsf{inr}\ x \), then \( x \in F_{a^\circ} \);
+        \item if \( e_{a^\circ}\ a = \symsf{inl}\ x \), then \( x \in B_{a^\circ} \).
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    Unfolding the definition of \( a \in S \), there exists a litter \( L \in \dom \pi^L \) such that \( a \in o_L \), and
+    \begin{itemize}
+        \item if \( e_L\ a = \symsf{inr}\ x \), then \( x \in F_L \); and
+        \item if \( e_L\ a = \symsf{inl}\ x \), then \( x \in B_L \).
+    \end{itemize}
+    But as \( a \in o_L \subseteq \mathcal A_L \), we must have \( a^\circ = L \) giving the result as required.
+\end{proof}
+\begin{lemma}
+    \label{lem:FillAtomOrbits.g_injective}
+    Let \( a, b \in S \), and suppose \( g_{a^\circ}\ a = g_{b^\circ}\ b \).
+    Then \( a = b \).
+\end{lemma}
+\begin{proof}
+    By unfolding the definition of \( g \), we can use \cref{lem:forward_ne_backward} to reduce to just the cases
+    \[ a = e_{a^\circ}^{-1}\ (\symsf{inl}\ \langle m, a' \rangle);\quad b = e_{b^\circ}^{-1}\ (\symsf{inl}\ \langle n, b' \rangle) \]
+    and
+    \[ a = e_{a^\circ}^{-1}\ (\symsf{inr}\ \langle m, a' \rangle);\quad b = e_{b^\circ}^{-1}\ (\symsf{inr}\ \langle n, b' \rangle) \]
+    Then \cref{cref:FillAtomOrbits.forward_injective,cref:FillAtomOrbits.backward_injective} complete the proof.
+\end{proof}
+We now extend \( g \) to be also defined on \( (\ran \psi^A \setminus \dom \psi^A) \cap \{ a \mid a^\circ \in \dom \pi^L \} \).
+\begin{definition}
+    Define
+    \[ T = ((\ran \psi^A \setminus \dom \psi^A) \cap \{ a \mid a^\circ \in \dom \pi^L \}) \cup S \]
+    Then define \( h : T \to \mathcal A \) piecewise by
+    \[ h\ a = \begin{cases}
+        e_{\pi\ L}^{-1}\ (\symsf{inr}\ \langle 0, a \rangle) & \text{if } a \in (\ran \psi^A \setminus \dom \psi^A) \cap \{ a \mid a^\circ \in \dom \pi^L \} \\
+        g\ a & \text{if } a \in S
+    \end{cases} \]
+\end{definition}
+\begin{lemma}
+    \( \#T < \#\kappa \), and \( \ran \psi^A \setminus \dom \psi^A \) is disjoint from \( S \).
+\end{lemma}
+\begin{proof}
+    The first part follows directly from \cref{lem:FillAtomOrbits.S_small}.
+    For the second part, note that if \( a \in S \), then by \cref{lem:orbitSet_equiv_spec}, \( a \in \dom \psi^A \cup \ran \psi^A \), so \( a \not\in \ran \psi^A \setminus \dom \psi^A \).
+\end{proof}
+\begin{lemma}
+    \label{lem:FillAtomOrbits.h_ne_h}
+    Suppose \( a \in (\ran \psi^A \setminus \dom \psi^A) \cap \{ a \mid a^\circ \in \dom \pi^L \} \), and let \( b \in S \).
+    Then \( h\ a \neq h\ b \).
+\end{lemma}
+\begin{proof}
+    If \( b \) is of the form \( e_{b^\circ}^{-1}\ (\symsf{inl} \langle 0, b' \rangle) \), this follows from the fact that \( h\ a \not\in \dom \psi^A \cup \ran \psi^A \) but \( h\ b = b' \in \dom \psi^A \).
+    Otherwise, this follows from \cref{lem:FillAtomOrbits.equiv_injective}.
+\end{proof}
+\begin{lemma}
+    \( h \) is injective.
+\end{lemma}
+\begin{proof}
+    Follows directly from \cref{lem:FillAtomOrbits.equiv_injective,lem:FillAtomOrbits.h_ne_h,lem:FillAtomOrbits.g_injective}.
+\end{proof}

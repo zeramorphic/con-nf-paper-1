@@ -6,6 +6,7 @@
 We let near-litter actions act on all atoms and litters, where the action on a litter yields a near-litter.
 If the atom or litter does not lie in the domain, its value is irrelevant.
 \begin{definition}
+    \label{def:NearLitterAction.Lawful}
     A near-litter action is \cdef{Foa/Action/NearLitterAction}{NearLitterAction.Lawful}{lawful} if
     \begin{enumerate}
         \item \( \psi^A \) is injective;
@@ -89,80 +90,4 @@ If the atom or litter does not lie in the domain, its value is irrelevant.
 \end{lemma}
 \begin{proof}
     Follows from cardinal arithmetic after unfolding the definition of the sandbox subset as \( \dom \psi^L \) is small.
-\end{proof}
-% ...
-\begin{definition}
-    For each near-litter action \( \psi \), define a \cdef{Foa/Action/NearLitterAction}{NearLitterAction.sandboxLitter}{sandbox litter} which is an arbitrary non-\( \psi \)-banned litter.
-\end{definition}
-\begin{definition}
-    Suppose \( \psi \) is a lawful near-litter action.
-    The \cdef{Foa/Action/NearLitterAction}{NearLitterAction.atomLocalPerm}{atom local permutation} of \( \psi \) is a local permutation of atoms obtained by \cref{lem:LocalPerm.complete} that agrees with \( \psi^A \) on \( \dom \psi^A \), where the sandbox is some set of atoms in the sandbox litter.
-\end{definition}
-\begin{lemma}
-    The preconditions required in the above definition are again satisfied.
-\end{lemma}
-\begin{proof}
-    \begin{enumerate}
-        \setcounter{enumi}{3}
-        \item \( \dom \psi^A \symmdiff \psi '' \dom \psi^A \) is small, so has cardinality less than the set of atoms in the sandbox litter.
-        \item Use constructors (i) and (iii) for banned litters to prove that any element of \( \dom \psi^A \cup \psi '' \dom \psi^A \) lies in a banned litter.
-        \item Holds as \( \psi \) is lawful.
-    \end{enumerate}
-\end{proof}
-\begin{lemma}
-    \label{lem:dom_atomLocalPerm_small}
-    The domain of the atom local permutation is small.
-\end{lemma}
-\begin{proof}
-    As in \cref{lem:dom_flexibleLitterLocalPerm_small}.
-\end{proof}
-\begin{definition}
-    Let \( \psi \) be a lawful near-litter action, and \( A \) be a \( \beta \)-extended type index.
-    Then the \cdef{Foa/Action/NearLitterAction}{NearLitterAction.complete}{\( A \)-complete near-litter approximation} is the near-litter approximation \( \varphi = \langle \varphi^A, \varphi^L \rangle \) where \( \varphi^A \) is the atom local permutation and \( \varphi^L \) is the \( A \)-flexible litter local permutation.
-    The smallness requirement in the definition is satisfied by \cref{lem:dom_atomLocalPerm_small}.
-\end{definition}
-\begin{lemma}
-    \label{lem:NearLitterAction.complete_spec}
-    Let \( \psi \) be a lawful near-litter action, and \( \varphi \) its \( A \)-complete near-litter approximation.
-    Then,
-    \begin{enumerate}
-        \item if \( a \in \dom \psi^A \), then \( \varphi\ a = \psi\ a \);
-        \item if \( a \in \dom \psi^A \) and \( \varphi \) exactly approximates some near-litter permutation \( \pi \), then \( \pi\ a = \psi\ a \);
-        \item if \( L \in \dom \psi^L \), \( \psi \) is precise at \( L \), \( \varphi \) exactly approximates \( \pi \), and \( \pi\ L = (\psi\ L)^\circ \), then \( \pi\ (\symsf{NL}\ L) = \psi\ L \);
-        \item if \( N^\circ \in \dom \psi^L \), \( \psi \) is precise at \( N^\circ \), \( \varphi \) exactly approximates \( \pi \), and \( \pi\ N^\circ = (\psi\ N^\circ)^\circ \), then \( \pi\ N = \psi\ N^\circ \symmdiff \pi '' (\mathcal A_{N^\circ} \symmdiff N) \).
-    \end{enumerate}
-\end{lemma}
-Note that in (iii) we need to assume \( \pi\ L = (\psi\ L)^\circ \) without going via \( \varphi \) since we discard all of the information about inflexible litters when producing \( \varphi \).
-\begin{proof}
-    (i) and (ii) follow from the definitions, and (iv) follows from (iii) by \cref{lem:smul_nearLitter_eq_smul_symmDiff_smul}, so it remains to show (iii).
-    We will show that for all atoms \( a \),
-    \[ (\pi^{-1}\ a)^\circ = L \Leftrightarrow a \in \psi\ L \]
-    Suppose the left-hand side holds.
-    We have two cases: either \( a \) is an exception to \( \pi \), or it is not.
-
-    If it is an exception, it suffices to show that \( \pi^{-1}\ a \in \dom \psi^A \), then
-    \begin{align*}
-        \psi\ (\pi^{-1}\ a) &\in \psi\ L \\
-        \pi\ (\pi^{-1}\ a) &\in \psi\ L \\
-        a &\in \psi\ L
-    \end{align*}
-    Note that \( \pi^{-1}\ a = \varphi^{-1}\ a \) as \( \varphi \) exactly approximates \( \pi \), so we need only show that \( \varphi^{-1}\ a \in \dom \psi^A \).
-    There are three cases for where \( \varphi^{-1}\ a \) lies: in \( \dom \psi^A \), in \( \psi '' \dom \psi^A \), or in the sandbox litter.
-    In the first case we are done, in the second case the result holds as \( \psi \) is precise at \( L \), and the third case cannot happen as it would imply the sandbox litter were equal to \( L \) and thus banned.
-
-    Suppose instead that \( a \) is not an exception, and in addition that \( a \not\in \psi\ L \).
-    Due to both of these assumptions and the fact that \( \psi \) is precise at \( L \), \( a \in \ran \psi^A \), so let \( a = \psi\ b \).
-    As \( b \in \dom \psi^A \), \( \psi\ b = \pi\ b \), but by assumption \( (\pi^{-1}\ a)^\circ = L \), so \( b^\circ = L \), contradicting the assumption that \( a \not\in \psi\ L \).
-
-    Now suppose the right-hand side holds.
-    If \( \pi^{-1}\ a \in \dom \psi \), the result is trivial as \( \psi \) is lawful.
-    Suppose \( \pi^{-1}\ a \not\in \dom \psi \), but \( a^\circ = (\psi\ L)^\circ \).
-    If the result were false, so \( (\pi^{-1}\ a)^\circ \neq L \), we would have that \( a \in \ran \psi^A \) as \( \psi \) is precise at \( L \).
-    Let \( a = \psi\ b \), then \( \psi\ b = \pi\ b \), giving \( b \not\in \dom \psi \) by assumption, a contradiction.
-
-    Finally, suppose \( \pi^{-1}\ a \not\in \dom \psi \), \( a^\circ \neq (\psi\ L)^\circ \), and \( (\pi^{-1}\ a)^\circ \neq L \).
-    \( a \) is an exception to \( \pi \), so lies in \( \dom \psi^A \), in \( \psi '' \dom \psi^A \), or in the sandbox litter; in each case we can derive a contradiction.
-    If \( a \in \dom \psi^A \), \( a \in \ran \psi^A \) as \( \psi \) is precise at \( L \), but this contradicts \( \pi^{-1}\ a \not\in \dom \psi \).
-    If \( a \in \psi '' \dom \psi^A \) we obtain the same contradiction.
-    In the third case, the assumption would imply that the sandbox litter was \( \psi\ L \), which is banned.
 \end{proof}

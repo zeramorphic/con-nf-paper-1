@@ -1,1 +1,36 @@
 \subsection{Structural actions}
+\begin{definition}
+    A \cdef{Foa/Action/StructAction}{StructAction}{\( \beta \)-structural action} is a \( \beta \)-tree of near-litter actions.
+    We say such an action \( \psi \) is
+    \begin{enumerate}
+        \item \cdef{Foa/Action/StructAction}{StructAction.Lawful}{lawful} if \( \psi\ A \) is lawful for all \( \beta \)-extended type indices \( A \);
+        \item \cdef{Foa/Action/StructAction}{StructAction.Precise}{precise} if \( \psi\ A \) is precise for all \( \beta \)-extended type indices \( A \).
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+    Define a partial order on the type of \( \beta \)-structural actions by
+    \[ \psi_1 \leq \psi_2 \Leftrightarrow \forall A : \beta \rightsquigarrow \bot,\, \psi_1\ A \leq \psi_2\ A \]
+\end{definition}
+\begin{lemma}
+    \label{lem:StructAction.Lawful.le}
+    If \( \psi_1 \leq \psi_2 \) and \( \psi_2 \) is lawful, then \( \psi_1 \) is lawful.
+\end{lemma}
+\begin{proof}
+    Direct from \cref{lem:NearLitterAction.Lawful.le}.
+\end{proof}
+\begin{definition}
+    Let \( \psi \) be a \( \beta \)-structural action.
+    Its \cdef{Foa/Action/StructAction}{StructAction.complete}{complete structural approximation} is the \( \beta \)-structural approximation given by assigning to each \( \beta \)-extended type index \( A \) the \( A \)-complete near-litter approximation of \( \psi\ A \).
+\end{definition}
+\begin{theorem}
+    \label{lem:StructAction.complete_spec}
+    Let \( \psi \) be a \( \beta \)-structural action, completed into the \( \beta \)-structural approximation \( \varphi \).
+    Then,
+    \begin{enumerate}
+        \item if \( a \in \dom (\psi\ A)^A \), then \( \varphi\ A\ a = \psi\ A\ a \);
+        \item if \( \psi \) is precise, \( N^\circ \in \dom (\psi\ A)^L \), \( \varphi \) exactly approximates \( \pi \), and \( \pi\ A\ L = (\psi\ A\ N^\circ)^\circ \), then \( \pi\ A\ N = \psi\ A\ N^\circ \symmdiff \pi\ A '' (\mathcal A_{N^\circ} \symmdiff N) \).
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Follows directly from \cref{lem:NearLitterAction.complete_spec} parts (i) and (iv).
+\end{proof}
