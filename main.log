@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.9.1)  26 SEP 2023 16:41
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.9.1)  26 SEP 2023 21:59
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1198,8 +1198,9 @@ e definition of the sandbox subset as $[] [][]$
  []
 
 ) (./foa/action/complete.tex [28] [29]) (./foa/action/fill_atom_orbits.tex
-[30] [31] [32]) (./foa/action/fill_atom_range.tex) (./foa/action/refine.tex)
-(./foa/action/struct_action.tex [33]))) [34] (build/main.aux)
+[30] [31] [32] [33]) (./foa/action/fill_atom_range.tex)
+(./foa/action/refine.tex) (./foa/action/struct_action.tex [34]))) [35]
+(build/main.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
@@ -1212,12 +1213,12 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 2E09E98203715C714C6B5F318F076610;6131.
  ) 
 Here is how much of TeX's memory you used:
- 31140 strings out of 475591
- 635890 string characters out of 5775606
+ 31146 strings out of 475591
+ 636077 string characters out of 5775606
  1945438 words of memory out of 5000000
- 51864 multiletter control sequences out of 15000+600000
+ 51870 multiletter control sequences out of 15000+600000
  564458 words of font info for 121 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  131i,15n,135p,518b,1169s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on build/main.xdv (35 pages, 694008 bytes).
+Output written on build/main.xdv (36 pages, 718176 bytes).
